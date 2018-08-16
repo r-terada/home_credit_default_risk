@@ -108,5 +108,6 @@ venv.bak/
 
 # personal settings
 *.pkl
+*.csv
 kernels
 notebooks
