@@ -1,0 +1,242 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.668067045568582,
+      "best_iteration": 645,
+      "elapsed_time": 102.53846406936646,
+      "feature_importance_top10": {
+        "ACTIVE_DAYS_CREDIT_ENDDATE_MEAN": 890,
+        "ACTIVE_AMT_CREDIT_SUM_MEAN": 864,
+        "BURO_AMT_CREDIT_SUM_MEAN": 837,
+        "BURO_DAYS_CREDIT_MEAN": 769,
+        "ACTIVE_AMT_CREDIT_SUM_DEBT_MEAN": 738,
+        "BURO_AMT_CREDIT_MAX_OVERDUE_MEAN": 714,
+        "CLOSED_AMT_CREDIT_SUM_MEAN": 685,
+        "ACTIVE_DAYS_CREDIT_MEAN": 645,
+        "ACTIVE_DAYS_CREDIT_VAR": 569,
+        "ACTIVE_AMT_CREDIT_SUM_SUM": 541
+      }
+    },
+    "Fold2": {
+      "val_score": 0.6707732093061499,
+      "best_iteration": 650,
+      "elapsed_time": 102.72365188598633,
+      "feature_importance_top10": {
+        "ACTIVE_DAYS_CREDIT_ENDDATE_MEAN": 976,
+        "ACTIVE_AMT_CREDIT_SUM_MEAN": 881,
+        "BURO_AMT_CREDIT_SUM_MEAN": 876,
+        "BURO_DAYS_CREDIT_MEAN": 784,
+        "ACTIVE_AMT_CREDIT_SUM_DEBT_MEAN": 719,
+        "ACTIVE_DAYS_CREDIT_MEAN": 663,
+        "CLOSED_AMT_CREDIT_SUM_MEAN": 601,
+        "BURO_AMT_CREDIT_MAX_OVERDUE_MEAN": 597,
+        "ACTIVE_DAYS_CREDIT_VAR": 554,
+        "BURO_AMT_CREDIT_SUM_DEBT_MEAN": 535
+      }
+    },
+    "Fold3": {
+      "val_score": 0.6619559834810207,
+      "best_iteration": 834,
+      "elapsed_time": 122.99608206748962,
+      "feature_importance_top10": {
+        "ACTIVE_DAYS_CREDIT_ENDDATE_MEAN": 1165,
+        "ACTIVE_AMT_CREDIT_SUM_MEAN": 1031,
+        "BURO_AMT_CREDIT_SUM_MEAN": 993,
+        "BURO_DAYS_CREDIT_MEAN": 890,
+        "ACTIVE_DAYS_CREDIT_MEAN": 823,
+        "BURO_AMT_CREDIT_MAX_OVERDUE_MEAN": 816,
+        "ACTIVE_AMT_CREDIT_SUM_DEBT_MEAN": 792,
+        "CLOSED_AMT_CREDIT_SUM_MEAN": 768,
+        "ACTIVE_DAYS_CREDIT_VAR": 729,
+        "BURO_AMT_CREDIT_SUM_DEBT_MEAN": 708
+      }
+    },
+    "Fold4": {
+      "val_score": 0.6603670036435425,
+      "best_iteration": 506,
+      "elapsed_time": 86.53243207931519,
+      "feature_importance_top10": {
+        "ACTIVE_AMT_CREDIT_SUM_MEAN": 713,
+        "ACTIVE_DAYS_CREDIT_ENDDATE_MEAN": 708,
+        "BURO_AMT_CREDIT_SUM_MEAN": 704,
+        "BURO_DAYS_CREDIT_MEAN": 683,
+        "BURO_AMT_CREDIT_MAX_OVERDUE_MEAN": 603,
+        "ACTIVE_DAYS_CREDIT_MEAN": 577,
+        "CLOSED_AMT_CREDIT_SUM_MEAN": 535,
+        "ACTIVE_AMT_CREDIT_SUM_DEBT_MEAN": 528,
+        "BURO_AMT_CREDIT_SUM_DEBT_MEAN": 441,
+        "BURO_AMT_CREDIT_SUM_DEBT_SUM": 418
+      }
+    },
+    "Fold5": {
+      "val_score": 0.6645358765760094,
+      "best_iteration": 963,
+      "elapsed_time": 136.66505694389343,
+      "feature_importance_top10": {
+        "ACTIVE_DAYS_CREDIT_ENDDATE_MEAN": 1300,
+        "ACTIVE_AMT_CREDIT_SUM_MEAN": 1082,
+        "BURO_AMT_CREDIT_SUM_MEAN": 1032,
+        "ACTIVE_AMT_CREDIT_SUM_DEBT_MEAN": 957,
+        "BURO_DAYS_CREDIT_MEAN": 940,
+        "ACTIVE_DAYS_CREDIT_MEAN": 938,
+        "BURO_AMT_CREDIT_MAX_OVERDUE_MEAN": 890,
+        "CLOSED_AMT_CREDIT_SUM_MEAN": 876,
+        "ACTIVE_DAYS_CREDIT_UPDATE_MEAN": 821,
+        "ACTIVE_DAYS_CREDIT_VAR": 797
+      }
+    },
+    "Full": {
+      "score": 0.6647786662741724,
+      "feature_importance_top10": {
+        "ACTIVE_DAYS_CREDIT_ENDDATE_MEAN": 1007.8,
+        "ACTIVE_AMT_CREDIT_SUM_MEAN": 914.2,
+        "BURO_AMT_CREDIT_SUM_MEAN": 888.4,
+        "BURO_DAYS_CREDIT_MEAN": 813.2,
+        "ACTIVE_AMT_CREDIT_SUM_DEBT_MEAN": 746.8,
+        "ACTIVE_DAYS_CREDIT_MEAN": 729.2,
+        "BURO_AMT_CREDIT_MAX_OVERDUE_MEAN": 724.0,
+        "CLOSED_AMT_CREDIT_SUM_MEAN": 693.0,
+        "ACTIVE_DAYS_CREDIT_VAR": 610.8,
+        "BURO_AMT_CREDIT_SUM_DEBT_MEAN": 587.6
+      }
+    }
+  },
+  "config": {
+    "features": [
+      "BureauFeatures"
+    ],
+    "model": {
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {
+        "nthread": 4,
+        "n_estimators": 5000,
+        "learning_rate": 0.02,
+        "num_leaves": 32,
+        "colsample_bytree": 0.9497036,
+        "subsample": 0.8715623,
+        "max_depth": 8,
+        "reg_alpha": 0.04,
+        "reg_lambda": 0.073,
+        "min_split_gain": 0.0222415,
+        "min_child_weight": 40,
+        "silent": -1,
+        "verbose": -1
+      },
+      "train_params": {
+        "eval_metric": "auc",
+        "verbose": 100,
+        "early_stopping_rounds": 200
+      }
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "config_file_name": "lgbm_0_bureau"
+  },
+  "features_detail": {
+    "number": 95,
+    "names": [
+      "BURO_DAYS_CREDIT_MEAN",
+      "BURO_DAYS_CREDIT_VAR",
+      "BURO_DAYS_CREDIT_ENDDATE_MEAN",
+      "BURO_DAYS_CREDIT_UPDATE_MEAN",
+      "BURO_CREDIT_DAY_OVERDUE_MEAN",
+      "BURO_AMT_CREDIT_MAX_OVERDUE_MEAN",
+      "BURO_AMT_CREDIT_SUM_MEAN",
+      "BURO_AMT_CREDIT_SUM_SUM",
+      "BURO_AMT_CREDIT_SUM_DEBT_MEAN",
+      "BURO_AMT_CREDIT_SUM_DEBT_SUM",
+      "BURO_AMT_CREDIT_SUM_OVERDUE_MEAN",
+      "BURO_AMT_CREDIT_SUM_LIMIT_MEAN",
+      "BURO_AMT_CREDIT_SUM_LIMIT_SUM",
+      "BURO_AMT_ANNUITY_MAX",
+      "BURO_AMT_ANNUITY_MEAN",
+      "BURO_CNT_CREDIT_PROLONG_SUM",
+      "BURO_MONTHS_BALANCE_MIN_MIN",
+      "BURO_MONTHS_BALANCE_MAX_MAX",
+      "BURO_MONTHS_BALANCE_SIZE_MEAN",
+      "BURO_MONTHS_BALANCE_SIZE_SUM",
+      "BURO_CREDIT_ACTIVE_Active_MEAN",
+      "BURO_CREDIT_ACTIVE_Bad debt_MEAN",
+      "BURO_CREDIT_ACTIVE_Closed_MEAN",
+      "BURO_CREDIT_ACTIVE_Sold_MEAN",
+      "BURO_CREDIT_ACTIVE_nan_MEAN",
+      "BURO_CREDIT_CURRENCY_currency 1_MEAN",
+      "BURO_CREDIT_CURRENCY_currency 2_MEAN",
+      "BURO_CREDIT_CURRENCY_currency 3_MEAN",
+      "BURO_CREDIT_CURRENCY_currency 4_MEAN",
+      "BURO_CREDIT_CURRENCY_nan_MEAN",
+      "BURO_CREDIT_TYPE_Another type of loan_MEAN",
+      "BURO_CREDIT_TYPE_Car loan_MEAN",
+      "BURO_CREDIT_TYPE_Cash loan (non-earmarked)_MEAN",
+      "BURO_CREDIT_TYPE_Consumer credit_MEAN",
+      "BURO_CREDIT_TYPE_Credit card_MEAN",
+      "BURO_CREDIT_TYPE_Interbank credit_MEAN",
+      "BURO_CREDIT_TYPE_Loan for business development_MEAN",
+      "BURO_CREDIT_TYPE_Loan for purchase of shares (margin lending)_MEAN",
+      "BURO_CREDIT_TYPE_Loan for the purchase of equipment_MEAN",
+      "BURO_CREDIT_TYPE_Loan for working capital replenishment_MEAN",
+      "BURO_CREDIT_TYPE_Microloan_MEAN",
+      "BURO_CREDIT_TYPE_Mobile operator loan_MEAN",
+      "BURO_CREDIT_TYPE_Mortgage_MEAN",
+      "BURO_CREDIT_TYPE_Real estate loan_MEAN",
+      "BURO_CREDIT_TYPE_Unknown type of loan_MEAN",
+      "BURO_CREDIT_TYPE_nan_MEAN",
+      "BURO_STATUS_0_MEAN_MEAN",
+      "BURO_STATUS_1_MEAN_MEAN",
+      "BURO_STATUS_2_MEAN_MEAN",
+      "BURO_STATUS_3_MEAN_MEAN",
+      "BURO_STATUS_4_MEAN_MEAN",
+      "BURO_STATUS_5_MEAN_MEAN",
+      "BURO_STATUS_C_MEAN_MEAN",
+      "BURO_STATUS_X_MEAN_MEAN",
+      "BURO_STATUS_nan_MEAN_MEAN",
+      "ACTIVE_DAYS_CREDIT_MEAN",
+      "ACTIVE_DAYS_CREDIT_VAR",
+      "ACTIVE_DAYS_CREDIT_ENDDATE_MEAN",
+      "ACTIVE_DAYS_CREDIT_UPDATE_MEAN",
+      "ACTIVE_CREDIT_DAY_OVERDUE_MEAN",
+      "ACTIVE_AMT_CREDIT_MAX_OVERDUE_MEAN",
+      "ACTIVE_AMT_CREDIT_SUM_MEAN",
+      "ACTIVE_AMT_CREDIT_SUM_SUM",
+      "ACTIVE_AMT_CREDIT_SUM_DEBT_MEAN",
+      "ACTIVE_AMT_CREDIT_SUM_DEBT_SUM",
+      "ACTIVE_AMT_CREDIT_SUM_OVERDUE_MEAN",
+      "ACTIVE_AMT_CREDIT_SUM_LIMIT_MEAN",
+      "ACTIVE_AMT_CREDIT_SUM_LIMIT_SUM",
+      "ACTIVE_AMT_ANNUITY_MAX",
+      "ACTIVE_AMT_ANNUITY_MEAN",
+      "ACTIVE_CNT_CREDIT_PROLONG_SUM",
+      "ACTIVE_MONTHS_BALANCE_MIN_MIN",
+      "ACTIVE_MONTHS_BALANCE_MAX_MAX",
+      "ACTIVE_MONTHS_BALANCE_SIZE_MEAN",
+      "ACTIVE_MONTHS_BALANCE_SIZE_SUM",
+      "CLOSED_DAYS_CREDIT_MEAN",
+      "CLOSED_DAYS_CREDIT_VAR",
+      "CLOSED_DAYS_CREDIT_ENDDATE_MEAN",
+      "CLOSED_DAYS_CREDIT_UPDATE_MEAN",
+      "CLOSED_CREDIT_DAY_OVERDUE_MEAN",
+      "CLOSED_AMT_CREDIT_MAX_OVERDUE_MEAN",
+      "CLOSED_AMT_CREDIT_SUM_MEAN",
+      "CLOSED_AMT_CREDIT_SUM_SUM",
+      "CLOSED_AMT_CREDIT_SUM_DEBT_MEAN",
+      "CLOSED_AMT_CREDIT_SUM_DEBT_SUM",
+      "CLOSED_AMT_CREDIT_SUM_OVERDUE_MEAN",
+      "CLOSED_AMT_CREDIT_SUM_LIMIT_MEAN",
+      "CLOSED_AMT_CREDIT_SUM_LIMIT_SUM",
+      "CLOSED_AMT_ANNUITY_MAX",
+      "CLOSED_AMT_ANNUITY_MEAN",
+      "CLOSED_CNT_CREDIT_PROLONG_SUM",
+      "CLOSED_MONTHS_BALANCE_MIN_MIN",
+      "CLOSED_MONTHS_BALANCE_MAX_MAX",
+      "CLOSED_MONTHS_BALANCE_SIZE_MEAN",
+      "CLOSED_MONTHS_BALANCE_SIZE_SUM"
+    ]
+  }
+}

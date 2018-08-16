@@ -1,0 +1,169 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.6451376124434236,
+      "best_iteration": 475,
+      "elapsed_time": 44.4723162651062,
+      "feature_importance_top10": {
+        "INSTAL_DAYS_ENTRY_PAYMENT_MEAN": 1163,
+        "INSTAL_DAYS_ENTRY_PAYMENT_MAX": 1065,
+        "INSTAL_AMT_PAYMENT_MIN": 1005,
+        "INSTAL_AMT_INSTALMENT_MAX": 954,
+        "INSTAL_AMT_PAYMENT_SUM": 854,
+        "INSTAL_AMT_PAYMENT_MEAN": 777,
+        "INSTAL_DAYS_ENTRY_PAYMENT_SUM": 745,
+        "INSTAL_DBD_MAX": 720,
+        "INSTAL_DBD_MEAN": 699,
+        "INSTAL_DPD_MEAN": 698
+      }
+    },
+    "Fold2": {
+      "val_score": 0.6447339576978713,
+      "best_iteration": 436,
+      "elapsed_time": 43.83698606491089,
+      "feature_importance_top10": {
+        "INSTAL_DAYS_ENTRY_PAYMENT_MEAN": 1122,
+        "INSTAL_DAYS_ENTRY_PAYMENT_MAX": 1045,
+        "INSTAL_AMT_PAYMENT_MIN": 956,
+        "INSTAL_AMT_INSTALMENT_MAX": 868,
+        "INSTAL_AMT_PAYMENT_SUM": 788,
+        "INSTAL_AMT_PAYMENT_MEAN": 783,
+        "INSTAL_DPD_MEAN": 716,
+        "INSTAL_DBD_MAX": 652,
+        "INSTAL_DAYS_ENTRY_PAYMENT_SUM": 623,
+        "INSTAL_AMT_PAYMENT_MAX": 586
+      }
+    },
+    "Fold3": {
+      "val_score": 0.6417162937313765,
+      "best_iteration": 312,
+      "elapsed_time": 35.87120175361633,
+      "feature_importance_top10": {
+        "INSTAL_DAYS_ENTRY_PAYMENT_MEAN": 880,
+        "INSTAL_AMT_PAYMENT_MIN": 740,
+        "INSTAL_AMT_INSTALMENT_MAX": 717,
+        "INSTAL_DAYS_ENTRY_PAYMENT_MAX": 710,
+        "INSTAL_AMT_PAYMENT_MEAN": 675,
+        "INSTAL_AMT_PAYMENT_SUM": 638,
+        "INSTAL_DPD_MEAN": 589,
+        "INSTAL_DAYS_ENTRY_PAYMENT_SUM": 490,
+        "INSTAL_AMT_PAYMENT_MAX": 456,
+        "INSTAL_NUM_INSTALMENT_VERSION_NUNIQUE": 433
+      }
+    },
+    "Fold4": {
+      "val_score": 0.6432995148789105,
+      "best_iteration": 521,
+      "elapsed_time": 49.497113943099976,
+      "feature_importance_top10": {
+        "INSTAL_DAYS_ENTRY_PAYMENT_MEAN": 1275,
+        "INSTAL_DAYS_ENTRY_PAYMENT_MAX": 1166,
+        "INSTAL_AMT_PAYMENT_MIN": 1083,
+        "INSTAL_AMT_INSTALMENT_MAX": 1052,
+        "INSTAL_AMT_PAYMENT_SUM": 911,
+        "INSTAL_AMT_PAYMENT_MEAN": 885,
+        "INSTAL_DBD_MAX": 856,
+        "INSTAL_DPD_MEAN": 845,
+        "INSTAL_DBD_SUM": 748,
+        "INSTAL_DBD_MEAN": 737
+      }
+    },
+    "Fold5": {
+      "val_score": 0.6428395072349754,
+      "best_iteration": 487,
+      "elapsed_time": 46.799638986587524,
+      "feature_importance_top10": {
+        "INSTAL_DAYS_ENTRY_PAYMENT_MEAN": 1267,
+        "INSTAL_AMT_PAYMENT_MIN": 1099,
+        "INSTAL_DAYS_ENTRY_PAYMENT_MAX": 1082,
+        "INSTAL_AMT_INSTALMENT_MAX": 934,
+        "INSTAL_AMT_PAYMENT_MEAN": 827,
+        "INSTAL_DPD_MEAN": 799,
+        "INSTAL_AMT_PAYMENT_SUM": 787,
+        "INSTAL_DBD_MEAN": 734,
+        "INSTAL_DAYS_ENTRY_PAYMENT_SUM": 725,
+        "INSTAL_DBD_MAX": 705
+      }
+    },
+    "Full": {
+      "score": 0.6433384067336956,
+      "feature_importance_top10": {
+        "INSTAL_DAYS_ENTRY_PAYMENT_MEAN": 1141.4,
+        "INSTAL_DAYS_ENTRY_PAYMENT_MAX": 1013.6,
+        "INSTAL_AMT_PAYMENT_MIN": 976.6,
+        "INSTAL_AMT_INSTALMENT_MAX": 905.0,
+        "INSTAL_AMT_PAYMENT_SUM": 795.6,
+        "INSTAL_AMT_PAYMENT_MEAN": 789.4,
+        "INSTAL_DPD_MEAN": 729.4,
+        "INSTAL_DAYS_ENTRY_PAYMENT_SUM": 662.8,
+        "INSTAL_DBD_MAX": 660.8,
+        "INSTAL_DBD_MEAN": 619.2
+      }
+    }
+  },
+  "config": {
+    "features": [
+      "InstallmentsPaymentsFeatures"
+    ],
+    "model": {
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {
+        "nthread": 4,
+        "n_estimators": 5000,
+        "learning_rate": 0.02,
+        "num_leaves": 32,
+        "colsample_bytree": 0.9497036,
+        "subsample": 0.8715623,
+        "max_depth": 8,
+        "reg_alpha": 0.04,
+        "reg_lambda": 0.073,
+        "min_split_gain": 0.0222415,
+        "min_child_weight": 40,
+        "silent": -1,
+        "verbose": -1
+      },
+      "train_params": {
+        "eval_metric": "auc",
+        "verbose": 100,
+        "early_stopping_rounds": 200
+      }
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "config_file_name": "lgbm_0_installments_payments"
+  },
+  "features_detail": {
+    "number": 22,
+    "names": [
+      "INSTAL_NUM_INSTALMENT_VERSION_NUNIQUE",
+      "INSTAL_DPD_MAX",
+      "INSTAL_DPD_MEAN",
+      "INSTAL_DPD_SUM",
+      "INSTAL_DBD_MAX",
+      "INSTAL_DBD_MEAN",
+      "INSTAL_DBD_SUM",
+      "INSTAL_PAYMENT_PERC_MEAN",
+      "INSTAL_PAYMENT_PERC_VAR",
+      "INSTAL_PAYMENT_DIFF_MEAN",
+      "INSTAL_PAYMENT_DIFF_VAR",
+      "INSTAL_AMT_INSTALMENT_MAX",
+      "INSTAL_AMT_INSTALMENT_MEAN",
+      "INSTAL_AMT_INSTALMENT_SUM",
+      "INSTAL_AMT_PAYMENT_MIN",
+      "INSTAL_AMT_PAYMENT_MAX",
+      "INSTAL_AMT_PAYMENT_MEAN",
+      "INSTAL_AMT_PAYMENT_SUM",
+      "INSTAL_DAYS_ENTRY_PAYMENT_MAX",
+      "INSTAL_DAYS_ENTRY_PAYMENT_MEAN",
+      "INSTAL_DAYS_ENTRY_PAYMENT_SUM",
+      "INSTAL_COUNT"
+    ]
+  }
+}
