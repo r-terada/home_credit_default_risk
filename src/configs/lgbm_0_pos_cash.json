@@ -10,7 +10,7 @@
         },
         "clf_params":{
             "nthread": 4,
-            "n_estimators": 1,
+            "n_estimators": 5000,
             "learning_rate": 0.02,
             "num_leaves": 32,
             "colsample_bytree": 0.9497036,
