@@ -72,3 +72,61 @@ class BureauFeatures(Feature):
         del closed, closed_agg, bureau
         gc.collect()
         return bureau_agg
+
+
+class BureauFeaturesOpenSolution(Feature):
+    """
+    features from https://github.com/neptune-ml/open-solution-home-credit
+    """
+
+    @classmethod
+    def _create_feature(cls, conf) -> pd.DataFrame:
+        bureau = Bureau.get_df(conf)
+        bureau['bureau_credit_active_binary'] = (bureau['CREDIT_ACTIVE'] != 'Closed').astype(int)
+        bureau['bureau_credit_enddate_binary'] = (bureau['DAYS_CREDIT_ENDDATE'] > 0).astype(int)
+        features = pd.DataFrame({'SK_ID_CURR': bureau['SK_ID_CURR'].unique()})
+
+        groupby = bureau.groupby(by=['SK_ID_CURR'])
+
+        g = groupby['DAYS_CREDIT'].agg('count').reset_index()
+        g.rename(index=str, columns={'DAYS_CREDIT': 'bureau_number_of_past_loans'}, inplace=True)
+        features = features.merge(g, on=['SK_ID_CURR'], how='left')
+
+        g = groupby['CREDIT_TYPE'].agg('nunique').reset_index()
+        g.rename(index=str, columns={'CREDIT_TYPE': 'bureau_number_of_loan_types'}, inplace=True)
+        features = features.merge(g, on=['SK_ID_CURR'], how='left')
+
+        g = groupby['bureau_credit_active_binary'].agg('mean').reset_index()
+        g.rename(index=str, columns={'bureau_credit_active_binary': 'bureau_credit_active_binary'}, inplace=True)
+        features = features.merge(g, on=['SK_ID_CURR'], how='left')
+
+        g = groupby['AMT_CREDIT_SUM_DEBT'].agg('sum').reset_index()
+        g.rename(index=str, columns={'AMT_CREDIT_SUM_DEBT': 'bureau_total_customer_debt'}, inplace=True)
+        features = features.merge(g, on=['SK_ID_CURR'], how='left')
+
+        g = groupby['AMT_CREDIT_SUM'].agg('sum').reset_index()
+        g.rename(index=str, columns={'AMT_CREDIT_SUM': 'bureau_total_customer_credit'}, inplace=True)
+        features = features.merge(g, on=['SK_ID_CURR'], how='left')
+
+        g = groupby['AMT_CREDIT_SUM_OVERDUE'].agg('sum').reset_index()
+        g.rename(index=str, columns={'AMT_CREDIT_SUM_OVERDUE': 'bureau_total_customer_overdue'}, inplace=True)
+        features = features.merge(g, on=['SK_ID_CURR'], how='left')
+
+        g = groupby['CNT_CREDIT_PROLONG'].agg('sum').reset_index()
+        g.rename(index=str, columns={'CNT_CREDIT_PROLONG': 'bureau_average_creditdays_prolonged'}, inplace=True)
+        features = features.merge(g, on=['SK_ID_CURR'], how='left')
+
+        g = groupby['bureau_credit_enddate_binary'].agg('mean').reset_index()
+        g.rename(index=str, columns={'bureau_credit_enddate_binary': 'bureau_credit_enddate_percentage'}, inplace=True)
+        features = features.merge(g, on=['SK_ID_CURR'], how='left')
+
+        features['bureau_average_of_past_loans_per_type'] = \
+            features['bureau_number_of_past_loans'] / features['bureau_number_of_loan_types']
+
+        features['bureau_debt_credit_ratio'] = \
+            features['bureau_total_customer_debt'] / features['bureau_total_customer_credit']
+
+        features['bureau_overdue_debt_ratio'] = \
+            features['bureau_total_customer_overdue'] / features['bureau_total_customer_debt']
+
+        return features

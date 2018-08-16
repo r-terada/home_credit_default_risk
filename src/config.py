@@ -3,21 +3,27 @@ import json
 from attrdict import AttrDict
 
 from models import LightGBM
-from features.application import ApplicationFeatures
-from features.bureau import BureauFeatures
-from features.previous_application import PreviousApplicationFeatures
-from features.pos_cash import PosCashFeatures
-from features.installments_payments import InstallmentsPaymentsFeatures
-from features.credit_card_balance import CreditCardBalanceFeatures
+from features.application import ApplicationFeatures, ApplicationFeaturesOpenSolution
+from features.bureau import BureauFeatures, BureauFeaturesOpenSolution
+from features.previous_application import PreviousApplicationFeatures, PreviousApplicationFeaturesOpenSolution
+from features.pos_cash import PosCashFeatures, PosCashFeaturesOpenSolution
+from features.installments_payments import InstallmentsPaymentsFeatures, InstallmentPaymentsFeaturesOpenSolution
+from features.credit_card_balance import CreditCardBalanceFeatures, CreditCardBalanceFeaturesOpenSolution
 
 
 KEY_FEATURE_MAP = {
     "ApplicationFeatures": ApplicationFeatures,
+    "ApplicationFeaturesOpenSolution": ApplicationFeaturesOpenSolution,
     "BureauFeatures": BureauFeatures,
+    "BureauFeaturesOpenSolution": BureauFeaturesOpenSolution,
     "PreviousApplicationFeatures": PreviousApplicationFeatures,
+    "PreviousApplicationFeaturesOpenSolution": PreviousApplicationFeaturesOpenSolution,
     "PosCashFeatures": PosCashFeatures,
+    "PosCashFeaturesOpenSolution": PosCashFeaturesOpenSolution,
     "InstallmentsPaymentsFeatures": InstallmentsPaymentsFeatures,
-    "CreditCardBalanceFeatures": CreditCardBalanceFeatures
+    "InstallmentPaymentsFeaturesOpenSolution": InstallmentPaymentsFeaturesOpenSolution,
+    "CreditCardBalanceFeatures": CreditCardBalanceFeatures,
+    "CreditCardBalanceFeaturesOpenSolution": CreditCardBalanceFeaturesOpenSolution
 }
 
 

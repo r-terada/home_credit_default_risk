@@ -54,3 +54,68 @@ class PreviousApplicationFeatures(Feature):
         del refused, refused_agg, approved, approved_agg, prev
         gc.collect()
         return prev_agg
+
+
+class PreviousApplicationFeaturesOpenSolution(Feature):
+
+    @classmethod
+    def _create_feature(cls, conf) -> pd.DataFrame:
+        prev_applications = PreviousApplication.get_df(conf)
+        features = pd.DataFrame({'SK_ID_CURR': prev_applications['SK_ID_CURR'].unique()})
+
+        prev_app_sorted = prev_applications.sort_values(['SK_ID_CURR', 'DAYS_DECISION'])
+        prev_app_sorted_groupby = prev_app_sorted.groupby(by=['SK_ID_CURR'])
+
+        prev_app_sorted['previous_application_prev_was_approved'] = (
+            prev_app_sorted['NAME_CONTRACT_STATUS'] == 'Approved').astype('int')
+        g = prev_app_sorted_groupby['previous_application_prev_was_approved'].last().reset_index()
+        features = features.merge(g, on=['SK_ID_CURR'], how='left')
+
+        prev_app_sorted['previous_application_prev_was_refused'] = (
+            prev_app_sorted['NAME_CONTRACT_STATUS'] == 'Refused').astype('int')
+        g = prev_app_sorted_groupby['previous_application_prev_was_refused'].last().reset_index()
+        features = features.merge(g, on=['SK_ID_CURR'], how='left')
+
+        g = prev_app_sorted_groupby['SK_ID_PREV'].agg('nunique').reset_index()
+        g.rename(index=str, columns={'SK_ID_PREV': 'previous_application_number_of_prev_application'}, inplace=True)
+        features = features.merge(g, on=['SK_ID_CURR'], how='left')
+
+        g = prev_app_sorted.groupby(by=['SK_ID_CURR'])['previous_application_prev_was_refused'].mean().reset_index()
+        g.rename(index=str, columns={
+            'previous_application_prev_was_refused': 'previous_application_fraction_of_refused_applications'},
+                 inplace=True)
+        features = features.merge(g, on=['SK_ID_CURR'], how='left')
+
+        prev_app_sorted['prev_applications_prev_was_revolving_loan'] = (
+            prev_app_sorted['NAME_CONTRACT_TYPE'] == 'Revolving loans').astype('int')
+        g = prev_app_sorted.groupby(by=['SK_ID_CURR'])[
+            'prev_applications_prev_was_revolving_loan'].last().reset_index()
+        features = features.merge(g, on=['SK_ID_CURR'], how='left')
+
+        for number in [1, 2, 3, 4, 5]:
+            prev_applications_tail = prev_app_sorted_groupby.tail(number)
+
+            tail_groupby = prev_applications_tail.groupby(by=['SK_ID_CURR'])
+
+            g = tail_groupby['CNT_PAYMENT'].agg('mean').reset_index()
+            g.rename(index=str,
+                     columns={'CNT_PAYMENT': 'previous_application_term_of_last_{}_credits_mean'.format(number)},
+                     inplace=True)
+            features = features.merge(g, on=['SK_ID_CURR'], how='left')
+
+            g = tail_groupby['DAYS_DECISION'].agg('mean').reset_index()
+            g.rename(index=str,
+                     columns={'DAYS_DECISION': 'previous_application_days_decision_about_last_{}_credits_mean'.format(
+                         number)},
+                     inplace=True)
+            features = features.merge(g, on=['SK_ID_CURR'], how='left')
+
+            g = tail_groupby['DAYS_FIRST_DRAWING'].agg('mean').reset_index()
+            g.rename(index=str,
+                     columns={
+                         'DAYS_FIRST_DRAWING': 'previous_application_days_first_drawing_last_{}_credits_mean'.format(
+                             number)},
+                     inplace=True)
+            features = features.merge(g, on=['SK_ID_CURR'], how='left')
+
+        return features
