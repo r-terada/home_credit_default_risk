@@ -1,0 +1,150 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.5546936090929336,
+      "best_iteration": 95,
+      "elapsed_time": 13.158771991729736,
+      "feature_importance_top10": {
+        "credit_card_monthly_diff": 751,
+        "credit_card_drawings_total": 523,
+        "credit_card_cash_card_ratio": 500,
+        "credit_card_drawings_atm": 441,
+        "credit_card_avg_loading_of_credit_limit": 317,
+        "credit_card_average_of_days_past_due": 214,
+        "credit_card_total_installments": 132,
+        "credit_card_installments_per_loan": 59,
+        "credit_card_number_of_loans": 8
+      }
+    },
+    "Fold2": {
+      "val_score": 0.5567979909813536,
+      "best_iteration": 74,
+      "elapsed_time": 10.750849962234497,
+      "feature_importance_top10": {
+        "credit_card_monthly_diff": 644,
+        "credit_card_cash_card_ratio": 396,
+        "credit_card_drawings_total": 368,
+        "credit_card_drawings_atm": 314,
+        "credit_card_avg_loading_of_credit_limit": 288,
+        "credit_card_average_of_days_past_due": 160,
+        "credit_card_total_installments": 84,
+        "credit_card_installments_per_loan": 40,
+        "credit_card_number_of_loans": 0
+      }
+    },
+    "Fold3": {
+      "val_score": 0.5569746133684504,
+      "best_iteration": 225,
+      "elapsed_time": 18.537227153778076,
+      "feature_importance_top10": {
+        "credit_card_monthly_diff": 1491,
+        "credit_card_drawings_total": 1356,
+        "credit_card_cash_card_ratio": 1234,
+        "credit_card_drawings_atm": 963,
+        "credit_card_avg_loading_of_credit_limit": 890,
+        "credit_card_average_of_days_past_due": 522,
+        "credit_card_total_installments": 277,
+        "credit_card_installments_per_loan": 214,
+        "credit_card_number_of_loans": 0
+      }
+    },
+    "Fold4": {
+      "val_score": 0.5549841283344626,
+      "best_iteration": 92,
+      "elapsed_time": 12.988406896591187,
+      "feature_importance_top10": {
+        "credit_card_monthly_diff": 685,
+        "credit_card_drawings_total": 564,
+        "credit_card_cash_card_ratio": 522,
+        "credit_card_drawings_atm": 384,
+        "credit_card_avg_loading_of_credit_limit": 328,
+        "credit_card_average_of_days_past_due": 217,
+        "credit_card_total_installments": 97,
+        "credit_card_installments_per_loan": 54,
+        "credit_card_number_of_loans": 1
+      }
+    },
+    "Fold5": {
+      "val_score": 0.5539913786373194,
+      "best_iteration": 38,
+      "elapsed_time": 9.30544900894165,
+      "feature_importance_top10": {
+        "credit_card_monthly_diff": 267,
+        "credit_card_drawings_total": 226,
+        "credit_card_cash_card_ratio": 209,
+        "credit_card_drawings_atm": 166,
+        "credit_card_avg_loading_of_credit_limit": 161,
+        "credit_card_average_of_days_past_due": 85,
+        "credit_card_total_installments": 49,
+        "credit_card_installments_per_loan": 15,
+        "credit_card_number_of_loans": 0
+      }
+    },
+    "Full": {
+      "score": 0.5255009504957546,
+      "feature_importance_top10": {
+        "credit_card_monthly_diff": 767.6,
+        "credit_card_drawings_total": 607.4,
+        "credit_card_cash_card_ratio": 572.2,
+        "credit_card_drawings_atm": 453.6,
+        "credit_card_avg_loading_of_credit_limit": 396.8,
+        "credit_card_average_of_days_past_due": 239.6,
+        "credit_card_total_installments": 127.8,
+        "credit_card_installments_per_loan": 76.4,
+        "credit_card_number_of_loans": 1.8
+      }
+    }
+  },
+  "config": {
+    "features": [
+      "CreditCardBalanceFeaturesOpenSolution"
+    ],
+    "model": {
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {
+        "nthread": 4,
+        "n_estimators": 5000,
+        "learning_rate": 0.02,
+        "num_leaves": 32,
+        "colsample_bytree": 0.9497036,
+        "subsample": 0.8715623,
+        "max_depth": 8,
+        "reg_alpha": 0.04,
+        "reg_lambda": 0.073,
+        "min_split_gain": 0.0222415,
+        "min_child_weight": 40,
+        "silent": -1,
+        "verbose": -1
+      },
+      "train_params": {
+        "eval_metric": "auc",
+        "verbose": 100,
+        "early_stopping_rounds": 200
+      }
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "config_file_name": "lgbm_1_credit_card_balance"
+  },
+  "features_detail": {
+    "number": 9,
+    "names": [
+      "credit_card_number_of_loans",
+      "credit_card_average_of_days_past_due",
+      "credit_card_drawings_atm",
+      "credit_card_drawings_total",
+      "credit_card_total_installments",
+      "credit_card_avg_loading_of_credit_limit",
+      "credit_card_cash_card_ratio",
+      "credit_card_installments_per_loan",
+      "credit_card_monthly_diff"
+    ]
+  }
+}
