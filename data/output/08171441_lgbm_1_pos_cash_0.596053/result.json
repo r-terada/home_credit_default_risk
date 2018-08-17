@@ -1,0 +1,231 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.597924254314497,
+      "best_iteration": 319,
+      "elapsed_time": 43.15703988075256,
+      "feature_importance_top10": {
+        "12_period_trend_CNT_INSTALMENT_FUTURE": 1234,
+        "6_period_trend_CNT_INSTALMENT_FUTURE": 1217,
+        "all_installment_pos_cash_paid_late_count": 1071,
+        "pos_cash_remaining_installments": 985,
+        "last_loan_pos_cash_paid_late_count": 523,
+        "pos_cash_completed_contracts": 223,
+        "all_installment_SK_DPD_DEF_std": 186,
+        "last_loan_SK_DPD_std": 155,
+        "12_period_trend_SK_DPD": 130,
+        "all_installment_pos_cash_paid_late_mean": 124
+      }
+    },
+    "Fold2": {
+      "val_score": 0.5928186518000198,
+      "best_iteration": 324,
+      "elapsed_time": 39.84192490577698,
+      "feature_importance_top10": {
+        "6_period_trend_CNT_INSTALMENT_FUTURE": 1368,
+        "12_period_trend_CNT_INSTALMENT_FUTURE": 1240,
+        "pos_cash_remaining_installments": 1045,
+        "all_installment_pos_cash_paid_late_count": 1045,
+        "last_loan_pos_cash_paid_late_count": 522,
+        "pos_cash_completed_contracts": 251,
+        "last_loan_SK_DPD_std": 163,
+        "all_installment_SK_DPD_DEF_std": 160,
+        "all_installment_SK_DPD_DEF_mean": 159,
+        "all_installment_SK_DPD_skew": 156
+      }
+    },
+    "Fold3": {
+      "val_score": 0.5948790141635807,
+      "best_iteration": 278,
+      "elapsed_time": 44.0387818813324,
+      "feature_importance_top10": {
+        "6_period_trend_CNT_INSTALMENT_FUTURE": 1213,
+        "12_period_trend_CNT_INSTALMENT_FUTURE": 1042,
+        "all_installment_pos_cash_paid_late_count": 964,
+        "pos_cash_remaining_installments": 950,
+        "last_loan_pos_cash_paid_late_count": 449,
+        "pos_cash_completed_contracts": 229,
+        "all_installment_SK_DPD_skew": 148,
+        "all_installment_SK_DPD_DEF_mean": 147,
+        "all_installment_SK_DPD_DEF_std": 128,
+        "last_loan_SK_DPD_DEF_std": 123
+      }
+    },
+    "Fold4": {
+      "val_score": 0.5993958665787242,
+      "best_iteration": 314,
+      "elapsed_time": 41.91646695137024,
+      "feature_importance_top10": {
+        "6_period_trend_CNT_INSTALMENT_FUTURE": 1273,
+        "12_period_trend_CNT_INSTALMENT_FUTURE": 1093,
+        "pos_cash_remaining_installments": 1033,
+        "all_installment_pos_cash_paid_late_count": 1010,
+        "last_loan_pos_cash_paid_late_count": 551,
+        "pos_cash_completed_contracts": 257,
+        "all_installment_SK_DPD_DEF_std": 177,
+        "12_period_trend_SK_DPD": 151,
+        "all_installment_SK_DPD_DEF_mean": 142,
+        "last_loan_SK_DPD_std": 129
+      }
+    },
+    "Fold5": {
+      "val_score": 0.5968286397516578,
+      "best_iteration": 459,
+      "elapsed_time": 52.2651309967041,
+      "feature_importance_top10": {
+        "12_period_trend_CNT_INSTALMENT_FUTURE": 1525,
+        "6_period_trend_CNT_INSTALMENT_FUTURE": 1517,
+        "all_installment_pos_cash_paid_late_count": 1378,
+        "pos_cash_remaining_installments": 1253,
+        "last_loan_pos_cash_paid_late_count": 638,
+        "pos_cash_completed_contracts": 334,
+        "all_installment_SK_DPD_DEF_std": 242,
+        "last_loan_SK_DPD_std": 225,
+        "all_installment_SK_DPD_skew": 222,
+        "all_installment_SK_DPD_DEF_mean": 198
+      }
+    },
+    "Full": {
+      "score": 0.5960525794568332,
+      "feature_importance_top10": {
+        "6_period_trend_CNT_INSTALMENT_FUTURE": 1317.6,
+        "12_period_trend_CNT_INSTALMENT_FUTURE": 1226.8,
+        "all_installment_pos_cash_paid_late_count": 1093.6,
+        "pos_cash_remaining_installments": 1053.2,
+        "last_loan_pos_cash_paid_late_count": 536.6,
+        "pos_cash_completed_contracts": 258.8,
+        "all_installment_SK_DPD_DEF_std": 178.6,
+        "last_loan_SK_DPD_std": 158.4,
+        "all_installment_SK_DPD_skew": 153.6,
+        "all_installment_SK_DPD_DEF_mean": 152.0
+      }
+    }
+  },
+  "config": {
+    "features": [
+      "PosCashFeaturesOpenSolution"
+    ],
+    "model": {
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {
+        "nthread": 4,
+        "n_estimators": 5000,
+        "learning_rate": 0.02,
+        "num_leaves": 32,
+        "colsample_bytree": 0.9497036,
+        "subsample": 0.8715623,
+        "max_depth": 8,
+        "reg_alpha": 0.04,
+        "reg_lambda": 0.073,
+        "min_split_gain": 0.0222415,
+        "min_child_weight": 40,
+        "silent": -1,
+        "verbose": -1
+      },
+      "train_params": {
+        "eval_metric": "auc",
+        "verbose": 100,
+        "early_stopping_rounds": 100
+      }
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "config_file_name": "lgbm_1_pos_cash"
+  },
+  "features_detail": {
+    "number": 84,
+    "names": [
+      "pos_cash_remaining_installments",
+      "pos_cash_completed_contracts",
+      "all_installment_pos_cash_paid_late_count",
+      "all_installment_pos_cash_paid_late_mean",
+      "all_installment_pos_cash_paid_late_with_tolerance_count",
+      "all_installment_pos_cash_paid_late_with_tolerance_mean",
+      "all_installment_SK_DPD_sum",
+      "all_installment_SK_DPD_mean",
+      "all_installment_SK_DPD_max",
+      "all_installment_SK_DPD_std",
+      "all_installment_SK_DPD_skew",
+      "all_installment_SK_DPD_kurt",
+      "all_installment_SK_DPD_DEF_sum",
+      "all_installment_SK_DPD_DEF_mean",
+      "all_installment_SK_DPD_DEF_max",
+      "all_installment_SK_DPD_DEF_std",
+      "all_installment_SK_DPD_DEF_skew",
+      "all_installment_SK_DPD_DEF_kurt",
+      "last_6_pos_cash_paid_late_count",
+      "last_6_pos_cash_paid_late_mean",
+      "last_6_pos_cash_paid_late_with_tolerance_count",
+      "last_6_pos_cash_paid_late_with_tolerance_mean",
+      "last_6_SK_DPD_sum",
+      "last_6_SK_DPD_mean",
+      "last_6_SK_DPD_max",
+      "last_6_SK_DPD_std",
+      "last_6_SK_DPD_skew",
+      "last_6_SK_DPD_kurt",
+      "last_6_SK_DPD_DEF_sum",
+      "last_6_SK_DPD_DEF_mean",
+      "last_6_SK_DPD_DEF_max",
+      "last_6_SK_DPD_DEF_std",
+      "last_6_SK_DPD_DEF_skew",
+      "last_6_SK_DPD_DEF_kurt",
+      "last_12_pos_cash_paid_late_count",
+      "last_12_pos_cash_paid_late_mean",
+      "last_12_pos_cash_paid_late_with_tolerance_count",
+      "last_12_pos_cash_paid_late_with_tolerance_mean",
+      "last_12_SK_DPD_sum",
+      "last_12_SK_DPD_mean",
+      "last_12_SK_DPD_max",
+      "last_12_SK_DPD_std",
+      "last_12_SK_DPD_skew",
+      "last_12_SK_DPD_kurt",
+      "last_12_SK_DPD_DEF_sum",
+      "last_12_SK_DPD_DEF_mean",
+      "last_12_SK_DPD_DEF_max",
+      "last_12_SK_DPD_DEF_std",
+      "last_12_SK_DPD_DEF_skew",
+      "last_12_SK_DPD_DEF_kurt",
+      "last_30_pos_cash_paid_late_count",
+      "last_30_pos_cash_paid_late_mean",
+      "last_30_pos_cash_paid_late_with_tolerance_count",
+      "last_30_pos_cash_paid_late_with_tolerance_mean",
+      "last_30_SK_DPD_sum",
+      "last_30_SK_DPD_mean",
+      "last_30_SK_DPD_max",
+      "last_30_SK_DPD_std",
+      "last_30_SK_DPD_skew",
+      "last_30_SK_DPD_kurt",
+      "last_30_SK_DPD_DEF_sum",
+      "last_30_SK_DPD_DEF_mean",
+      "last_30_SK_DPD_DEF_max",
+      "last_30_SK_DPD_DEF_std",
+      "last_30_SK_DPD_DEF_skew",
+      "last_30_SK_DPD_DEF_kurt",
+      "6_period_trend_SK_DPD",
+      "6_period_trend_SK_DPD_DEF",
+      "6_period_trend_CNT_INSTALMENT_FUTURE",
+      "12_period_trend_SK_DPD",
+      "12_period_trend_SK_DPD_DEF",
+      "12_period_trend_CNT_INSTALMENT_FUTURE",
+      "last_loan_pos_cash_paid_late_count",
+      "last_loan_pos_cash_paid_late_sum",
+      "last_loan_pos_cash_paid_late_mean",
+      "last_loan_pos_cash_paid_late_with_tolerance_mean",
+      "last_loan_SK_DPD_sum",
+      "last_loan_SK_DPD_mean",
+      "last_loan_SK_DPD_max",
+      "last_loan_SK_DPD_std",
+      "last_loan_SK_DPD_DEF_sum",
+      "last_loan_SK_DPD_DEF_mean",
+      "last_loan_SK_DPD_DEF_max",
+      "last_loan_SK_DPD_DEF_std"
+    ]
+  }
+}

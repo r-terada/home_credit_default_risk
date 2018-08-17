@@ -1,0 +1,167 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.6092932728683365,
+      "best_iteration": 531,
+      "elapsed_time": 41.496586084365845,
+      "feature_importance_top10": {
+        "previous_application_days_decision_about_last_1_credits_mean": 1769,
+        "previous_application_days_decision_about_last_5_credits_mean": 1537,
+        "previous_application_number_of_prev_application": 1304,
+        "previous_application_fraction_of_refused_applications": 1164,
+        "previous_application_term_of_last_5_credits_mean": 1142,
+        "previous_application_days_decision_about_last_2_credits_mean": 1120,
+        "previous_application_days_decision_about_last_4_credits_mean": 1117,
+        "previous_application_days_decision_about_last_3_credits_mean": 973,
+        "previous_application_term_of_last_2_credits_mean": 961,
+        "previous_application_days_first_drawing_last_5_credits_mean": 831
+      }
+    },
+    "Fold2": {
+      "val_score": 0.6182993318583749,
+      "best_iteration": 361,
+      "elapsed_time": 31.343703031539917,
+      "feature_importance_top10": {
+        "previous_application_days_decision_about_last_1_credits_mean": 1189,
+        "previous_application_number_of_prev_application": 1015,
+        "previous_application_days_decision_about_last_5_credits_mean": 997,
+        "previous_application_fraction_of_refused_applications": 899,
+        "previous_application_term_of_last_5_credits_mean": 748,
+        "previous_application_term_of_last_1_credits_mean": 694,
+        "previous_application_days_decision_about_last_2_credits_mean": 666,
+        "previous_application_days_decision_about_last_4_credits_mean": 657,
+        "previous_application_days_first_drawing_last_5_credits_mean": 638,
+        "previous_application_term_of_last_4_credits_mean": 601
+      }
+    },
+    "Fold3": {
+      "val_score": 0.6201831413024874,
+      "best_iteration": 582,
+      "elapsed_time": 43.66411590576172,
+      "feature_importance_top10": {
+        "previous_application_days_decision_about_last_1_credits_mean": 1991,
+        "previous_application_days_decision_about_last_5_credits_mean": 1629,
+        "previous_application_number_of_prev_application": 1404,
+        "previous_application_term_of_last_5_credits_mean": 1276,
+        "previous_application_fraction_of_refused_applications": 1260,
+        "previous_application_days_decision_about_last_2_credits_mean": 1260,
+        "previous_application_days_decision_about_last_4_credits_mean": 1173,
+        "previous_application_days_decision_about_last_3_credits_mean": 1118,
+        "previous_application_term_of_last_3_credits_mean": 1019,
+        "previous_application_term_of_last_2_credits_mean": 995
+      }
+    },
+    "Fold4": {
+      "val_score": 0.618621622560855,
+      "best_iteration": 363,
+      "elapsed_time": 31.248978853225708,
+      "feature_importance_top10": {
+        "previous_application_days_decision_about_last_1_credits_mean": 1148,
+        "previous_application_days_decision_about_last_5_credits_mean": 1118,
+        "previous_application_number_of_prev_application": 964,
+        "previous_application_fraction_of_refused_applications": 910,
+        "previous_application_term_of_last_5_credits_mean": 805,
+        "previous_application_days_decision_about_last_4_credits_mean": 718,
+        "previous_application_term_of_last_1_credits_mean": 709,
+        "previous_application_days_decision_about_last_2_credits_mean": 671,
+        "previous_application_term_of_last_4_credits_mean": 619,
+        "previous_application_days_first_drawing_last_5_credits_mean": 584
+      }
+    },
+    "Fold5": {
+      "val_score": 0.6167337376813598,
+      "best_iteration": 376,
+      "elapsed_time": 32.22925305366516,
+      "feature_importance_top10": {
+        "previous_application_days_decision_about_last_1_credits_mean": 1143,
+        "previous_application_days_decision_about_last_5_credits_mean": 1116,
+        "previous_application_number_of_prev_application": 1069,
+        "previous_application_fraction_of_refused_applications": 946,
+        "previous_application_term_of_last_5_credits_mean": 856,
+        "previous_application_term_of_last_1_credits_mean": 740,
+        "previous_application_days_decision_about_last_4_credits_mean": 691,
+        "previous_application_days_decision_about_last_2_credits_mean": 687,
+        "previous_application_days_first_drawing_last_5_credits_mean": 639,
+        "previous_application_term_of_last_4_credits_mean": 627
+      }
+    },
+    "Full": {
+      "score": 0.616408310626933,
+      "feature_importance_top10": {
+        "previous_application_days_decision_about_last_1_credits_mean": 1448.0,
+        "previous_application_days_decision_about_last_5_credits_mean": 1279.4,
+        "previous_application_number_of_prev_application": 1151.2,
+        "previous_application_fraction_of_refused_applications": 1035.8,
+        "previous_application_term_of_last_5_credits_mean": 965.4,
+        "previous_application_days_decision_about_last_2_credits_mean": 880.8,
+        "previous_application_days_decision_about_last_4_credits_mean": 871.2,
+        "previous_application_term_of_last_1_credits_mean": 780.2,
+        "previous_application_days_decision_about_last_3_credits_mean": 769.4,
+        "previous_application_term_of_last_2_credits_mean": 724.2
+      }
+    }
+  },
+  "config": {
+    "features": [
+      "PreviousApplicationFeaturesOpenSolution"
+    ],
+    "model": {
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {
+        "nthread": 4,
+        "n_estimators": 5000,
+        "learning_rate": 0.02,
+        "num_leaves": 32,
+        "colsample_bytree": 0.9497036,
+        "subsample": 0.8715623,
+        "max_depth": 8,
+        "reg_alpha": 0.04,
+        "reg_lambda": 0.073,
+        "min_split_gain": 0.0222415,
+        "min_child_weight": 40,
+        "silent": -1,
+        "verbose": -1
+      },
+      "train_params": {
+        "eval_metric": "auc",
+        "verbose": 100,
+        "early_stopping_rounds": 100
+      }
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "config_file_name": "lgbm_1_previous_application"
+  },
+  "features_detail": {
+    "number": 20,
+    "names": [
+      "previous_application_prev_was_approved",
+      "previous_application_prev_was_refused",
+      "previous_application_number_of_prev_application",
+      "previous_application_fraction_of_refused_applications",
+      "prev_applications_prev_was_revolving_loan",
+      "previous_application_term_of_last_1_credits_mean",
+      "previous_application_days_decision_about_last_1_credits_mean",
+      "previous_application_days_first_drawing_last_1_credits_mean",
+      "previous_application_term_of_last_2_credits_mean",
+      "previous_application_days_decision_about_last_2_credits_mean",
+      "previous_application_days_first_drawing_last_2_credits_mean",
+      "previous_application_term_of_last_3_credits_mean",
+      "previous_application_days_decision_about_last_3_credits_mean",
+      "previous_application_days_first_drawing_last_3_credits_mean",
+      "previous_application_term_of_last_4_credits_mean",
+      "previous_application_days_decision_about_last_4_credits_mean",
+      "previous_application_days_first_drawing_last_4_credits_mean",
+      "previous_application_term_of_last_5_credits_mean",
+      "previous_application_days_decision_about_last_5_credits_mean",
+      "previous_application_days_first_drawing_last_5_credits_mean"
+    ]
+  }
+}

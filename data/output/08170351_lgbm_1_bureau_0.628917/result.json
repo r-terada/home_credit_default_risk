@@ -1,0 +1,158 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.6335278767139904,
+      "best_iteration": 456,
+      "elapsed_time": 31.956068992614746,
+      "feature_importance_top10": {
+        "bureau_total_customer_credit": 3314,
+        "bureau_debt_credit_ratio": 2249,
+        "bureau_total_customer_debt": 1704,
+        "bureau_number_of_past_loans": 1650,
+        "bureau_credit_active_binary": 1296,
+        "bureau_credit_enddate_percentage": 1250,
+        "bureau_average_of_past_loans_per_type": 909,
+        "bureau_number_of_loan_types": 360,
+        "bureau_total_customer_overdue": 328,
+        "bureau_overdue_debt_ratio": 311
+      }
+    },
+    "Fold2": {
+      "val_score": 0.630734235105348,
+      "best_iteration": 431,
+      "elapsed_time": 30.402808666229248,
+      "feature_importance_top10": {
+        "bureau_total_customer_credit": 2958,
+        "bureau_debt_credit_ratio": 2246,
+        "bureau_number_of_past_loans": 1629,
+        "bureau_total_customer_debt": 1586,
+        "bureau_credit_active_binary": 1357,
+        "bureau_credit_enddate_percentage": 1238,
+        "bureau_average_of_past_loans_per_type": 817,
+        "bureau_number_of_loan_types": 349,
+        "bureau_total_customer_overdue": 344,
+        "bureau_overdue_debt_ratio": 251
+      }
+    },
+    "Fold3": {
+      "val_score": 0.6274747150673068,
+      "best_iteration": 383,
+      "elapsed_time": 27.13844895362854,
+      "feature_importance_top10": {
+        "bureau_total_customer_credit": 2677,
+        "bureau_debt_credit_ratio": 1911,
+        "bureau_number_of_past_loans": 1521,
+        "bureau_total_customer_debt": 1232,
+        "bureau_credit_active_binary": 1228,
+        "bureau_credit_enddate_percentage": 985,
+        "bureau_average_of_past_loans_per_type": 786,
+        "bureau_number_of_loan_types": 378,
+        "bureau_total_customer_overdue": 311,
+        "bureau_overdue_debt_ratio": 234
+      }
+    },
+    "Fold4": {
+      "val_score": 0.6278627631334335,
+      "best_iteration": 376,
+      "elapsed_time": 27.657037019729614,
+      "feature_importance_top10": {
+        "bureau_total_customer_credit": 2691,
+        "bureau_debt_credit_ratio": 1815,
+        "bureau_number_of_past_loans": 1449,
+        "bureau_total_customer_debt": 1317,
+        "bureau_credit_active_binary": 1226,
+        "bureau_credit_enddate_percentage": 946,
+        "bureau_average_of_past_loans_per_type": 816,
+        "bureau_number_of_loan_types": 377,
+        "bureau_total_customer_overdue": 347,
+        "bureau_overdue_debt_ratio": 223
+      }
+    },
+    "Fold5": {
+      "val_score": 0.6265572184270026,
+      "best_iteration": 414,
+      "elapsed_time": 29.16589117050171,
+      "feature_importance_top10": {
+        "bureau_total_customer_credit": 2891,
+        "bureau_debt_credit_ratio": 2096,
+        "bureau_number_of_past_loans": 1557,
+        "bureau_total_customer_debt": 1451,
+        "bureau_credit_active_binary": 1198,
+        "bureau_credit_enddate_percentage": 1174,
+        "bureau_average_of_past_loans_per_type": 905,
+        "bureau_number_of_loan_types": 383,
+        "bureau_total_customer_overdue": 315,
+        "bureau_overdue_debt_ratio": 267
+      }
+    },
+    "Full": {
+      "score": 0.628917108210385,
+      "feature_importance_top10": {
+        "bureau_total_customer_credit": 2906.2,
+        "bureau_debt_credit_ratio": 2063.4,
+        "bureau_number_of_past_loans": 1561.2,
+        "bureau_total_customer_debt": 1458.0,
+        "bureau_credit_active_binary": 1261.0,
+        "bureau_credit_enddate_percentage": 1118.6,
+        "bureau_average_of_past_loans_per_type": 846.6,
+        "bureau_number_of_loan_types": 369.4,
+        "bureau_total_customer_overdue": 329.0,
+        "bureau_overdue_debt_ratio": 257.2
+      }
+    }
+  },
+  "config": {
+    "features": [
+      "BureauFeaturesOpenSolution"
+    ],
+    "model": {
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {
+        "nthread": 4,
+        "n_estimators": 5000,
+        "learning_rate": 0.02,
+        "num_leaves": 32,
+        "colsample_bytree": 0.9497036,
+        "subsample": 0.8715623,
+        "max_depth": 8,
+        "reg_alpha": 0.04,
+        "reg_lambda": 0.073,
+        "min_split_gain": 0.0222415,
+        "min_child_weight": 40,
+        "silent": -1,
+        "verbose": -1
+      },
+      "train_params": {
+        "eval_metric": "auc",
+        "verbose": 100,
+        "early_stopping_rounds": 100
+      }
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "config_file_name": "lgbm_1_bureau"
+  },
+  "features_detail": {
+    "number": 11,
+    "names": [
+      "bureau_number_of_past_loans",
+      "bureau_number_of_loan_types",
+      "bureau_credit_active_binary",
+      "bureau_total_customer_debt",
+      "bureau_total_customer_credit",
+      "bureau_total_customer_overdue",
+      "bureau_average_creditdays_prolonged",
+      "bureau_credit_enddate_percentage",
+      "bureau_average_of_past_loans_per_type",
+      "bureau_debt_credit_ratio",
+      "bureau_overdue_debt_ratio"
+    ]
+  }
+}
