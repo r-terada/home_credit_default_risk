@@ -106,5 +106,6 @@ class ApplicationFeaturesOpenSolution(Feature):
 
         X['short_employment'] = (X['DAYS_EMPLOYED'] < -2000).astype(int)
         X['young_age'] = (X['DAYS_BIRTH'] < -14000).astype(int)
+        X, _cat_cols = one_hot_encoder(X, True)
 
-        return X
+        return X.drop(['TARGET'], axis=1)

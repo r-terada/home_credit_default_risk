@@ -1,4 +1,5 @@
 import gc
+import numpy as np
 import pandas as pd
 from functools import partial
 
@@ -70,7 +71,7 @@ class PosCashFeaturesOpenSolution(Feature):
         gr_.sort_values(['MONTHS_BALANCE'], inplace=True)
         features = {}
 
-        features['pos_cash_remaining_installments'] = gr_['CNT_INSTALMENT_FUTURE'].tail(1)
+        features['pos_cash_remaining_installments'] = gr_['CNT_INSTALMENT_FUTURE'].tail(1).astype(np.float64)
         features['pos_cash_completed_contracts'] = gr_['is_contract_status_completed'].agg('sum')
 
         return features
