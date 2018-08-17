@@ -11,13 +11,6 @@ class PreviousApplicationFeatures(Feature):
     @classmethod
     def _create_feature(cls, conf) -> pd.DataFrame:
         prev = PreviousApplication.get_df(conf)
-        # Days 365.243 values -> nan
-        prev['DAYS_FIRST_DRAWING'].replace(365243, np.nan, inplace=True)
-        prev['DAYS_FIRST_DUE'].replace(365243, np.nan, inplace=True)
-        prev['DAYS_LAST_DUE_1ST_VERSION'].replace(365243, np.nan, inplace=True)
-        prev['DAYS_LAST_DUE'].replace(365243, np.nan, inplace=True)
-        prev['DAYS_TERMINATION'].replace(365243, np.nan, inplace=True)
-
         prev, cat_cols = one_hot_encoder(prev, nan_as_category=True)
         # Add feature: value ask / value received percentage
         prev['APP_CREDIT_PERC'] = prev['AMT_APPLICATION'] / prev['AMT_CREDIT']

@@ -12,9 +12,6 @@ class BureauFeatures(Feature):
     @classmethod
     def _create_feature(cls, conf) -> pd.DataFrame:
         bureau = Bureau.get_df(conf)
-        bureau.loc[bureau['DAYS_CREDIT_ENDDATE'] < -40000, 'DAYS_CREDIT_ENDDATE'] = np.nan
-        bureau.loc[bureau['DAYS_CREDIT_UPDATE'] < -40000, 'DAYS_CREDIT_UPDATE'] = np.nan
-        bureau.loc[bureau['DAYS_ENDDATE_FACT'] < -40000, 'DAYS_ENDDATE_FACT'] = np.nan
         bureau, bureau_cat = one_hot_encoder(bureau, True)
 
         bb = BureauBalance.get_df(conf)

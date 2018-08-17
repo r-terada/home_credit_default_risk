@@ -13,21 +13,10 @@ class ApplicationFeatures(Feature):
     @classmethod
     def _create_feature(cls, conf) -> pd.DataFrame:
         df = Application.get_df(conf)
-        df = ApplicationFeatures._clean_data(df)
         df = ApplicationFeatures._features_from_kernel(df)
         df = ApplicationFeatures._binarize_features(df)
         df, _cat_cols = one_hot_encoder(df, True)
         return ApplicationFeatures._filter_features(df)
-
-    @staticmethod
-    def _clean_data(df):
-        df['DAYS_EMPLOYED'].replace(365243, np.nan, inplace=True)
-        df['CODE_GENDER'].replace('XNA', np.nan, inplace=True)
-        df['DAYS_EMPLOYED'].replace(365243, np.nan, inplace=True)
-        df['DAYS_LAST_PHONE_CHANGE'].replace(0, np.nan, inplace=True)
-        df['NAME_FAMILY_STATUS'].replace('Unknown', np.nan, inplace=True)
-        df['ORGANIZATION_TYPE'].replace('XNA', np.nan, inplace=True)
-        return df
 
     @staticmethod
     def _binarize_features(df):

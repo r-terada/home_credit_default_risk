@@ -1,5 +1,6 @@
 import os
 import gc
+import numpy as np
 import pandas as pd
 from typing import Optional
 
@@ -23,6 +24,8 @@ class RawData:
         else:
             print('read data from csv')
             df = cls._read_csv(conf)  # pd.DataFrame
+            print('clean dataframe.')
+            df = cls._clean_feature(conf, df)
             print(f'save to {pickled_fname} as pickled file')
             df.to_pickle(pickled_fname)
             return df
@@ -32,9 +35,8 @@ class RawData:
         return pd.read_csv(os.path.join(conf.dataset.input_directory, f'{cls._file_name}.csv'))
 
     @classmethod
-    def clean(cls) -> None:
-        del cls._df
-        gc.collect()
+    def _clean_feature(cls, conf, df) -> pd.DataFrame:
+        return df
 
 
 class Application(RawData):
@@ -50,9 +52,27 @@ class Application(RawData):
         gc.collect()
         return df
 
+    # override
+    @classmethod
+    def _clean_feature(cls, conf, df) -> pd.DataFrame:
+        df['CODE_GENDER'].replace('XNA', np.nan, inplace=True)
+        df['DAYS_EMPLOYED'].replace(365243, np.nan, inplace=True)
+        df['DAYS_LAST_PHONE_CHANGE'].replace(0, np.nan, inplace=True)
+        df['NAME_FAMILY_STATUS'].replace('Unknown', np.nan, inplace=True)
+        df['ORGANIZATION_TYPE'].replace('XNA', np.nan, inplace=True)
+        return df
+
 
 class Bureau(RawData):
     _file_name = "bureau"
+
+    # override
+    @classmethod
+    def _clean_feature(cls, conf, df) -> pd.DataFrame:
+        df.loc[df['DAYS_CREDIT_ENDDATE'] < -40000, 'DAYS_CREDIT_ENDDATE'] = np.nan
+        df.loc[df['DAYS_CREDIT_UPDATE'] < -40000, 'DAYS_CREDIT_UPDATE'] = np.nan
+        df.loc[df['DAYS_ENDDATE_FACT'] < -40000, 'DAYS_ENDDATE_FACT'] = np.nan
+        return df
 
 
 class BureauBalance(RawData):
@@ -62,6 +82,12 @@ class BureauBalance(RawData):
 class CreditCardBalance(RawData):
     _file_name = "credit_card_balance"
 
+    # override
+    def _clean_feature(cls, conf, df) -> pd.DataFrame:
+        df.loc[df['AMT_DRAWINGS_ATM_CURRENT'] < 0, 'AMT_DRAWINGS_ATM_CURRENT'] = np.nan
+        df.loc[df['AMT_DRAWINGS_CURRENT'] < 0, 'AMT_DRAWINGS_CURRENT'] = np.nan
+        return df
+
 
 class PosCash(RawData):
     _file_name = "POS_CASH_balance"
@@ -69,6 +95,15 @@ class PosCash(RawData):
 
 class PreviousApplication(RawData):
     _file_name = "previous_application"
+
+    # override
+    def _clean_feature(cls, conf, df) -> pd.DataFrame:
+        df['DAYS_FIRST_DRAWING'].replace(365243, np.nan, inplace=True)
+        df['DAYS_FIRST_DUE'].replace(365243, np.nan, inplace=True)
+        df['DAYS_LAST_DUE_1ST_VERSION'].replace(365243, np.nan, inplace=True)
+        df['DAYS_LAST_DUE'].replace(365243, np.nan, inplace=True)
+        df['DAYS_TERMINATION'].replace(365243, np.nan, inplace=True)
+        return df
 
 
 class InstallmentsPayments(RawData):

@@ -11,8 +11,6 @@ class CreditCardBalanceFeatures(Feature):
     @classmethod
     def _create_feature(cls, conf) -> pd.DataFrame:
         cc = CreditCardBalance.get_df(conf)
-        cc.loc[cc['AMT_DRAWINGS_ATM_CURRENT'] < 0, 'AMT_DRAWINGS_ATM_CURRENT'] = np.nan
-        cc.loc[cc['AMT_DRAWINGS_CURRENT'] < 0, 'AMT_DRAWINGS_CURRENT'] = np.nan
         cc, cat_cols = one_hot_encoder(cc, nan_as_category=True)
         # General aggregations
         cc.drop(['SK_ID_PREV'], axis=1, inplace=True)
