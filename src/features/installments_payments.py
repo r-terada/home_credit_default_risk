@@ -2,7 +2,8 @@ import os
 import gc
 import pandas as pd
 
-from features import Feature, one_hot_encoder, parallel_apply, add_features_in_group, add_trend_feature, get_feature_names_by_period
+from functools import partial
+from features import Feature, one_hot_encoder, parallel_apply, add_features_in_group, add_trend_feature, get_feature_names_by_period, safe_div
 from features.raw_data import InstallmentsPayments
 
 
@@ -42,7 +43,7 @@ class InstallmentsPaymentsFeatures(Feature):
         return ins_agg
 
 
-class InstallmentPaymentsFeaturesOpenSolution(Feature):
+class InstallmentsPaymentsFeaturesOpenSolution(Feature):
     @classmethod
     def _create_feature(cls, conf) -> pd.DataFrame:
         installments = InstallmentsPayments.get_df(conf)
@@ -58,7 +59,7 @@ class InstallmentPaymentsFeaturesOpenSolution(Feature):
         last_k_trend_periods = [10, 50, 100, 500]
         last_k_agg_periods = [1, 5, 10, 20, 50, 100]
         last_k_agg_period_fractions = [(5, 20), (5, 50), (10, 50), (10, 100), (20, 100)]
-        func = partial(InstallmentPaymentsFeatures.generate_features,
+        func = partial(InstallmentsPaymentsFeaturesOpenSolution.generate_features,
                        agg_periods=last_k_agg_periods,
                        period_fractions=last_k_agg_period_fractions,
                        trend_periods=last_k_trend_periods)
@@ -69,22 +70,22 @@ class InstallmentPaymentsFeaturesOpenSolution(Feature):
 
     @staticmethod
     def generate_features(gr, agg_periods, trend_periods, period_fractions):
-        all = InstallmentPaymentsFeatures.all_installment_features(gr)
-        agg = InstallmentPaymentsFeatures.last_k_installment_features_with_fractions(gr,
-                                                                                     agg_periods,
-                                                                                     period_fractions)
-        trend = InstallmentPaymentsFeatures.trend_in_last_k_installment_features(gr, trend_periods)
-        last = InstallmentPaymentsFeatures.last_loan_features(gr)
+        all = InstallmentsPaymentsFeaturesOpenSolution.all_installment_features(gr)
+        agg = InstallmentsPaymentsFeaturesOpenSolution.last_k_installment_features_with_fractions(gr,
+                                                                                                  agg_periods,
+                                                                                                  period_fractions)
+        trend = InstallmentsPaymentsFeaturesOpenSolution.trend_in_last_k_installment_features(gr, trend_periods)
+        last = InstallmentsPaymentsFeaturesOpenSolution.last_loan_features(gr)
         features = {**all, **agg, **trend, **last}
         return pd.Series(features)
 
     @staticmethod
     def all_installment_features(gr):
-        return InstallmentPaymentsFeatures.last_k_installment_features(gr, periods=[10e16])
+        return InstallmentsPaymentsFeaturesOpenSolution.last_k_installment_features(gr, periods=[10e16])
 
     @staticmethod
     def last_k_installment_features_with_fractions(gr, periods, period_fractions):
-        features = InstallmentPaymentsFeatures.last_k_installment_features(gr, periods)
+        features = InstallmentsPaymentsFeaturesOpenSolution.last_k_installment_features(gr, periods)
 
         for short_period, long_period in period_fractions:
             short_feature_names = get_feature_names_by_period(features, short_period)

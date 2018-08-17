@@ -17,6 +17,13 @@ def one_hot_encoder(df, nan_as_category=True):
     return df, new_columns
 
 
+def safe_div(a, b):
+    try:
+        return float(a) / float(b)
+    except:
+        return 0.0
+
+
 def chunk_groups(groupby_object, chunk_size):
     n_groups = groupby_object.ngroups
     group_chunk, index_chunk = [], []

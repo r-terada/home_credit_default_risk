@@ -1,6 +1,6 @@
 {
     "features": [
-        "InstallmentPaymentsFeaturesOpenSolution"
+        "InstallmentsPaymentsFeaturesOpenSolution"
     ],
     "model": {
         "kfold_params": {

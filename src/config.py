@@ -7,7 +7,7 @@ from features.application import ApplicationFeatures, ApplicationFeaturesOpenSol
 from features.bureau import BureauFeatures, BureauFeaturesOpenSolution
 from features.previous_application import PreviousApplicationFeatures, PreviousApplicationFeaturesOpenSolution
 from features.pos_cash import PosCashFeatures, PosCashFeaturesOpenSolution
-from features.installments_payments import InstallmentsPaymentsFeatures, InstallmentPaymentsFeaturesOpenSolution
+from features.installments_payments import InstallmentsPaymentsFeatures, InstallmentsPaymentsFeaturesOpenSolution
 from features.credit_card_balance import CreditCardBalanceFeatures, CreditCardBalanceFeaturesOpenSolution
 
 
@@ -21,7 +21,7 @@ KEY_FEATURE_MAP = {
     "PosCashFeatures": PosCashFeatures,
     "PosCashFeaturesOpenSolution": PosCashFeaturesOpenSolution,
     "InstallmentsPaymentsFeatures": InstallmentsPaymentsFeatures,
-    "InstallmentPaymentsFeaturesOpenSolution": InstallmentPaymentsFeaturesOpenSolution,
+    "InstallmentsPaymentsFeaturesOpenSolution": InstallmentsPaymentsFeaturesOpenSolution,
     "CreditCardBalanceFeatures": CreditCardBalanceFeatures,
     "CreditCardBalanceFeaturesOpenSolution": CreditCardBalanceFeaturesOpenSolution
 }
