@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 from pprint import pprint
 
-from config import read_config, KEY_FEATURE_MAP
+from config import read_config, KEY_FEATURE_MAP, KEY_MODEL_MAP
 from utils import timer
 from models import LightGBM
 from features.base import Base
@@ -53,8 +53,11 @@ def main(config_file, debug):
         'TARGET', 'SK_ID_CURR', 'SK_ID_BUREAU', 'SK_ID_PREV', 'index'
     ])]
     print(f"use {len(feats)} features.")
-    model = LightGBM()
-    with timer("train with lgbm"):
+    if "name" in conf.model:
+        model = KEY_MODEL_MAP[conf.model.name]()
+    else:
+        model = LightGBM()
+    with timer(f"train with {model.__class__.__name__}"):
         model.train_and_predict_kfold(
             train_df,
             test_df,

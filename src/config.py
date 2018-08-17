@@ -2,7 +2,7 @@ import os
 import json
 from attrdict import AttrDict
 
-from models import LightGBM
+from models import LightGBM, XGBoost
 from features.application import ApplicationFeatures, ApplicationFeaturesOpenSolution
 from features.bureau import BureauFeatures, BureauFeaturesOpenSolution
 from features.previous_application import PreviousApplicationFeatures, PreviousApplicationFeaturesOpenSolution
@@ -24,6 +24,12 @@ KEY_FEATURE_MAP = {
     "InstallmentsPaymentsFeaturesOpenSolution": InstallmentsPaymentsFeaturesOpenSolution,
     "CreditCardBalanceFeatures": CreditCardBalanceFeatures,
     "CreditCardBalanceFeaturesOpenSolution": CreditCardBalanceFeaturesOpenSolution
+}
+
+
+KEY_MODEL_MAP = {
+    "LightGBM": LightGBM,
+    "XGBoost": XGBoost
 }
 
 
