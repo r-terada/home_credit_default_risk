@@ -9,6 +9,7 @@ from features.previous_application import PreviousApplicationFeatures, PreviousA
 from features.pos_cash import PosCashFeatures, PosCashFeaturesOpenSolution
 from features.installments_payments import InstallmentsPaymentsFeatures, InstallmentsPaymentsFeaturesOpenSolution
 from features.credit_card_balance import CreditCardBalanceFeatures, CreditCardBalanceFeaturesOpenSolution
+from features.stacking import LGBM1_1, LogReg0
 
 
 KEY_FEATURE_MAP = {
@@ -23,7 +24,9 @@ KEY_FEATURE_MAP = {
     "InstallmentsPaymentsFeatures": InstallmentsPaymentsFeatures,
     "InstallmentsPaymentsFeaturesOpenSolution": InstallmentsPaymentsFeaturesOpenSolution,
     "CreditCardBalanceFeatures": CreditCardBalanceFeatures,
-    "CreditCardBalanceFeaturesOpenSolution": CreditCardBalanceFeaturesOpenSolution
+    "CreditCardBalanceFeaturesOpenSolution": CreditCardBalanceFeaturesOpenSolution,
+    "PredsLGBM1_1": LGBM1_1,
+    "PredsLogReg0": LogReg0
 }
 
 

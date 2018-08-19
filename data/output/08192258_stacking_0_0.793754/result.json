@@ -1,0 +1,59 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.7962659555015212,
+      "elapsed_time": 0.2938520908355713
+    },
+    "Fold2": {
+      "val_score": 0.7916596286141947,
+      "elapsed_time": 0.28203797340393066
+    },
+    "Fold3": {
+      "val_score": 0.791253880547457,
+      "elapsed_time": 0.28503894805908203
+    },
+    "Fold4": {
+      "val_score": 0.7944133297659024,
+      "elapsed_time": 0.28136205673217773
+    },
+    "Fold5": {
+      "val_score": 0.7951457396533148,
+      "elapsed_time": 0.2745788097381592
+    },
+    "Full": {
+      "score": 0.793753956391243
+    }
+  },
+  "config": {
+    "features": [
+      "PredsLGBM1_1",
+      "PredsLogReg0"
+    ],
+    "model": {
+      "name": "LogisticRegression",
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {},
+      "train_params": {}
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "options": {
+      "drop_duplicate_column_on_merge": true
+    },
+    "config_file_name": "stacking_0"
+  },
+  "features_detail": {
+    "number": 2,
+    "names": [
+      "LGBM1_1_PREDICTION",
+      "LogReg0_PREDICTION"
+    ]
+  }
+}
