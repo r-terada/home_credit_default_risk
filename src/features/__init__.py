@@ -99,11 +99,7 @@ class Feature:
 
     @classmethod
     def get_df(cls, conf) -> pd.DataFrame:
-        pkl_fpath = os.path.join(
-            conf.dataset.cache_directory,
-            "features",
-            f"{cls.__name__}.pkl"
-        )
+        pkl_fpath = cls._file_path(conf)
         if os.path.exists(pkl_fpath):
             return cls._read_pickle(pkl_fpath)
         else:
@@ -112,6 +108,14 @@ class Feature:
             print(f"save to {pkl_fpath}")
             df.to_pickle(pkl_fpath)
             return df
+
+    @classmethod
+    def _file_path(cls, conf) -> str:
+        return os.path.join(
+            conf.dataset.cache_directory,
+            "features",
+            f"{cls.__name__}.pkl"
+        )
 
     @classmethod
     def _read_pickle(cls, pkl_fpath) -> pd.DataFrame:
