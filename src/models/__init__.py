@@ -105,8 +105,14 @@ class LightGBM(Model):
 
         feature_importance_fname = os.path.join(output_directory, f'feature_importance.pkl')
         feature_importance_df.to_pickle(feature_importance_fname)
-
         del feature_importance_df
+        gc.collect()
+
+        oof_preds_df = pd.DataFrame()
+        oof_preds_df['SK_ID_CURR'] = train['SK_ID_CURR']
+        oof_preds_df['TARGET'] = oof_preds
+        oof_preds_df.to_csv(os.path.join(output_directory, f'oof_predictions.csv'), index=False)
+        del oof_preds_df
         gc.collect()
 
         test['TARGET'] = sub_preds
@@ -193,8 +199,14 @@ class XGBoost(Model):
 
         feature_importance_fname = os.path.join(output_directory, f'feature_importance.pkl')
         feature_importance_df.to_pickle(feature_importance_fname)
-
         del feature_importance_df
+        gc.collect()
+
+        oof_preds_df = pd.DataFrame()
+        oof_preds_df['SK_ID_CURR'] = train['SK_ID_CURR']
+        oof_preds_df['TARGET'] = oof_preds
+        oof_preds_df.to_csv(os.path.join(output_directory, f'oof_predictions.csv'), index=False)
+        del oof_preds_df
         gc.collect()
 
         test['TARGET'] = sub_preds
