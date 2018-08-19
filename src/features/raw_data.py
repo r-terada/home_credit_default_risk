@@ -83,6 +83,7 @@ class CreditCardBalance(RawData):
     _file_name = "credit_card_balance"
 
     # override
+    @classmethod
     def _clean_feature(cls, conf, df) -> pd.DataFrame:
         df.loc[df['AMT_DRAWINGS_ATM_CURRENT'] < 0, 'AMT_DRAWINGS_ATM_CURRENT'] = np.nan
         df.loc[df['AMT_DRAWINGS_CURRENT'] < 0, 'AMT_DRAWINGS_CURRENT'] = np.nan
@@ -97,6 +98,7 @@ class PreviousApplication(RawData):
     _file_name = "previous_application"
 
     # override
+    @classmethod
     def _clean_feature(cls, conf, df) -> pd.DataFrame:
         df['DAYS_FIRST_DRAWING'].replace(365243, np.nan, inplace=True)
         df['DAYS_FIRST_DUE'].replace(365243, np.nan, inplace=True)
