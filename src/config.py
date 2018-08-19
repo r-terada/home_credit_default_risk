@@ -2,7 +2,7 @@ import os
 import json
 from attrdict import AttrDict
 
-from models import LightGBM, XGBoost, LogReg
+from models import LightGBM, XGBoost, LogReg, RandomForest
 from features.application import ApplicationFeatures, ApplicationFeaturesOpenSolution
 from features.bureau import BureauFeatures, BureauFeaturesOpenSolution
 from features.previous_application import PreviousApplicationFeatures, PreviousApplicationFeaturesOpenSolution
@@ -33,7 +33,8 @@ KEY_FEATURE_MAP = {
 KEY_MODEL_MAP = {
     "LightGBM": LightGBM,
     "XGBoost": XGBoost,
-    "LogisticRegression": LogReg
+    "LogisticRegression": LogReg,
+    "RandomForest": RandomForest
 }
 
 
