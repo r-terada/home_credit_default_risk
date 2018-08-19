@@ -106,7 +106,7 @@ class Feature:
             print("no pickled file. create feature")
             df = cls._create_feature(conf)
             print(f"save to {pkl_fpath}")
-            df.to_pickle(pkl_fpath)
+            cls._save_as_pickled_object(df, pkl_fpath)
             return df
 
     @classmethod
@@ -122,5 +122,11 @@ class Feature:
         return pd.read_pickle(pkl_fpath)
 
     @classmethod
+    def _save_as_pickled_object(cls, df, pkl_fpath) -> None:
+        df.to_pickle(pkl_fpath)
+
+    @classmethod
     def _create_feature(cls, conf) -> pd.DataFrame:
         raise NotImplementedError
+
+
