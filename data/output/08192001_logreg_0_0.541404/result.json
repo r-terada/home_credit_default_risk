@@ -1,0 +1,62 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.5394882095358015,
+      "elapsed_time": 0.9011759757995605
+    },
+    "Fold2": {
+      "val_score": 0.5411979991678489,
+      "elapsed_time": 0.7200150489807129
+    },
+    "Fold3": {
+      "val_score": 0.5453052008593825,
+      "elapsed_time": 0.7244369983673096
+    },
+    "Fold4": {
+      "val_score": 0.5423283909951331,
+      "elapsed_time": 0.8888981342315674
+    },
+    "Fold5": {
+      "val_score": 0.5440524088165418,
+      "elapsed_time": 0.697094202041626
+    },
+    "Full": {
+      "score": 0.5414043629903641
+    }
+  },
+  "config": {
+    "features": [
+      "CreditCardBalanceFeaturesOpenSolution"
+    ],
+    "model": {
+      "name": "LogisticRegression",
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {},
+      "train_params": {}
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "config_file_name": "logreg_0"
+  },
+  "features_detail": {
+    "number": 9,
+    "names": [
+      "credit_card_number_of_loans",
+      "credit_card_average_of_days_past_due",
+      "credit_card_drawings_atm",
+      "credit_card_drawings_total",
+      "credit_card_total_installments",
+      "credit_card_avg_loading_of_credit_limit",
+      "credit_card_cash_card_ratio",
+      "credit_card_installments_per_loan",
+      "credit_card_monthly_diff"
+    ]
+  }
+}
