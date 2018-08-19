@@ -1,0 +1,42 @@
+{
+    "features": [
+        "PredsLGBM1_1",
+        "PredsLogReg0"
+    ],
+    "model": {
+        "name": "LightGBM",
+        "kfold_params": {
+            "n_splits": 5,
+            "shuffle": true,
+            "random_state": 47
+        },
+        "clf_params": {
+            "nthread": 4,
+            "n_estimators": 5000,
+            "learning_rate": 0.02,
+            "num_leaves": 32,
+            "colsample_bytree": 0.9497036,
+            "subsample": 0.8715623,
+            "max_depth": 8,
+            "reg_alpha": 0.04,
+            "reg_lambda": 0.073,
+            "min_split_gain": 0.0222415,
+            "min_child_weight": 40,
+            "silent": -1,
+            "verbose": -1
+        },
+        "train_params": {
+            "eval_metric": "auc",
+            "verbose": 100,
+            "early_stopping_rounds": 100
+        }
+    },
+    "dataset": {
+        "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+        "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+        "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "options": {
+        "drop_duplicate_column_on_merge": true
+    }
+}
