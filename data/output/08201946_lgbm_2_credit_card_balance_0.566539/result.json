@@ -1,0 +1,223 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.5664130643607805,
+      "best_iteration": 499,
+      "elapsed_time": 44.24365496635437,
+      "feature_importance_top10": {
+        "CreditCardBalance_SK_ID_CURR_mean_AMT_CREDIT_LIMIT_ACTUAL": 628,
+        "CreditCardBalance_SK_ID_CURR_mean_AMT_BALANCE": 627,
+        "CreditCardBalance_SK_ID_CURR_mean_AMT_PAYMENT_CURRENT": 502,
+        "CreditCardBalance_SK_ID_CURR_sum_AMT_CREDIT_LIMIT_ACTUAL": 497,
+        "CreditCardBalance_SK_ID_CURR_var_CNT_DRAWINGS_CURRENT": 477,
+        "CreditCardBalance_SK_ID_CURR_sum_AMT_PAYMENT_CURRENT": 472,
+        "CreditCardBalance_SK_ID_CURR_var_AMT_PAYMENT_CURRENT": 427,
+        "CreditCardBalance_SK_ID_CURR_max_AMT_PAYMENT_CURRENT": 400,
+        "CreditCardBalance_SK_ID_CURR_sum_AMT_BALANCE": 374,
+        "CreditCardBalance_SK_ID_CURR_mean_CNT_DRAWINGS_ATM_CURRENT": 372
+      }
+    },
+    "Fold2": {
+      "val_score": 0.5682309445208025,
+      "best_iteration": 344,
+      "elapsed_time": 36.786426067352295,
+      "feature_importance_top10": {
+        "CreditCardBalance_SK_ID_CURR_mean_AMT_CREDIT_LIMIT_ACTUAL": 547,
+        "CreditCardBalance_SK_ID_CURR_mean_AMT_BALANCE": 544,
+        "CreditCardBalance_SK_ID_CURR_sum_AMT_CREDIT_LIMIT_ACTUAL": 421,
+        "CreditCardBalance_SK_ID_CURR_var_CNT_DRAWINGS_CURRENT": 416,
+        "CreditCardBalance_SK_ID_CURR_var_AMT_PAYMENT_CURRENT": 388,
+        "CreditCardBalance_SK_ID_CURR_mean_AMT_PAYMENT_CURRENT": 380,
+        "CreditCardBalance_SK_ID_CURR_sum_AMT_PAYMENT_CURRENT": 360,
+        "CreditCardBalance_SK_ID_CURR_sum_AMT_DRAWINGS_POS_CURRENT": 331,
+        "CreditCardBalance_SK_ID_CURR_mean_CNT_DRAWINGS_ATM_CURRENT": 318,
+        "CreditCardBalance_SK_ID_CURR_max_AMT_PAYMENT_CURRENT": 282
+      }
+    },
+    "Fold3": {
+      "val_score": 0.5696692454660915,
+      "best_iteration": 466,
+      "elapsed_time": 38.22589111328125,
+      "feature_importance_top10": {
+        "CreditCardBalance_SK_ID_CURR_mean_AMT_CREDIT_LIMIT_ACTUAL": 668,
+        "CreditCardBalance_SK_ID_CURR_mean_AMT_PAYMENT_CURRENT": 612,
+        "CreditCardBalance_SK_ID_CURR_mean_AMT_BALANCE": 599,
+        "CreditCardBalance_SK_ID_CURR_sum_AMT_PAYMENT_CURRENT": 464,
+        "CreditCardBalance_SK_ID_CURR_var_CNT_DRAWINGS_CURRENT": 463,
+        "CreditCardBalance_SK_ID_CURR_sum_AMT_CREDIT_LIMIT_ACTUAL": 448,
+        "CreditCardBalance_SK_ID_CURR_mean_CNT_DRAWINGS_ATM_CURRENT": 412,
+        "CreditCardBalance_SK_ID_CURR_max_AMT_PAYMENT_CURRENT": 408,
+        "CreditCardBalance_SK_ID_CURR_var_AMT_PAYMENT_CURRENT": 393,
+        "CreditCardBalance_SK_ID_CURR_sum_AMT_BALANCE": 339
+      }
+    },
+    "Fold4": {
+      "val_score": 0.5642718442935737,
+      "best_iteration": 216,
+      "elapsed_time": 27.72613525390625,
+      "feature_importance_top10": {
+        "CreditCardBalance_SK_ID_CURR_mean_AMT_BALANCE": 443,
+        "CreditCardBalance_SK_ID_CURR_mean_AMT_CREDIT_LIMIT_ACTUAL": 437,
+        "CreditCardBalance_SK_ID_CURR_var_CNT_DRAWINGS_CURRENT": 380,
+        "CreditCardBalance_SK_ID_CURR_sum_AMT_CREDIT_LIMIT_ACTUAL": 355,
+        "CreditCardBalance_SK_ID_CURR_mean_AMT_PAYMENT_CURRENT": 291,
+        "CreditCardBalance_SK_ID_CURR_mean_CNT_DRAWINGS_ATM_CURRENT": 275,
+        "CreditCardBalance_SK_ID_CURR_sum_AMT_DRAWINGS_POS_CURRENT": 253,
+        "CreditCardBalance_SK_ID_CURR_sum_AMT_PAYMENT_CURRENT": 230,
+        "CreditCardBalance_SK_ID_CURR_max_AMT_PAYMENT_CURRENT": 227,
+        "CreditCardBalance_SK_ID_CURR_sum_AMT_BALANCE": 213
+      }
+    },
+    "Fold5": {
+      "val_score": 0.5695563943803807,
+      "best_iteration": 223,
+      "elapsed_time": 26.68863272666931,
+      "feature_importance_top10": {
+        "CreditCardBalance_SK_ID_CURR_mean_AMT_BALANCE": 432,
+        "CreditCardBalance_SK_ID_CURR_mean_AMT_CREDIT_LIMIT_ACTUAL": 426,
+        "CreditCardBalance_SK_ID_CURR_var_CNT_DRAWINGS_CURRENT": 420,
+        "CreditCardBalance_SK_ID_CURR_sum_AMT_PAYMENT_CURRENT": 298,
+        "CreditCardBalance_SK_ID_CURR_mean_AMT_PAYMENT_CURRENT": 279,
+        "CreditCardBalance_SK_ID_CURR_mean_CNT_DRAWINGS_ATM_CURRENT": 263,
+        "CreditCardBalance_SK_ID_CURR_max_AMT_PAYMENT_CURRENT": 256,
+        "CreditCardBalance_SK_ID_CURR_sum_AMT_CREDIT_LIMIT_ACTUAL": 245,
+        "CreditCardBalance_SK_ID_CURR_sum_AMT_DRAWINGS_POS_CURRENT": 236,
+        "CreditCardBalance_SK_ID_CURR_sum_AMT_BALANCE": 192
+      }
+    },
+    "Full": {
+      "score": 0.5665389602157619,
+      "val_score_mean": 0.5676282986043257,
+      "val_score_std": 0.0020488425669967837,
+      "feature_importance_top10": {
+        "CreditCardBalance_SK_ID_CURR_mean_AMT_CREDIT_LIMIT_ACTUAL": 541.2,
+        "CreditCardBalance_SK_ID_CURR_mean_AMT_BALANCE": 529.0,
+        "CreditCardBalance_SK_ID_CURR_var_CNT_DRAWINGS_CURRENT": 431.2,
+        "CreditCardBalance_SK_ID_CURR_mean_AMT_PAYMENT_CURRENT": 412.8,
+        "CreditCardBalance_SK_ID_CURR_sum_AMT_CREDIT_LIMIT_ACTUAL": 393.2,
+        "CreditCardBalance_SK_ID_CURR_sum_AMT_PAYMENT_CURRENT": 364.8,
+        "CreditCardBalance_SK_ID_CURR_mean_CNT_DRAWINGS_ATM_CURRENT": 328.0,
+        "CreditCardBalance_SK_ID_CURR_var_AMT_PAYMENT_CURRENT": 314.6,
+        "CreditCardBalance_SK_ID_CURR_max_AMT_PAYMENT_CURRENT": 314.6,
+        "CreditCardBalance_SK_ID_CURR_sum_AMT_DRAWINGS_POS_CURRENT": 289.8
+      }
+    }
+  },
+  "config": {
+    "features": [
+      "AggregateFeatureCreditCardBalanceOpenSolution"
+    ],
+    "model": {
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {
+        "nthread": 4,
+        "n_estimators": 5000,
+        "learning_rate": 0.02,
+        "num_leaves": 32,
+        "colsample_bytree": 0.9497036,
+        "subsample": 0.8715623,
+        "max_depth": 8,
+        "reg_alpha": 0.04,
+        "reg_lambda": 0.073,
+        "min_split_gain": 0.0222415,
+        "min_child_weight": 40,
+        "silent": -1,
+        "verbose": -1
+      },
+      "train_params": {
+        "eval_metric": "auc",
+        "verbose": 100,
+        "early_stopping_rounds": 200
+      },
+      "name": "LightGBM"
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "options": {
+      "drop_duplicate_column_on_merge": true
+    },
+    "config_file_name": "lgbm_2_credit_card_balance"
+  },
+  "features_detail": {
+    "number": 70,
+    "names": [
+      "CreditCardBalance_SK_ID_CURR_mean_AMT_BALANCE",
+      "CreditCardBalance_SK_ID_CURR_mean_AMT_CREDIT_LIMIT_ACTUAL",
+      "CreditCardBalance_SK_ID_CURR_mean_AMT_DRAWINGS_ATM_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_mean_AMT_DRAWINGS_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_mean_AMT_DRAWINGS_OTHER_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_mean_AMT_DRAWINGS_POS_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_mean_AMT_PAYMENT_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_mean_CNT_DRAWINGS_ATM_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_mean_CNT_DRAWINGS_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_mean_CNT_DRAWINGS_OTHER_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_mean_CNT_INSTALMENT_MATURE_CUM",
+      "CreditCardBalance_SK_ID_CURR_mean_MONTHS_BALANCE",
+      "CreditCardBalance_SK_ID_CURR_mean_SK_DPD",
+      "CreditCardBalance_SK_ID_CURR_mean_SK_DPD_DEF",
+      "CreditCardBalance_SK_ID_CURR_min_AMT_BALANCE",
+      "CreditCardBalance_SK_ID_CURR_min_AMT_CREDIT_LIMIT_ACTUAL",
+      "CreditCardBalance_SK_ID_CURR_min_AMT_DRAWINGS_ATM_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_min_AMT_DRAWINGS_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_min_AMT_DRAWINGS_OTHER_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_min_AMT_DRAWINGS_POS_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_min_AMT_PAYMENT_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_min_CNT_DRAWINGS_ATM_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_min_CNT_DRAWINGS_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_min_CNT_DRAWINGS_OTHER_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_min_CNT_INSTALMENT_MATURE_CUM",
+      "CreditCardBalance_SK_ID_CURR_min_MONTHS_BALANCE",
+      "CreditCardBalance_SK_ID_CURR_min_SK_DPD",
+      "CreditCardBalance_SK_ID_CURR_min_SK_DPD_DEF",
+      "CreditCardBalance_SK_ID_CURR_max_AMT_BALANCE",
+      "CreditCardBalance_SK_ID_CURR_max_AMT_CREDIT_LIMIT_ACTUAL",
+      "CreditCardBalance_SK_ID_CURR_max_AMT_DRAWINGS_ATM_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_max_AMT_DRAWINGS_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_max_AMT_DRAWINGS_OTHER_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_max_AMT_DRAWINGS_POS_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_max_AMT_PAYMENT_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_max_CNT_DRAWINGS_ATM_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_max_CNT_DRAWINGS_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_max_CNT_DRAWINGS_OTHER_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_max_CNT_INSTALMENT_MATURE_CUM",
+      "CreditCardBalance_SK_ID_CURR_max_MONTHS_BALANCE",
+      "CreditCardBalance_SK_ID_CURR_max_SK_DPD",
+      "CreditCardBalance_SK_ID_CURR_max_SK_DPD_DEF",
+      "CreditCardBalance_SK_ID_CURR_sum_AMT_BALANCE",
+      "CreditCardBalance_SK_ID_CURR_sum_AMT_CREDIT_LIMIT_ACTUAL",
+      "CreditCardBalance_SK_ID_CURR_sum_AMT_DRAWINGS_ATM_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_sum_AMT_DRAWINGS_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_sum_AMT_DRAWINGS_OTHER_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_sum_AMT_DRAWINGS_POS_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_sum_AMT_PAYMENT_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_sum_CNT_DRAWINGS_ATM_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_sum_CNT_DRAWINGS_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_sum_CNT_DRAWINGS_OTHER_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_sum_CNT_INSTALMENT_MATURE_CUM",
+      "CreditCardBalance_SK_ID_CURR_sum_MONTHS_BALANCE",
+      "CreditCardBalance_SK_ID_CURR_sum_SK_DPD",
+      "CreditCardBalance_SK_ID_CURR_sum_SK_DPD_DEF",
+      "CreditCardBalance_SK_ID_CURR_var_AMT_BALANCE",
+      "CreditCardBalance_SK_ID_CURR_var_AMT_CREDIT_LIMIT_ACTUAL",
+      "CreditCardBalance_SK_ID_CURR_var_AMT_DRAWINGS_ATM_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_var_AMT_DRAWINGS_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_var_AMT_DRAWINGS_OTHER_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_var_AMT_DRAWINGS_POS_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_var_AMT_PAYMENT_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_var_CNT_DRAWINGS_ATM_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_var_CNT_DRAWINGS_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_var_CNT_DRAWINGS_OTHER_CURRENT",
+      "CreditCardBalance_SK_ID_CURR_var_CNT_INSTALMENT_MATURE_CUM",
+      "CreditCardBalance_SK_ID_CURR_var_MONTHS_BALANCE",
+      "CreditCardBalance_SK_ID_CURR_var_SK_DPD",
+      "CreditCardBalance_SK_ID_CURR_var_SK_DPD_DEF"
+    ]
+  }
+}
