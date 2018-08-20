@@ -28,7 +28,7 @@ class GroupByAggregateFeature(Feature):
                                           [groupby_cols + [groupby_aggregate_name]],
                                           on=groupby_cols,
                                           how='left')
-            features.drop(groupby_cols, axis=1)
+            features = features.drop(list(set(groupby_cols) - {'SK_ID_CURR'}), axis=1)
 
         del table
         gc.collect()
