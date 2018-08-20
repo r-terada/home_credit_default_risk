@@ -1,0 +1,183 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.6403114151104141,
+      "best_iteration": 514,
+      "elapsed_time": 44.70411205291748,
+      "feature_importance_top10": {
+        "InstallmentsPayments_SK_ID_CURR_min_AMT_PAYMENT": 1212,
+        "InstallmentsPayments_SK_ID_CURR_max_DAYS_ENTRY_PAYMENT": 1033,
+        "InstallmentsPayments_SK_ID_CURR_mean_AMT_PAYMENT": 1006,
+        "InstallmentsPayments_SK_ID_CURR_sum_AMT_PAYMENT": 834,
+        "InstallmentsPayments_SK_ID_CURR_min_AMT_INSTALMENT": 806,
+        "InstallmentsPayments_SK_ID_CURR_var_NUM_INSTALMENT_VERSION": 748,
+        "InstallmentsPayments_SK_ID_CURR_max_DAYS_INSTALMENT": 679,
+        "InstallmentsPayments_SK_ID_CURR_var_AMT_INSTALMENT": 664,
+        "InstallmentsPayments_SK_ID_CURR_max_AMT_INSTALMENT": 630,
+        "InstallmentsPayments_SK_ID_CURR_var_AMT_PAYMENT": 571
+      }
+    },
+    "Fold2": {
+      "val_score": 0.6378441598752689,
+      "best_iteration": 443,
+      "elapsed_time": 38.99700999259949,
+      "feature_importance_top10": {
+        "InstallmentsPayments_SK_ID_CURR_min_AMT_PAYMENT": 1133,
+        "InstallmentsPayments_SK_ID_CURR_mean_AMT_PAYMENT": 927,
+        "InstallmentsPayments_SK_ID_CURR_max_DAYS_ENTRY_PAYMENT": 920,
+        "InstallmentsPayments_SK_ID_CURR_min_AMT_INSTALMENT": 755,
+        "InstallmentsPayments_SK_ID_CURR_sum_AMT_PAYMENT": 751,
+        "InstallmentsPayments_SK_ID_CURR_var_NUM_INSTALMENT_VERSION": 627,
+        "InstallmentsPayments_SK_ID_CURR_mean_NUM_INSTALMENT_VERSION": 547,
+        "InstallmentsPayments_SK_ID_CURR_var_AMT_INSTALMENT": 539,
+        "InstallmentsPayments_SK_ID_CURR_max_AMT_INSTALMENT": 523,
+        "InstallmentsPayments_SK_ID_CURR_max_DAYS_INSTALMENT": 505
+      }
+    },
+    "Fold3": {
+      "val_score": 0.6384043487745488,
+      "best_iteration": 417,
+      "elapsed_time": 39.76900935173035,
+      "feature_importance_top10": {
+        "InstallmentsPayments_SK_ID_CURR_min_AMT_PAYMENT": 1063,
+        "InstallmentsPayments_SK_ID_CURR_mean_AMT_PAYMENT": 968,
+        "InstallmentsPayments_SK_ID_CURR_max_DAYS_ENTRY_PAYMENT": 809,
+        "InstallmentsPayments_SK_ID_CURR_min_AMT_INSTALMENT": 798,
+        "InstallmentsPayments_SK_ID_CURR_sum_AMT_PAYMENT": 706,
+        "InstallmentsPayments_SK_ID_CURR_var_NUM_INSTALMENT_VERSION": 574,
+        "InstallmentsPayments_SK_ID_CURR_max_DAYS_INSTALMENT": 551,
+        "InstallmentsPayments_SK_ID_CURR_max_AMT_INSTALMENT": 536,
+        "InstallmentsPayments_SK_ID_CURR_var_AMT_INSTALMENT": 511,
+        "InstallmentsPayments_SK_ID_CURR_var_AMT_PAYMENT": 432
+      }
+    },
+    "Fold4": {
+      "val_score": 0.6397916266225749,
+      "best_iteration": 433,
+      "elapsed_time": 38.6156690120697,
+      "feature_importance_top10": {
+        "InstallmentsPayments_SK_ID_CURR_min_AMT_PAYMENT": 1039,
+        "InstallmentsPayments_SK_ID_CURR_mean_AMT_PAYMENT": 990,
+        "InstallmentsPayments_SK_ID_CURR_max_DAYS_ENTRY_PAYMENT": 852,
+        "InstallmentsPayments_SK_ID_CURR_sum_AMT_PAYMENT": 770,
+        "InstallmentsPayments_SK_ID_CURR_min_AMT_INSTALMENT": 696,
+        "InstallmentsPayments_SK_ID_CURR_var_AMT_INSTALMENT": 597,
+        "InstallmentsPayments_SK_ID_CURR_var_NUM_INSTALMENT_VERSION": 555,
+        "InstallmentsPayments_SK_ID_CURR_max_AMT_INSTALMENT": 540,
+        "InstallmentsPayments_SK_ID_CURR_max_DAYS_INSTALMENT": 518,
+        "InstallmentsPayments_SK_ID_CURR_mean_NUM_INSTALMENT_VERSION": 451
+      }
+    },
+    "Fold5": {
+      "val_score": 0.6402288470965578,
+      "best_iteration": 558,
+      "elapsed_time": 44.00784683227539,
+      "feature_importance_top10": {
+        "InstallmentsPayments_SK_ID_CURR_min_AMT_PAYMENT": 1352,
+        "InstallmentsPayments_SK_ID_CURR_mean_AMT_PAYMENT": 1113,
+        "InstallmentsPayments_SK_ID_CURR_max_DAYS_ENTRY_PAYMENT": 1033,
+        "InstallmentsPayments_SK_ID_CURR_min_AMT_INSTALMENT": 909,
+        "InstallmentsPayments_SK_ID_CURR_sum_AMT_PAYMENT": 841,
+        "InstallmentsPayments_SK_ID_CURR_var_NUM_INSTALMENT_VERSION": 732,
+        "InstallmentsPayments_SK_ID_CURR_max_DAYS_INSTALMENT": 706,
+        "InstallmentsPayments_SK_ID_CURR_max_AMT_INSTALMENT": 669,
+        "InstallmentsPayments_SK_ID_CURR_var_AMT_INSTALMENT": 649,
+        "InstallmentsPayments_SK_ID_CURR_mean_NUM_INSTALMENT_VERSION": 606
+      }
+    },
+    "Full": {
+      "score": 0.6391800875017105,
+      "val_score_mean": 0.6393160794958729,
+      "val_score_std": 0.0010047669407254693,
+      "feature_importance_top10": {
+        "InstallmentsPayments_SK_ID_CURR_min_AMT_PAYMENT": 1159.8,
+        "InstallmentsPayments_SK_ID_CURR_mean_AMT_PAYMENT": 1000.8,
+        "InstallmentsPayments_SK_ID_CURR_max_DAYS_ENTRY_PAYMENT": 929.4,
+        "InstallmentsPayments_SK_ID_CURR_min_AMT_INSTALMENT": 792.8,
+        "InstallmentsPayments_SK_ID_CURR_sum_AMT_PAYMENT": 780.4,
+        "InstallmentsPayments_SK_ID_CURR_var_NUM_INSTALMENT_VERSION": 647.2,
+        "InstallmentsPayments_SK_ID_CURR_var_AMT_INSTALMENT": 592.0,
+        "InstallmentsPayments_SK_ID_CURR_max_DAYS_INSTALMENT": 591.8,
+        "InstallmentsPayments_SK_ID_CURR_max_AMT_INSTALMENT": 579.6,
+        "InstallmentsPayments_SK_ID_CURR_mean_NUM_INSTALMENT_VERSION": 499.0
+      }
+    }
+  },
+  "config": {
+    "features": [
+      "AggregateFeatureInstallmentsPaymentsOpenSolution"
+    ],
+    "model": {
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {
+        "nthread": 4,
+        "n_estimators": 5000,
+        "learning_rate": 0.02,
+        "num_leaves": 32,
+        "colsample_bytree": 0.9497036,
+        "subsample": 0.8715623,
+        "max_depth": 8,
+        "reg_alpha": 0.04,
+        "reg_lambda": 0.073,
+        "min_split_gain": 0.0222415,
+        "min_child_weight": 40,
+        "silent": -1,
+        "verbose": -1
+      },
+      "train_params": {
+        "eval_metric": "auc",
+        "verbose": 100,
+        "early_stopping_rounds": 200
+      },
+      "name": "LightGBM"
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "options": {
+      "drop_duplicate_column_on_merge": true
+    },
+    "config_file_name": "lgbm_2_installments_payments"
+  },
+  "features_detail": {
+    "number": 30,
+    "names": [
+      "InstallmentsPayments_SK_ID_CURR_mean_AMT_INSTALMENT",
+      "InstallmentsPayments_SK_ID_CURR_mean_AMT_PAYMENT",
+      "InstallmentsPayments_SK_ID_CURR_mean_DAYS_ENTRY_PAYMENT",
+      "InstallmentsPayments_SK_ID_CURR_mean_DAYS_INSTALMENT",
+      "InstallmentsPayments_SK_ID_CURR_mean_NUM_INSTALMENT_NUMBER",
+      "InstallmentsPayments_SK_ID_CURR_mean_NUM_INSTALMENT_VERSION",
+      "InstallmentsPayments_SK_ID_CURR_min_AMT_INSTALMENT",
+      "InstallmentsPayments_SK_ID_CURR_min_AMT_PAYMENT",
+      "InstallmentsPayments_SK_ID_CURR_min_DAYS_ENTRY_PAYMENT",
+      "InstallmentsPayments_SK_ID_CURR_min_DAYS_INSTALMENT",
+      "InstallmentsPayments_SK_ID_CURR_min_NUM_INSTALMENT_NUMBER",
+      "InstallmentsPayments_SK_ID_CURR_min_NUM_INSTALMENT_VERSION",
+      "InstallmentsPayments_SK_ID_CURR_max_AMT_INSTALMENT",
+      "InstallmentsPayments_SK_ID_CURR_max_AMT_PAYMENT",
+      "InstallmentsPayments_SK_ID_CURR_max_DAYS_ENTRY_PAYMENT",
+      "InstallmentsPayments_SK_ID_CURR_max_DAYS_INSTALMENT",
+      "InstallmentsPayments_SK_ID_CURR_max_NUM_INSTALMENT_NUMBER",
+      "InstallmentsPayments_SK_ID_CURR_max_NUM_INSTALMENT_VERSION",
+      "InstallmentsPayments_SK_ID_CURR_sum_AMT_INSTALMENT",
+      "InstallmentsPayments_SK_ID_CURR_sum_AMT_PAYMENT",
+      "InstallmentsPayments_SK_ID_CURR_sum_DAYS_ENTRY_PAYMENT",
+      "InstallmentsPayments_SK_ID_CURR_sum_DAYS_INSTALMENT",
+      "InstallmentsPayments_SK_ID_CURR_sum_NUM_INSTALMENT_NUMBER",
+      "InstallmentsPayments_SK_ID_CURR_sum_NUM_INSTALMENT_VERSION",
+      "InstallmentsPayments_SK_ID_CURR_var_AMT_INSTALMENT",
+      "InstallmentsPayments_SK_ID_CURR_var_AMT_PAYMENT",
+      "InstallmentsPayments_SK_ID_CURR_var_DAYS_ENTRY_PAYMENT",
+      "InstallmentsPayments_SK_ID_CURR_var_DAYS_INSTALMENT",
+      "InstallmentsPayments_SK_ID_CURR_var_NUM_INSTALMENT_NUMBER",
+      "InstallmentsPayments_SK_ID_CURR_var_NUM_INSTALMENT_VERSION"
+    ]
+  }
+}
