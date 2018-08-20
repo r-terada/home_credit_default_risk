@@ -67,34 +67,34 @@ class ApplicationFeatures(Feature):
 class ApplicationFeaturesOpenSolution(Feature):
     @classmethod
     def _create_feature(cls, conf) -> pd.DataFrame:
-        X = Application.get_df(conf)
-        X['annuity_income_percentage'] = X['AMT_ANNUITY'] / X['AMT_INCOME_TOTAL']
-        X['car_to_birth_ratio'] = X['OWN_CAR_AGE'] / X['DAYS_BIRTH']
-        X['car_to_employ_ratio'] = X['OWN_CAR_AGE'] / X['DAYS_EMPLOYED']
-        X['children_ratio'] = X['CNT_CHILDREN'] / X['CNT_FAM_MEMBERS']
-        X['credit_to_annuity_ratio'] = X['AMT_CREDIT'] / X['AMT_ANNUITY']
-        X['credit_to_goods_ratio'] = X['AMT_CREDIT'] / X['AMT_GOODS_PRICE']
-        X['credit_to_income_ratio'] = X['AMT_CREDIT'] / X['AMT_INCOME_TOTAL']
-        X['days_employed_percentage'] = X['DAYS_EMPLOYED'] / X['DAYS_BIRTH']
-        X['income_credit_percentage'] = X['AMT_INCOME_TOTAL'] / X['AMT_CREDIT']
-        X['income_per_child'] = X['AMT_INCOME_TOTAL'] / (1 + X['CNT_CHILDREN'])
-        X['income_per_person'] = X['AMT_INCOME_TOTAL'] / X['CNT_FAM_MEMBERS']
-        X['payment_rate'] = X['AMT_ANNUITY'] / X['AMT_CREDIT']
-        X['phone_to_birth_ratio'] = X['DAYS_LAST_PHONE_CHANGE'] / X['DAYS_BIRTH']
-        X['phone_to_employ_ratio'] = X['DAYS_LAST_PHONE_CHANGE'] / X['DAYS_EMPLOYED']
-        X['external_sources_weighted'] = X.EXT_SOURCE_1 * 2 + X.EXT_SOURCE_2 * 3 + X.EXT_SOURCE_3 * 4
-        X['cnt_non_child'] = X['CNT_FAM_MEMBERS'] - X['CNT_CHILDREN']
-        X['child_to_non_child_ratio'] = X['CNT_CHILDREN'] / X['cnt_non_child']
-        X['income_per_non_child'] = X['AMT_INCOME_TOTAL'] / X['cnt_non_child']
-        X['credit_per_person'] = X['AMT_CREDIT'] / X['CNT_FAM_MEMBERS']
-        X['credit_per_child'] = X['AMT_CREDIT'] / (1 + X['CNT_CHILDREN'])
-        X['credit_per_non_child'] = X['AMT_CREDIT'] / X['cnt_non_child']
+        app = Application.get_df(conf)
+        features = pd.DataFrame({'SK_ID_CURR': app['SK_ID_CURR'].unique()})
+        features['annuity_income_percentage'] = app['AMT_ANNUITY'] / app['AMT_INCOME_TOTAL']
+        features['car_to_birth_ratio'] = app['OWN_CAR_AGE'] / app['DAYS_BIRTH']
+        features['car_to_employ_ratio'] = app['OWN_CAR_AGE'] / app['DAYS_EMPLOYED']
+        features['children_ratio'] = app['CNT_CHILDREN'] / app['CNT_FAM_MEMBERS']
+        features['credit_to_annuity_ratio'] = app['AMT_CREDIT'] / app['AMT_ANNUITY']
+        features['credit_to_goods_ratio'] = app['AMT_CREDIT'] / app['AMT_GOODS_PRICE']
+        features['credit_to_income_ratio'] = app['AMT_CREDIT'] / app['AMT_INCOME_TOTAL']
+        features['days_employed_percentage'] = app['DAYS_EMPLOYED'] / app['DAYS_BIRTH']
+        features['income_credit_percentage'] = app['AMT_INCOME_TOTAL'] / app['AMT_CREDIT']
+        features['income_per_child'] = app['AMT_INCOME_TOTAL'] / (1 + app['CNT_CHILDREN'])
+        features['income_per_person'] = app['AMT_INCOME_TOTAL'] / app['CNT_FAM_MEMBERS']
+        features['payment_rate'] = app['AMT_ANNUITY'] / app['AMT_CREDIT']
+        features['phone_to_birth_ratio'] = app['DAYS_LAST_PHONE_CHANGE'] / app['DAYS_BIRTH']
+        features['phone_to_employ_ratio'] = app['DAYS_LAST_PHONE_CHANGE'] / app['DAYS_EMPLOYED']
+        features['external_sources_weighted'] = app.EXT_SOURCE_1 * 2 + app.EXT_SOURCE_2 * 3 + app.EXT_SOURCE_3 * 4
+        features['cnt_non_child'] = app['CNT_FAM_MEMBERS'] - app['CNT_CHILDREN']
+        features['child_to_non_child_ratio'] = app['CNT_CHILDREN'] / features['cnt_non_child']
+        features['income_per_non_child'] = app['AMT_INCOME_TOTAL'] / features['cnt_non_child']
+        features['credit_per_person'] = app['AMT_CREDIT'] / app['CNT_FAM_MEMBERS']
+        features['credit_per_child'] = app['AMT_CREDIT'] / (1 + app['CNT_CHILDREN'])
+        features['credit_per_non_child'] = app['AMT_CREDIT'] / features['cnt_non_child']
         for function_name in ['min', 'max', 'sum', 'mean', 'nanmedian']:
-            X['external_sources_{}'.format(function_name)] = eval('np.{}'.format(function_name))(
-                X[['EXT_SOURCE_1', 'EXT_SOURCE_2', 'EXT_SOURCE_3']], axis=1)
+            features['external_sources_{}'.format(function_name)] = eval('np.{}'.format(function_name))(
+                app[['EXT_SOURCE_1', 'EXT_SOURCE_2', 'EXT_SOURCE_3']], axis=1)
 
-        X['short_employment'] = (X['DAYS_EMPLOYED'] < -2000).astype(int)
-        X['young_age'] = (X['DAYS_BIRTH'] < -14000).astype(int)
-        X, _cat_cols = one_hot_encoder(X, True)
+        features['short_employment'] = (app['DAYS_EMPLOYED'] < -2000).astype(int)
+        features['young_age'] = (app['DAYS_BIRTH'] < -14000).astype(int)
 
-        return X.drop(['TARGET'], axis=1)
+        return features
