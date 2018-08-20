@@ -24,12 +24,11 @@ def get_train_test(conf):
     for feature in feature_classes:
         with timer(f"process {feature.__name__}"):
             f = feature.get_df(conf)
-            if 'options' in conf \
-               and 'drop_duplicate_column_on_merge' in conf.options \
-               and conf.options.drop_duplicate_column_on_merge:
+            if conf.options.drop_duplicate_column_on_merge:
                 cols_to_drop = [c for c in f.columns if (c in df.columns) and (c != 'SK_ID_CURR')]
-                print(f"drop columns: {cols_to_drop}")
-                f = f.drop(cols_to_drop, axis=1)
+                if cols_to_drop:
+                    print(f"drop columns: {cols_to_drop}")
+                    f = f.drop(cols_to_drop, axis=1)
             df = df.merge(f, how='left', on='SK_ID_CURR')
             del f
             gc.collect()
@@ -48,15 +47,14 @@ def main(config_file, debug):
     conf = read_config(config_file)
     print("config:")
     pprint(conf)
+
     train_df, test_df = get_train_test(conf)
     feats = [f for f in train_df.columns if f not in ([
         'TARGET', 'SK_ID_CURR', 'SK_ID_BUREAU', 'SK_ID_PREV', 'index'
     ])]
     print(f"use {len(feats)} features.")
-    if "name" in conf.model:
-        model = KEY_MODEL_MAP[conf.model.name]()
-    else:
-        model = LightGBM()
+
+    model = KEY_MODEL_MAP[conf.model.name]()
     with timer(f"train with {model.__class__.__name__}"):
         model.train_and_predict_kfold(
             train_df,

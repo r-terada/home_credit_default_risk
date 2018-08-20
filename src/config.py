@@ -42,7 +42,13 @@ def read_config(config_file_path: str) -> dict:
     with open(config_file_path, mode='r', encoding='utf-8') as fp:
         json_txt = fp.read()
         json_txt = str(json_txt).replace("'", '"').replace('True', 'true').replace('False', 'false')
-        json_data = AttrDict(json.loads(json_txt))
+        config = AttrDict(json.loads(json_txt))
 
-    json_data.config_file_name = os.path.splitext(os.path.basename(config_file_path))[0]
-    return json_data
+    # set dafault values
+    config.config_file_name = os.path.splitext(os.path.basename(config_file_path))[0]
+    if "name" not in config.model:
+        config.model.name = "LightGBM"
+    if "options" not in config:
+        config.options = {"drop_duplicate_column_on_merge": False}
+
+    return config
