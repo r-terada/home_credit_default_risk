@@ -1,0 +1,168 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.5852309083389878,
+      "best_iteration": 103,
+      "elapsed_time": 13.705700874328613,
+      "feature_importance_top10": {
+        "PosCash_SK_ID_CURR_var_MONTHS_BALANCE": 569,
+        "PosCash_SK_ID_CURR_min_MONTHS_BALANCE": 381,
+        "PosCash_SK_ID_CURR_max_MONTHS_BALANCE": 375,
+        "PosCash_SK_ID_CURR_mean_MONTHS_BALANCE": 346,
+        "PosCash_SK_ID_CURR_sum_MONTHS_BALANCE": 310,
+        "PosCash_SK_ID_CURR_var_SK_DPD": 243,
+        "PosCash_SK_ID_CURR_mean_SK_DPD_DEF": 234,
+        "PosCash_SK_ID_CURR_mean_SK_DPD": 224,
+        "PosCash_SK_ID_CURR_var_SK_DPD_DEF": 155,
+        "PosCash_SK_ID_CURR_max_SK_DPD": 119
+      }
+    },
+    "Fold2": {
+      "val_score": 0.5838678396866931,
+      "best_iteration": 218,
+      "elapsed_time": 17.151782035827637,
+      "feature_importance_top10": {
+        "PosCash_SK_ID_CURR_var_MONTHS_BALANCE": 1177,
+        "PosCash_SK_ID_CURR_sum_MONTHS_BALANCE": 858,
+        "PosCash_SK_ID_CURR_mean_MONTHS_BALANCE": 853,
+        "PosCash_SK_ID_CURR_min_MONTHS_BALANCE": 753,
+        "PosCash_SK_ID_CURR_max_MONTHS_BALANCE": 741,
+        "PosCash_SK_ID_CURR_mean_SK_DPD_DEF": 474,
+        "PosCash_SK_ID_CURR_var_SK_DPD": 448,
+        "PosCash_SK_ID_CURR_mean_SK_DPD": 420,
+        "PosCash_SK_ID_CURR_var_SK_DPD_DEF": 303,
+        "PosCash_SK_ID_CURR_sum_SK_DPD": 285
+      }
+    },
+    "Fold3": {
+      "val_score": 0.5867960578213796,
+      "best_iteration": 37,
+      "elapsed_time": 10.733102083206177,
+      "feature_importance_top10": {
+        "PosCash_SK_ID_CURR_var_MONTHS_BALANCE": 200,
+        "PosCash_SK_ID_CURR_min_MONTHS_BALANCE": 163,
+        "PosCash_SK_ID_CURR_mean_MONTHS_BALANCE": 131,
+        "PosCash_SK_ID_CURR_mean_SK_DPD_DEF": 116,
+        "PosCash_SK_ID_CURR_max_MONTHS_BALANCE": 115,
+        "PosCash_SK_ID_CURR_mean_SK_DPD": 104,
+        "PosCash_SK_ID_CURR_var_SK_DPD": 94,
+        "PosCash_SK_ID_CURR_sum_MONTHS_BALANCE": 80,
+        "PosCash_SK_ID_CURR_sum_SK_DPD": 47,
+        "PosCash_SK_ID_CURR_var_SK_DPD_DEF": 39
+      }
+    },
+    "Fold4": {
+      "val_score": 0.5877603061891703,
+      "best_iteration": 278,
+      "elapsed_time": 19.834906101226807,
+      "feature_importance_top10": {
+        "PosCash_SK_ID_CURR_var_MONTHS_BALANCE": 1424,
+        "PosCash_SK_ID_CURR_sum_MONTHS_BALANCE": 1203,
+        "PosCash_SK_ID_CURR_mean_MONTHS_BALANCE": 1200,
+        "PosCash_SK_ID_CURR_min_MONTHS_BALANCE": 956,
+        "PosCash_SK_ID_CURR_max_MONTHS_BALANCE": 902,
+        "PosCash_SK_ID_CURR_mean_SK_DPD_DEF": 522,
+        "PosCash_SK_ID_CURR_mean_SK_DPD": 520,
+        "PosCash_SK_ID_CURR_var_SK_DPD_DEF": 467,
+        "PosCash_SK_ID_CURR_var_SK_DPD": 449,
+        "PosCash_SK_ID_CURR_sum_SK_DPD": 338
+      }
+    },
+    "Fold5": {
+      "val_score": 0.5839598718524943,
+      "best_iteration": 74,
+      "elapsed_time": 11.498257875442505,
+      "feature_importance_top10": {
+        "PosCash_SK_ID_CURR_var_MONTHS_BALANCE": 371,
+        "PosCash_SK_ID_CURR_min_MONTHS_BALANCE": 302,
+        "PosCash_SK_ID_CURR_max_MONTHS_BALANCE": 245,
+        "PosCash_SK_ID_CURR_mean_MONTHS_BALANCE": 238,
+        "PosCash_SK_ID_CURR_sum_MONTHS_BALANCE": 219,
+        "PosCash_SK_ID_CURR_mean_SK_DPD": 213,
+        "PosCash_SK_ID_CURR_mean_SK_DPD_DEF": 162,
+        "PosCash_SK_ID_CURR_var_SK_DPD_DEF": 142,
+        "PosCash_SK_ID_CURR_var_SK_DPD": 123,
+        "PosCash_SK_ID_CURR_sum_SK_DPD": 87
+      }
+    },
+    "Full": {
+      "score": 0.5339506168986804,
+      "val_score_mean": 0.5855229967777451,
+      "val_score_std": 0.0015423655861907127,
+      "feature_importance_top10": {
+        "PosCash_SK_ID_CURR_var_MONTHS_BALANCE": 748.2,
+        "PosCash_SK_ID_CURR_mean_MONTHS_BALANCE": 553.6,
+        "PosCash_SK_ID_CURR_sum_MONTHS_BALANCE": 534.0,
+        "PosCash_SK_ID_CURR_min_MONTHS_BALANCE": 511.0,
+        "PosCash_SK_ID_CURR_max_MONTHS_BALANCE": 475.6,
+        "PosCash_SK_ID_CURR_mean_SK_DPD_DEF": 301.6,
+        "PosCash_SK_ID_CURR_mean_SK_DPD": 296.2,
+        "PosCash_SK_ID_CURR_var_SK_DPD": 271.4,
+        "PosCash_SK_ID_CURR_var_SK_DPD_DEF": 221.2,
+        "PosCash_SK_ID_CURR_sum_SK_DPD": 174.2
+      }
+    }
+  },
+  "config": {
+    "features": [
+      "AggregateFeaturePosCashOpenSolution"
+    ],
+    "model": {
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {
+        "nthread": 4,
+        "n_estimators": 5000,
+        "learning_rate": 0.02,
+        "num_leaves": 32,
+        "colsample_bytree": 0.9497036,
+        "subsample": 0.8715623,
+        "max_depth": 8,
+        "reg_alpha": 0.04,
+        "reg_lambda": 0.073,
+        "min_split_gain": 0.0222415,
+        "min_child_weight": 40,
+        "silent": -1,
+        "verbose": -1
+      },
+      "train_params": {
+        "eval_metric": "auc",
+        "verbose": 100,
+        "early_stopping_rounds": 200
+      },
+      "name": "LightGBM"
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "options": {
+      "drop_duplicate_column_on_merge": true
+    },
+    "config_file_name": "lgbm_2_pos_cash"
+  },
+  "features_detail": {
+    "number": 15,
+    "names": [
+      "PosCash_SK_ID_CURR_mean_MONTHS_BALANCE",
+      "PosCash_SK_ID_CURR_mean_SK_DPD",
+      "PosCash_SK_ID_CURR_mean_SK_DPD_DEF",
+      "PosCash_SK_ID_CURR_min_MONTHS_BALANCE",
+      "PosCash_SK_ID_CURR_min_SK_DPD",
+      "PosCash_SK_ID_CURR_min_SK_DPD_DEF",
+      "PosCash_SK_ID_CURR_max_MONTHS_BALANCE",
+      "PosCash_SK_ID_CURR_max_SK_DPD",
+      "PosCash_SK_ID_CURR_max_SK_DPD_DEF",
+      "PosCash_SK_ID_CURR_sum_MONTHS_BALANCE",
+      "PosCash_SK_ID_CURR_sum_SK_DPD",
+      "PosCash_SK_ID_CURR_sum_SK_DPD_DEF",
+      "PosCash_SK_ID_CURR_var_MONTHS_BALANCE",
+      "PosCash_SK_ID_CURR_var_SK_DPD",
+      "PosCash_SK_ID_CURR_var_SK_DPD_DEF"
+    ]
+  }
+}

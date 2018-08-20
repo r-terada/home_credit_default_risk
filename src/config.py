@@ -12,6 +12,7 @@ from features.credit_card_balance import CreditCardBalanceFeatures, CreditCardBa
 from features.agg_application import AggregateFeatureApplicationOpenSolution
 from features.agg_bureau import AggregateFeatureBureauOpenSolution
 from features.agg_credit_card_balance import AggregateFeatureCreditCardBalanceOpenSolution
+from features.agg_pos_cash import AggregateFeaturePosCashOpenSolution
 from features.agg_previous_application import AggregateFeaturePreviousApplicationOpenSolution
 from features.stacking import LGBM1_1, LogReg0
 
@@ -32,6 +33,7 @@ KEY_FEATURE_MAP = {
     "AggregateFeatureApplicationOpenSolution": AggregateFeatureApplicationOpenSolution,
     "AggregateFeatureBureauOpenSolution": AggregateFeatureBureauOpenSolution,
     "AggregateFeatureCreditCardBalanceOpenSolution": AggregateFeatureCreditCardBalanceOpenSolution,
+    "AggregateFeaturePosCashOpenSolution": AggregateFeaturePosCashOpenSolution,
     "AggregateFeaturePreviousApplicationOpenSolution": AggregateFeaturePreviousApplicationOpenSolution,
     "PredsLGBM1_1": LGBM1_1,
     "PredsLogReg0": LogReg0
