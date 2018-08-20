@@ -44,5 +44,6 @@
         "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
         "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
         "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
-    }
+    },
+    "note": "clean some features from open solution"
 }
