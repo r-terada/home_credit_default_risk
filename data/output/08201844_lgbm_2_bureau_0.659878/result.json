@@ -1,0 +1,210 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.6621145392967441,
+      "best_iteration": 701,
+      "elapsed_time": 71.35416889190674,
+      "feature_importance_top10": {
+        "Bureau_SK_ID_CURR_mean_AMT_CREDIT_SUM": 1038,
+        "Bureau_SK_ID_CURR_mean_DAYS_CREDIT": 1035,
+        "Bureau_SK_ID_CURR_max_DAYS_CREDIT": 1004,
+        "Bureau_SK_ID_CURR_mean_AMT_CREDIT_SUM_DEBT": 1001,
+        "Bureau_SK_ID_CURR_max_DAYS_CREDIT_ENDDATE": 924,
+        "Bureau_SK_ID_CURR_min_AMT_CREDIT_SUM": 907,
+        "Bureau_SK_ID_CURR_var_DAYS_CREDIT_ENDDATE": 790,
+        "Bureau_SK_ID_CURR_var_DAYS_CREDIT": 725,
+        "Bureau_SK_ID_CURR_sum_AMT_CREDIT_SUM": 674,
+        "Bureau_SK_ID_CURR_max_AMT_CREDIT_SUM": 656
+      }
+    },
+    "Fold2": {
+      "val_score": 0.6664943690859986,
+      "best_iteration": 618,
+      "elapsed_time": 53.92045307159424,
+      "feature_importance_top10": {
+        "Bureau_SK_ID_CURR_max_DAYS_CREDIT": 885,
+        "Bureau_SK_ID_CURR_min_AMT_CREDIT_SUM": 885,
+        "Bureau_SK_ID_CURR_mean_AMT_CREDIT_SUM": 878,
+        "Bureau_SK_ID_CURR_mean_AMT_CREDIT_SUM_DEBT": 863,
+        "Bureau_SK_ID_CURR_mean_DAYS_CREDIT": 845,
+        "Bureau_SK_ID_CURR_max_DAYS_CREDIT_ENDDATE": 838,
+        "Bureau_SK_ID_CURR_var_DAYS_CREDIT": 684,
+        "Bureau_SK_ID_CURR_var_DAYS_CREDIT_ENDDATE": 638,
+        "Bureau_SK_ID_CURR_sum_AMT_CREDIT_SUM": 623,
+        "Bureau_SK_ID_CURR_var_AMT_CREDIT_SUM": 586
+      }
+    },
+    "Fold3": {
+      "val_score": 0.6564492081676641,
+      "best_iteration": 453,
+      "elapsed_time": 45.829670906066895,
+      "feature_importance_top10": {
+        "Bureau_SK_ID_CURR_mean_AMT_CREDIT_SUM": 864,
+        "Bureau_SK_ID_CURR_mean_AMT_CREDIT_SUM_DEBT": 754,
+        "Bureau_SK_ID_CURR_mean_DAYS_CREDIT": 733,
+        "Bureau_SK_ID_CURR_max_DAYS_CREDIT": 671,
+        "Bureau_SK_ID_CURR_min_AMT_CREDIT_SUM": 654,
+        "Bureau_SK_ID_CURR_max_DAYS_CREDIT_ENDDATE": 618,
+        "Bureau_SK_ID_CURR_mean_AMT_CREDIT_MAX_OVERDUE": 484,
+        "Bureau_SK_ID_CURR_sum_AMT_CREDIT_SUM_DEBT": 477,
+        "Bureau_SK_ID_CURR_sum_AMT_CREDIT_SUM": 459,
+        "Bureau_SK_ID_CURR_var_DAYS_CREDIT": 444
+      }
+    },
+    "Fold4": {
+      "val_score": 0.655944926475708,
+      "best_iteration": 753,
+      "elapsed_time": 57.20930194854736,
+      "feature_importance_top10": {
+        "Bureau_SK_ID_CURR_mean_AMT_CREDIT_SUM": 1029,
+        "Bureau_SK_ID_CURR_max_DAYS_CREDIT": 1001,
+        "Bureau_SK_ID_CURR_mean_DAYS_CREDIT": 994,
+        "Bureau_SK_ID_CURR_min_AMT_CREDIT_SUM": 951,
+        "Bureau_SK_ID_CURR_mean_AMT_CREDIT_SUM_DEBT": 930,
+        "Bureau_SK_ID_CURR_max_DAYS_CREDIT_ENDDATE": 917,
+        "Bureau_SK_ID_CURR_var_DAYS_CREDIT_ENDDATE": 854,
+        "Bureau_SK_ID_CURR_var_DAYS_CREDIT": 767,
+        "Bureau_SK_ID_CURR_sum_AMT_CREDIT_SUM": 762,
+        "Bureau_SK_ID_CURR_sum_AMT_CREDIT_SUM_DEBT": 692
+      }
+    },
+    "Fold5": {
+      "val_score": 0.6601907161261362,
+      "best_iteration": 701,
+      "elapsed_time": 61.48115301132202,
+      "feature_importance_top10": {
+        "Bureau_SK_ID_CURR_mean_AMT_CREDIT_SUM": 1084,
+        "Bureau_SK_ID_CURR_mean_DAYS_CREDIT": 983,
+        "Bureau_SK_ID_CURR_min_AMT_CREDIT_SUM": 948,
+        "Bureau_SK_ID_CURR_max_DAYS_CREDIT": 921,
+        "Bureau_SK_ID_CURR_max_DAYS_CREDIT_ENDDATE": 903,
+        "Bureau_SK_ID_CURR_mean_AMT_CREDIT_SUM_DEBT": 890,
+        "Bureau_SK_ID_CURR_var_DAYS_CREDIT_ENDDATE": 750,
+        "Bureau_SK_ID_CURR_var_DAYS_CREDIT": 727,
+        "Bureau_SK_ID_CURR_sum_AMT_CREDIT_SUM_DEBT": 727,
+        "Bureau_SK_ID_CURR_sum_AMT_CREDIT_SUM": 655
+      }
+    },
+    "Full": {
+      "score": 0.6598781954283908,
+      "val_score_mean": 0.6602387518304502,
+      "val_score_std": 0.003884616085141449,
+      "feature_importance_top10": {
+        "Bureau_SK_ID_CURR_mean_AMT_CREDIT_SUM": 978.6,
+        "Bureau_SK_ID_CURR_mean_DAYS_CREDIT": 918.0,
+        "Bureau_SK_ID_CURR_max_DAYS_CREDIT": 896.4,
+        "Bureau_SK_ID_CURR_mean_AMT_CREDIT_SUM_DEBT": 887.6,
+        "Bureau_SK_ID_CURR_min_AMT_CREDIT_SUM": 869.0,
+        "Bureau_SK_ID_CURR_max_DAYS_CREDIT_ENDDATE": 840.0,
+        "Bureau_SK_ID_CURR_var_DAYS_CREDIT_ENDDATE": 693.6,
+        "Bureau_SK_ID_CURR_var_DAYS_CREDIT": 669.4,
+        "Bureau_SK_ID_CURR_sum_AMT_CREDIT_SUM": 634.6,
+        "Bureau_SK_ID_CURR_sum_AMT_CREDIT_SUM_DEBT": 621.8
+      }
+    }
+  },
+  "config": {
+    "features": [
+      "AggregateFeatureBureauOpenSolution"
+    ],
+    "model": {
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {
+        "nthread": 4,
+        "n_estimators": 5000,
+        "learning_rate": 0.02,
+        "num_leaves": 32,
+        "colsample_bytree": 0.9497036,
+        "subsample": 0.8715623,
+        "max_depth": 8,
+        "reg_alpha": 0.04,
+        "reg_lambda": 0.073,
+        "min_split_gain": 0.0222415,
+        "min_child_weight": 40,
+        "silent": -1,
+        "verbose": -1
+      },
+      "train_params": {
+        "eval_metric": "auc",
+        "verbose": 100,
+        "early_stopping_rounds": 200
+      },
+      "name": "LightGBM"
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "options": {
+      "drop_duplicate_column_on_merge": true
+    },
+    "config_file_name": "lgbm_2_bureau"
+  },
+  "features_detail": {
+    "number": 57,
+    "names": [
+      "Bureau_SK_ID_CURR_count_CREDIT_TYPE",
+      "Bureau_SK_ID_CURR_size_CREDIT_ACTIVE",
+      "Bureau_SK_ID_CURR_mean_AMT_ANNUITY",
+      "Bureau_SK_ID_CURR_mean_AMT_CREDIT_SUM",
+      "Bureau_SK_ID_CURR_mean_AMT_CREDIT_SUM_DEBT",
+      "Bureau_SK_ID_CURR_mean_AMT_CREDIT_SUM_LIMIT",
+      "Bureau_SK_ID_CURR_mean_AMT_CREDIT_SUM_OVERDUE",
+      "Bureau_SK_ID_CURR_mean_AMT_CREDIT_MAX_OVERDUE",
+      "Bureau_SK_ID_CURR_mean_CNT_CREDIT_PROLONG",
+      "Bureau_SK_ID_CURR_mean_CREDIT_DAY_OVERDUE",
+      "Bureau_SK_ID_CURR_mean_DAYS_CREDIT",
+      "Bureau_SK_ID_CURR_mean_DAYS_CREDIT_ENDDATE",
+      "Bureau_SK_ID_CURR_mean_DAYS_CREDIT_UPDATE",
+      "Bureau_SK_ID_CURR_min_AMT_ANNUITY",
+      "Bureau_SK_ID_CURR_min_AMT_CREDIT_SUM",
+      "Bureau_SK_ID_CURR_min_AMT_CREDIT_SUM_DEBT",
+      "Bureau_SK_ID_CURR_min_AMT_CREDIT_SUM_LIMIT",
+      "Bureau_SK_ID_CURR_min_AMT_CREDIT_SUM_OVERDUE",
+      "Bureau_SK_ID_CURR_min_AMT_CREDIT_MAX_OVERDUE",
+      "Bureau_SK_ID_CURR_min_CNT_CREDIT_PROLONG",
+      "Bureau_SK_ID_CURR_min_CREDIT_DAY_OVERDUE",
+      "Bureau_SK_ID_CURR_min_DAYS_CREDIT",
+      "Bureau_SK_ID_CURR_min_DAYS_CREDIT_ENDDATE",
+      "Bureau_SK_ID_CURR_min_DAYS_CREDIT_UPDATE",
+      "Bureau_SK_ID_CURR_max_AMT_ANNUITY",
+      "Bureau_SK_ID_CURR_max_AMT_CREDIT_SUM",
+      "Bureau_SK_ID_CURR_max_AMT_CREDIT_SUM_DEBT",
+      "Bureau_SK_ID_CURR_max_AMT_CREDIT_SUM_LIMIT",
+      "Bureau_SK_ID_CURR_max_AMT_CREDIT_SUM_OVERDUE",
+      "Bureau_SK_ID_CURR_max_AMT_CREDIT_MAX_OVERDUE",
+      "Bureau_SK_ID_CURR_max_CNT_CREDIT_PROLONG",
+      "Bureau_SK_ID_CURR_max_CREDIT_DAY_OVERDUE",
+      "Bureau_SK_ID_CURR_max_DAYS_CREDIT",
+      "Bureau_SK_ID_CURR_max_DAYS_CREDIT_ENDDATE",
+      "Bureau_SK_ID_CURR_max_DAYS_CREDIT_UPDATE",
+      "Bureau_SK_ID_CURR_sum_AMT_ANNUITY",
+      "Bureau_SK_ID_CURR_sum_AMT_CREDIT_SUM",
+      "Bureau_SK_ID_CURR_sum_AMT_CREDIT_SUM_DEBT",
+      "Bureau_SK_ID_CURR_sum_AMT_CREDIT_SUM_LIMIT",
+      "Bureau_SK_ID_CURR_sum_AMT_CREDIT_SUM_OVERDUE",
+      "Bureau_SK_ID_CURR_sum_AMT_CREDIT_MAX_OVERDUE",
+      "Bureau_SK_ID_CURR_sum_CNT_CREDIT_PROLONG",
+      "Bureau_SK_ID_CURR_sum_CREDIT_DAY_OVERDUE",
+      "Bureau_SK_ID_CURR_sum_DAYS_CREDIT",
+      "Bureau_SK_ID_CURR_sum_DAYS_CREDIT_ENDDATE",
+      "Bureau_SK_ID_CURR_sum_DAYS_CREDIT_UPDATE",
+      "Bureau_SK_ID_CURR_var_AMT_ANNUITY",
+      "Bureau_SK_ID_CURR_var_AMT_CREDIT_SUM",
+      "Bureau_SK_ID_CURR_var_AMT_CREDIT_SUM_DEBT",
+      "Bureau_SK_ID_CURR_var_AMT_CREDIT_SUM_LIMIT",
+      "Bureau_SK_ID_CURR_var_AMT_CREDIT_SUM_OVERDUE",
+      "Bureau_SK_ID_CURR_var_AMT_CREDIT_MAX_OVERDUE",
+      "Bureau_SK_ID_CURR_var_CNT_CREDIT_PROLONG",
+      "Bureau_SK_ID_CURR_var_CREDIT_DAY_OVERDUE",
+      "Bureau_SK_ID_CURR_var_DAYS_CREDIT",
+      "Bureau_SK_ID_CURR_var_DAYS_CREDIT_ENDDATE",
+      "Bureau_SK_ID_CURR_var_DAYS_CREDIT_UPDATE"
+    ]
+  }
+}
