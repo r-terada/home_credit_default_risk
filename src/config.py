@@ -9,6 +9,7 @@ from features.previous_application import PreviousApplicationFeatures, PreviousA
 from features.pos_cash import PosCashFeatures, PosCashFeaturesOpenSolution
 from features.installments_payments import InstallmentsPaymentsFeatures, InstallmentsPaymentsFeaturesOpenSolution
 from features.credit_card_balance import CreditCardBalanceFeatures, CreditCardBalanceFeaturesOpenSolution
+from features.agg_application import AggregateFeatureApplicationOpenSolution
 from features.agg_bureau import AggregateFeatureBureauOpenSolution
 from features.agg_credit_card_balance import AggregateFeatureCreditCardBalanceOpenSolution
 from features.agg_previous_application import AggregateFeaturePreviousApplicationOpenSolution
@@ -28,6 +29,7 @@ KEY_FEATURE_MAP = {
     "InstallmentsPaymentsFeaturesOpenSolution": InstallmentsPaymentsFeaturesOpenSolution,
     "CreditCardBalanceFeatures": CreditCardBalanceFeatures,
     "CreditCardBalanceFeaturesOpenSolution": CreditCardBalanceFeaturesOpenSolution,
+    "AggregateFeatureApplicationOpenSolution": AggregateFeatureApplicationOpenSolution,
     "AggregateFeatureBureauOpenSolution": AggregateFeatureBureauOpenSolution,
     "AggregateFeatureCreditCardBalanceOpenSolution": AggregateFeatureCreditCardBalanceOpenSolution,
     "AggregateFeaturePreviousApplicationOpenSolution": AggregateFeaturePreviousApplicationOpenSolution,
