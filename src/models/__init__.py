@@ -87,6 +87,8 @@ class LightGBM(Model):
 
         trials["Full"] = {
             "score": score,
+            "val_score_mean": np.mean([trials[f"Fold{n_fold + 1}"]["val_score"] for n_fold in range(folds.n_splits)]),
+            "val_score_std": np.std([trials[f"Fold{n_fold + 1}"]["val_score"] for n_fold in range(folds.n_splits)]),
             "feature_importance_top10": {
                 feature: row["importance"] for feature, row in
                 feature_importance_df.groupby("feature").agg({"importance": "mean"}).sort_values("importance", ascending=False).head(10).iterrows()
@@ -181,6 +183,8 @@ class XGBoost(Model):
 
         trials["Full"] = {
             "score": score,
+            "val_score_mean": np.mean([trials[f"Fold{n_fold + 1}"]["val_score"] for n_fold in range(folds.n_splits)]),
+            "val_score_std": np.std([trials[f"Fold{n_fold + 1}"]["val_score"] for n_fold in range(folds.n_splits)]),
             "feature_importance_top10": {
                 feature: float(row["importance"]) for feature, row in
                 feature_importance_df.groupby("feature").agg({"importance": "mean"}).sort_values("importance", ascending=False).head(10).iterrows()
@@ -266,8 +270,10 @@ class SKLearnClassifier(Model):
         print(f'Full AUC score {score:.6f}')
 
         trials["Full"] = {
-            "score": score
-        }
+            "score": score,
+            "val_score_mean": np.mean([trials[f"Fold{n_fold + 1}"]["val_score"] for n_fold in range(folds.n_splits)]),
+            "val_score_std": np.std([trials[f"Fold{n_fold + 1}"]["val_score"] for n_fold in range(folds.n_splits)])
+       }
 
         # write results
         output_directory = os.path.join(

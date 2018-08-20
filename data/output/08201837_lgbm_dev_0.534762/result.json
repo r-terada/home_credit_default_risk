@@ -1,0 +1,171 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.5798534023423436,
+      "best_iteration": 5,
+      "elapsed_time": 0.7019221782684326,
+      "feature_importance_top10": {
+        "POS_MONTHS_BALANCE_MEAN": 39,
+        "POS_MONTHS_BALANCE_SIZE": 30,
+        "POS_SK_DPD_MEAN": 22,
+        "POS_MONTHS_BALANCE_MAX": 21,
+        "POS_SK_DPD_DEF_MEAN": 17,
+        "POS_NAME_CONTRACT_STATUS_Active_MEAN": 8,
+        "POS_NAME_CONTRACT_STATUS_Returned to the store_MEAN": 5,
+        "POS_NAME_CONTRACT_STATUS_Completed_MEAN": 5,
+        "POS_SK_DPD_MAX": 4,
+        "POS_SK_DPD_DEF_MAX": 3
+      }
+    },
+    "Fold2": {
+      "val_score": 0.5800830195399492,
+      "best_iteration": 4,
+      "elapsed_time": 0.6562278270721436,
+      "feature_importance_top10": {
+        "POS_MONTHS_BALANCE_MEAN": 29,
+        "POS_MONTHS_BALANCE_SIZE": 24,
+        "POS_SK_DPD_DEF_MEAN": 22,
+        "POS_MONTHS_BALANCE_MAX": 17,
+        "POS_NAME_CONTRACT_STATUS_Active_MEAN": 12,
+        "POS_SK_DPD_MEAN": 10,
+        "POS_SK_DPD_MAX": 6,
+        "POS_NAME_CONTRACT_STATUS_Completed_MEAN": 2,
+        "POS_NAME_CONTRACT_STATUS_Returned to the store_MEAN": 1,
+        "POS_NAME_CONTRACT_STATUS_Signed_MEAN": 1
+      }
+    },
+    "Fold3": {
+      "val_score": 0.5829071484187532,
+      "best_iteration": 2,
+      "elapsed_time": 0.5761950016021729,
+      "feature_importance_top10": {
+        "POS_MONTHS_BALANCE_MEAN": 15,
+        "POS_MONTHS_BALANCE_SIZE": 12,
+        "POS_SK_DPD_MEAN": 10,
+        "POS_SK_DPD_DEF_MEAN": 8,
+        "POS_MONTHS_BALANCE_MAX": 7,
+        "POS_NAME_CONTRACT_STATUS_Returned to the store_MEAN": 3,
+        "POS_SK_DPD_DEF_MAX": 2,
+        "POS_NAME_CONTRACT_STATUS_Active_MEAN": 2,
+        "POS_NAME_CONTRACT_STATUS_Completed_MEAN": 2,
+        "POS_SK_DPD_MAX": 1
+      }
+    },
+    "Fold4": {
+      "val_score": 0.5797799125958045,
+      "best_iteration": 4,
+      "elapsed_time": 0.637829065322876,
+      "feature_importance_top10": {
+        "POS_MONTHS_BALANCE_MEAN": 33,
+        "POS_SK_DPD_DEF_MEAN": 23,
+        "POS_MONTHS_BALANCE_SIZE": 22,
+        "POS_MONTHS_BALANCE_MAX": 19,
+        "POS_SK_DPD_MEAN": 10,
+        "POS_NAME_CONTRACT_STATUS_Active_MEAN": 5,
+        "POS_NAME_CONTRACT_STATUS_Completed_MEAN": 5,
+        "POS_SK_DPD_MAX": 3,
+        "POS_NAME_CONTRACT_STATUS_Signed_MEAN": 2,
+        "POS_NAME_CONTRACT_STATUS_Returned to the store_MEAN": 1
+      }
+    },
+    "Fold5": {
+      "val_score": 0.5836408087238399,
+      "best_iteration": 5,
+      "elapsed_time": 0.6568191051483154,
+      "feature_importance_top10": {
+        "POS_MONTHS_BALANCE_SIZE": 37,
+        "POS_MONTHS_BALANCE_MEAN": 34,
+        "POS_MONTHS_BALANCE_MAX": 23,
+        "POS_SK_DPD_MEAN": 20,
+        "POS_SK_DPD_DEF_MEAN": 17,
+        "POS_NAME_CONTRACT_STATUS_Active_MEAN": 7,
+        "POS_SK_DPD_MAX": 5,
+        "POS_NAME_CONTRACT_STATUS_Completed_MEAN": 5,
+        "POS_NAME_CONTRACT_STATUS_Signed_MEAN": 4,
+        "POS_SK_DPD_DEF_MAX": 2
+      }
+    },
+    "Full": {
+      "score": 0.5347620656311065,
+      "val_score_mean": 0.5812528583241381,
+      "val_score_std": 0.001669464092046723,
+      "feature_importance_top10": {
+        "POS_MONTHS_BALANCE_MEAN": 30.0,
+        "POS_MONTHS_BALANCE_SIZE": 25.0,
+        "POS_SK_DPD_DEF_MEAN": 17.4,
+        "POS_MONTHS_BALANCE_MAX": 17.4,
+        "POS_SK_DPD_MEAN": 14.4,
+        "POS_NAME_CONTRACT_STATUS_Active_MEAN": 6.8,
+        "POS_SK_DPD_MAX": 3.8,
+        "POS_NAME_CONTRACT_STATUS_Completed_MEAN": 3.8,
+        "POS_NAME_CONTRACT_STATUS_Returned to the store_MEAN": 2.2,
+        "POS_SK_DPD_DEF_MAX": 1.6
+      }
+    }
+  },
+  "config": {
+    "features": [
+      "PosCashFeatures"
+    ],
+    "model": {
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {
+        "nthread": 4,
+        "n_estimators": 10,
+        "learning_rate": 0.02,
+        "num_leaves": 32,
+        "colsample_bytree": 0.9497036,
+        "subsample": 0.8715623,
+        "max_depth": 8,
+        "reg_alpha": 0.04,
+        "reg_lambda": 0.073,
+        "min_split_gain": 0.0222415,
+        "min_child_weight": 40,
+        "silent": -1,
+        "verbose": -1
+      },
+      "train_params": {
+        "eval_metric": "auc",
+        "verbose": 5,
+        "early_stopping_rounds": 1
+      },
+      "name": "LightGBM"
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "options": {
+      "drop_duplicate_column_on_merge": true
+    },
+    "config_file_name": "lgbm_dev"
+  },
+  "features_detail": {
+    "number": 18,
+    "names": [
+      "POS_MONTHS_BALANCE_MAX",
+      "POS_MONTHS_BALANCE_MEAN",
+      "POS_MONTHS_BALANCE_SIZE",
+      "POS_SK_DPD_MAX",
+      "POS_SK_DPD_MEAN",
+      "POS_SK_DPD_DEF_MAX",
+      "POS_SK_DPD_DEF_MEAN",
+      "POS_NAME_CONTRACT_STATUS_Active_MEAN",
+      "POS_NAME_CONTRACT_STATUS_Amortized debt_MEAN",
+      "POS_NAME_CONTRACT_STATUS_Approved_MEAN",
+      "POS_NAME_CONTRACT_STATUS_Canceled_MEAN",
+      "POS_NAME_CONTRACT_STATUS_Completed_MEAN",
+      "POS_NAME_CONTRACT_STATUS_Demand_MEAN",
+      "POS_NAME_CONTRACT_STATUS_Returned to the store_MEAN",
+      "POS_NAME_CONTRACT_STATUS_Signed_MEAN",
+      "POS_NAME_CONTRACT_STATUS_XNA_MEAN",
+      "POS_NAME_CONTRACT_STATUS_nan_MEAN",
+      "POS_COUNT"
+    ]
+  }
+}
