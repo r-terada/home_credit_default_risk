@@ -108,7 +108,7 @@ class ApplicationFeaturesLeakyTargetEncoding(Feature):
         # fit with train data and transform with both date
         train_df = df[df['TARGET'].notnull()].copy()
         categorical_columns = [col for col in df.columns if df[col].dtype == 'object']
-        df = TargetEncoder(cols=categorical_columns).fit(df, df['TARGET']).transform(df)
+        df = TargetEncoder(cols=categorical_columns).fit(train_df, train_df['TARGET']).transform(df)
         return df[categorical_columns + ['SK_ID_CURR']].rename(
             columns={col: f"{col}_target_encode" for col in categorical_columns}
         )
