@@ -21,3 +21,11 @@ class LGBM1_1(StackingFeature):
 
 class LogReg0(StackingFeature):
     _name = "08192245_logreg_0_0.777166"
+
+
+class LGBM3_1(StackingFeature):
+    _name = "08210425_lgbm_3-1_0.794708"
+
+
+class LGBM3_1_0(StackingFeature):
+    _name = "08211432_lgbm_3-1-0_0.795889"
