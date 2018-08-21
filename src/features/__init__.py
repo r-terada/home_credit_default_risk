@@ -107,6 +107,8 @@ class Feature:
             df = cls._create_feature(conf)
             print(f"save to {pkl_fpath}")
             cls._save_as_pickled_object(df, pkl_fpath)
+            print("head of feature")
+            print(df.head())
             return df
 
     @classmethod
