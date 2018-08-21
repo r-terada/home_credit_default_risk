@@ -1,0 +1,169 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.6378988249737265,
+      "best_iteration": 300,
+      "elapsed_time": 23.773743152618408,
+      "feature_importance_top10": {
+        "ORGANIZATION_TYPE": 1537,
+        "OCCUPATION_TYPE": 987,
+        "NAME_FAMILY_STATUS": 948,
+        "CODE_GENDER": 728,
+        "FLAG_OWN_CAR": 687,
+        "WALLSMATERIAL_MODE": 615,
+        "NAME_CONTRACT_TYPE": 581,
+        "NAME_HOUSING_TYPE": 555,
+        "WEEKDAY_APPR_PROCESS_START": 506,
+        "NAME_INCOME_TYPE": 500
+      }
+    },
+    "Fold2": {
+      "val_score": 0.6286229565178296,
+      "best_iteration": 338,
+      "elapsed_time": 23.27375102043152,
+      "feature_importance_top10": {
+        "ORGANIZATION_TYPE": 1816,
+        "OCCUPATION_TYPE": 1102,
+        "NAME_FAMILY_STATUS": 1028,
+        "FLAG_OWN_CAR": 782,
+        "CODE_GENDER": 750,
+        "WALLSMATERIAL_MODE": 659,
+        "WEEKDAY_APPR_PROCESS_START": 646,
+        "NAME_CONTRACT_TYPE": 638,
+        "NAME_EDUCATION_TYPE": 628,
+        "NAME_HOUSING_TYPE": 625
+      }
+    },
+    "Fold3": {
+      "val_score": 0.6359889996019148,
+      "best_iteration": 425,
+      "elapsed_time": 27.25992178916931,
+      "feature_importance_top10": {
+        "ORGANIZATION_TYPE": 2378,
+        "OCCUPATION_TYPE": 1488,
+        "NAME_FAMILY_STATUS": 1246,
+        "WEEKDAY_APPR_PROCESS_START": 970,
+        "CODE_GENDER": 829,
+        "WALLSMATERIAL_MODE": 811,
+        "FLAG_OWN_CAR": 808,
+        "NAME_INCOME_TYPE": 704,
+        "NAME_CONTRACT_TYPE": 702,
+        "NAME_EDUCATION_TYPE": 668
+      }
+    },
+    "Fold4": {
+      "val_score": 0.6413466866541122,
+      "best_iteration": 518,
+      "elapsed_time": 30.31316900253296,
+      "feature_importance_top10": {
+        "ORGANIZATION_TYPE": 2975,
+        "OCCUPATION_TYPE": 1904,
+        "WEEKDAY_APPR_PROCESS_START": 1533,
+        "NAME_FAMILY_STATUS": 1463,
+        "WALLSMATERIAL_MODE": 1090,
+        "CODE_GENDER": 903,
+        "FLAG_OWN_CAR": 896,
+        "NAME_HOUSING_TYPE": 825,
+        "NAME_INCOME_TYPE": 780,
+        "NAME_EDUCATION_TYPE": 767
+      }
+    },
+    "Fold5": {
+      "val_score": 0.6410837035112922,
+      "best_iteration": 453,
+      "elapsed_time": 32.342581033706665,
+      "feature_importance_top10": {
+        "ORGANIZATION_TYPE": 2615,
+        "OCCUPATION_TYPE": 1627,
+        "NAME_FAMILY_STATUS": 1357,
+        "WEEKDAY_APPR_PROCESS_START": 1169,
+        "WALLSMATERIAL_MODE": 986,
+        "CODE_GENDER": 813,
+        "FLAG_OWN_CAR": 762,
+        "NAME_HOUSING_TYPE": 739,
+        "NAME_EDUCATION_TYPE": 729,
+        "NAME_INCOME_TYPE": 681
+      }
+    },
+    "Full": {
+      "score": 0.6369231552801149,
+      "val_score_mean": 0.636988234251775,
+      "val_score_std": 0.004638415520703528,
+      "feature_importance_top10": {
+        "ORGANIZATION_TYPE": 2264.2,
+        "OCCUPATION_TYPE": 1421.6,
+        "NAME_FAMILY_STATUS": 1208.4,
+        "WEEKDAY_APPR_PROCESS_START": 964.8,
+        "WALLSMATERIAL_MODE": 832.2,
+        "CODE_GENDER": 804.6,
+        "FLAG_OWN_CAR": 787.0,
+        "NAME_HOUSING_TYPE": 680.0,
+        "NAME_CONTRACT_TYPE": 658.4,
+        "NAME_EDUCATION_TYPE": 656.6
+      }
+    }
+  },
+  "config": {
+    "features": [
+      "ApplicationFeaturesLeakyTargetEncoding"
+    ],
+    "model": {
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {
+        "nthread": 4,
+        "n_estimators": 5000,
+        "learning_rate": 0.02,
+        "num_leaves": 32,
+        "colsample_bytree": 0.9497036,
+        "subsample": 0.8715623,
+        "max_depth": 8,
+        "reg_alpha": 0.04,
+        "reg_lambda": 0.073,
+        "min_split_gain": 0.0222415,
+        "min_child_weight": 40,
+        "silent": -1,
+        "verbose": -1
+      },
+      "train_params": {
+        "eval_metric": "auc",
+        "verbose": 100,
+        "early_stopping_rounds": 200
+      },
+      "name": "LightGBM"
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "options": {
+      "drop_duplicate_column_on_merge": true
+    },
+    "config_file_name": "lgbm_3_application"
+  },
+  "features_detail": {
+    "number": 16,
+    "names": [
+      "CODE_GENDER",
+      "EMERGENCYSTATE_MODE",
+      "FLAG_OWN_CAR",
+      "FLAG_OWN_REALTY",
+      "FONDKAPREMONT_MODE",
+      "HOUSETYPE_MODE",
+      "NAME_CONTRACT_TYPE",
+      "NAME_EDUCATION_TYPE",
+      "NAME_FAMILY_STATUS",
+      "NAME_HOUSING_TYPE",
+      "NAME_INCOME_TYPE",
+      "NAME_TYPE_SUITE",
+      "OCCUPATION_TYPE",
+      "ORGANIZATION_TYPE",
+      "WALLSMATERIAL_MODE",
+      "WEEKDAY_APPR_PROCESS_START"
+    ]
+  }
+}

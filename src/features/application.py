@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 
 from typing import Tuple
+from category_encoders import TargetEncoder
 from features import one_hot_encoder, Feature
 from features.raw_data import Application
 
@@ -98,3 +99,16 @@ class ApplicationFeaturesOpenSolution(Feature):
         features['young_age'] = (app['DAYS_BIRTH'] < -14000).astype(int)
 
         return features
+
+
+class ApplicationFeaturesLeakyTargetEncoding(Feature):
+    @classmethod
+    def _create_feature(cls, conf) -> pd.DataFrame:
+        df = Application.get_df(conf)
+        # fit with train data and transform with both date
+        train_df = df[df['TARGET'].notnull()].copy()
+        categorical_columns = [col for col in df.columns if df[col].dtype == 'object']
+        df = TargetEncoder(cols=categorical_columns).fit(df, df['TARGET']).transform(df)
+        return df[categorical_columns + ['SK_ID_CURR']].rename(
+            columns={col: f"{col}_target_encode" for col in categorical_columns}
+        )

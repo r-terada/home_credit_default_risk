@@ -3,7 +3,7 @@ import json
 from attrdict import AttrDict
 
 from models import LightGBM, XGBoost, LogReg, RandomForest
-from features.application import ApplicationFeatures, ApplicationFeaturesOpenSolution
+from features.application import ApplicationFeatures, ApplicationFeaturesOpenSolution, ApplicationFeaturesLeakyTargetEncoding
 from features.bureau import BureauFeatures, BureauFeaturesOpenSolution
 from features.previous_application import PreviousApplicationFeatures, PreviousApplicationFeaturesOpenSolution
 from features.pos_cash import PosCashFeatures, PosCashFeaturesOpenSolution
@@ -37,6 +37,7 @@ KEY_FEATURE_MAP = {
     "AggregateFeatureInstallmentsPaymentsOpenSolution": AggregateFeatureInstallmentsPaymentsOpenSolution,
     "AggregateFeaturePosCashOpenSolution": AggregateFeaturePosCashOpenSolution,
     "AggregateFeaturePreviousApplicationOpenSolution": AggregateFeaturePreviousApplicationOpenSolution,
+    "ApplicationFeaturesLeakyTargetEncoding": ApplicationFeaturesLeakyTargetEncoding,
     "PredsLGBM1_1": LGBM1_1,
     "PredsLogReg0": LogReg0
 }
