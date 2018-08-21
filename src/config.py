@@ -4,7 +4,7 @@ from attrdict import AttrDict
 
 from models import LightGBM, XGBoost, LogReg, RandomForest
 from features.application import ApplicationFeatures, ApplicationFeaturesOpenSolution, ApplicationFeaturesLeakyTargetEncoding
-from features.bureau import BureauFeatures, BureauFeaturesOpenSolution
+from features.bureau import BureauFeatures, BureauFeaturesOpenSolution, BureauFeaturesLeakyTargetEncoding
 from features.previous_application import PreviousApplicationFeatures, PreviousApplicationFeaturesOpenSolution
 from features.pos_cash import PosCashFeatures, PosCashFeaturesOpenSolution
 from features.installments_payments import InstallmentsPaymentsFeatures, InstallmentsPaymentsFeaturesOpenSolution
@@ -38,6 +38,7 @@ KEY_FEATURE_MAP = {
     "AggregateFeaturePosCashOpenSolution": AggregateFeaturePosCashOpenSolution,
     "AggregateFeaturePreviousApplicationOpenSolution": AggregateFeaturePreviousApplicationOpenSolution,
     "ApplicationFeaturesLeakyTargetEncoding": ApplicationFeaturesLeakyTargetEncoding,
+    "BureauFeaturesLeakyTargetEncoding": BureauFeaturesLeakyTargetEncoding,
     "PredsLGBM1_1": LGBM1_1,
     "PredsLogReg0": LogReg0
 }

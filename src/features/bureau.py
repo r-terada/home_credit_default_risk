@@ -2,8 +2,10 @@ import os
 import gc
 import numpy as np
 import pandas as pd
+from category_encoders import TargetEncoder
 
 from features import one_hot_encoder, Feature
+from features.base import Base
 from features.raw_data import Bureau, BureauBalance
 
 
@@ -127,3 +129,18 @@ class BureauFeaturesOpenSolution(Feature):
             features['bureau_total_customer_overdue'] / features['bureau_total_customer_debt']
 
         return features
+
+
+class BureauFeaturesLeakyTargetEncoding(Feature):
+    @classmethod
+    def _create_feature(cls, conf) -> pd.DataFrame:
+        df = Base.get_df(conf)
+        df = df.merge(Bureau.get_df(conf), on="SK_ID_CURR", how="left")
+        # fit with train data and transform with both date
+        train_df = df[df['TARGET'].notnull()].copy()
+        categorical_columns = [col for col in df.columns if df[col].dtype == 'object']
+        df = TargetEncoder(cols=categorical_columns).fit(train_df, train_df['TARGET']).transform(df)
+        df = df.groupby(by=['SK_ID_CURR'], as_index=False).agg({col: 'mean' for col in categorical_columns})
+        return df[categorical_columns + ['SK_ID_CURR']].rename(
+            columns={col: f"{col}_target_encode" for col in categorical_columns}
+        )
