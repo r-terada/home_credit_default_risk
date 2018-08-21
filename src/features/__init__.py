@@ -130,5 +130,3 @@ class Feature:
     @classmethod
     def _create_feature(cls, conf) -> pd.DataFrame:
         raise NotImplementedError
-
-
