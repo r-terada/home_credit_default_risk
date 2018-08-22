@@ -33,6 +33,12 @@ def get_train_test(conf):
             del f
             gc.collect()
 
+    if "drop_features_list_file" in conf.options:
+        with open(conf.options.drop_features_list_file, "r") as fp:
+            line = fp.read()
+            feature_to_drop = eval(line)
+        df = df.drop(feature_to_drop, axis=1)
+
     train_df = df[df['TARGET'].notnull()].copy()
     test_df = df[df['TARGET'].isnull()].copy()
     del df
