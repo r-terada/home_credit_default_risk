@@ -1,0 +1,169 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.6327350653698605,
+      "best_iteration": 430,
+      "elapsed_time": 31.681729078292847,
+      "feature_importance_top10": {
+        "NAME_CLIENT_TYPE_target_encode": 1297,
+        "NAME_YIELD_GROUP_target_encode": 1222,
+        "CHANNEL_TYPE_target_encode": 1175,
+        "PRODUCT_COMBINATION_target_encode": 1124,
+        "CODE_REJECT_REASON_target_encode": 927,
+        "NAME_TYPE_SUITE_target_encode": 914,
+        "NAME_GOODS_CATEGORY_target_encode": 897,
+        "NAME_SELLER_INDUSTRY_target_encode": 872,
+        "WEEKDAY_APPR_PROCESS_START_target_encode": 855,
+        "NAME_CONTRACT_STATUS_target_encode": 794
+      }
+    },
+    "Fold2": {
+      "val_score": 0.6309940387673296,
+      "best_iteration": 501,
+      "elapsed_time": 33.38242268562317,
+      "feature_importance_top10": {
+        "NAME_CLIENT_TYPE_target_encode": 1446,
+        "CHANNEL_TYPE_target_encode": 1417,
+        "NAME_YIELD_GROUP_target_encode": 1343,
+        "WEEKDAY_APPR_PROCESS_START_target_encode": 1214,
+        "PRODUCT_COMBINATION_target_encode": 1210,
+        "CODE_REJECT_REASON_target_encode": 1144,
+        "NAME_TYPE_SUITE_target_encode": 1070,
+        "NAME_GOODS_CATEGORY_target_encode": 1046,
+        "NAME_SELLER_INDUSTRY_target_encode": 1013,
+        "NAME_CONTRACT_STATUS_target_encode": 883
+      }
+    },
+    "Fold3": {
+      "val_score": 0.630897774418631,
+      "best_iteration": 455,
+      "elapsed_time": 34.920339822769165,
+      "feature_importance_top10": {
+        "NAME_CLIENT_TYPE_target_encode": 1417,
+        "NAME_YIELD_GROUP_target_encode": 1315,
+        "CHANNEL_TYPE_target_encode": 1176,
+        "PRODUCT_COMBINATION_target_encode": 1079,
+        "WEEKDAY_APPR_PROCESS_START_target_encode": 1018,
+        "NAME_TYPE_SUITE_target_encode": 1015,
+        "CODE_REJECT_REASON_target_encode": 1007,
+        "NAME_GOODS_CATEGORY_target_encode": 997,
+        "NAME_SELLER_INDUSTRY_target_encode": 940,
+        "NAME_CONTRACT_STATUS_target_encode": 803
+      }
+    },
+    "Fold4": {
+      "val_score": 0.6355472423561139,
+      "best_iteration": 374,
+      "elapsed_time": 27.008780241012573,
+      "feature_importance_top10": {
+        "NAME_CLIENT_TYPE_target_encode": 1198,
+        "NAME_YIELD_GROUP_target_encode": 1089,
+        "CHANNEL_TYPE_target_encode": 1049,
+        "PRODUCT_COMBINATION_target_encode": 921,
+        "CODE_REJECT_REASON_target_encode": 914,
+        "NAME_TYPE_SUITE_target_encode": 841,
+        "NAME_GOODS_CATEGORY_target_encode": 746,
+        "NAME_SELLER_INDUSTRY_target_encode": 717,
+        "WEEKDAY_APPR_PROCESS_START_target_encode": 700,
+        "NAME_CONTRACT_STATUS_target_encode": 668
+      }
+    },
+    "Fold5": {
+      "val_score": 0.6395339942699165,
+      "best_iteration": 319,
+      "elapsed_time": 22.37978506088257,
+      "feature_importance_top10": {
+        "NAME_CLIENT_TYPE_target_encode": 1108,
+        "CHANNEL_TYPE_target_encode": 1006,
+        "NAME_YIELD_GROUP_target_encode": 903,
+        "PRODUCT_COMBINATION_target_encode": 832,
+        "CODE_REJECT_REASON_target_encode": 829,
+        "NAME_SELLER_INDUSTRY_target_encode": 649,
+        "NAME_GOODS_CATEGORY_target_encode": 633,
+        "NAME_TYPE_SUITE_target_encode": 598,
+        "NAME_CONTRACT_STATUS_target_encode": 574,
+        "WEEKDAY_APPR_PROCESS_START_target_encode": 567
+      }
+    },
+    "Full": {
+      "score": 0.6337181983484443,
+      "val_score_mean": 0.6339416230363704,
+      "val_score_std": 0.0032637916063116617,
+      "feature_importance_top10": {
+        "NAME_CLIENT_TYPE_target_encode": 1293.2,
+        "NAME_YIELD_GROUP_target_encode": 1174.4,
+        "CHANNEL_TYPE_target_encode": 1164.6,
+        "PRODUCT_COMBINATION_target_encode": 1033.2,
+        "CODE_REJECT_REASON_target_encode": 964.2,
+        "NAME_TYPE_SUITE_target_encode": 887.6,
+        "WEEKDAY_APPR_PROCESS_START_target_encode": 870.8,
+        "NAME_GOODS_CATEGORY_target_encode": 863.8,
+        "NAME_SELLER_INDUSTRY_target_encode": 838.2,
+        "NAME_CONTRACT_STATUS_target_encode": 744.4
+      }
+    }
+  },
+  "config": {
+    "features": [
+      "PreviousApplicationFeaturesLeakyTargetEncoding"
+    ],
+    "model": {
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {
+        "nthread": 4,
+        "n_estimators": 5000,
+        "learning_rate": 0.02,
+        "num_leaves": 32,
+        "colsample_bytree": 0.9497036,
+        "subsample": 0.8715623,
+        "max_depth": 8,
+        "reg_alpha": 0.04,
+        "reg_lambda": 0.073,
+        "min_split_gain": 0.0222415,
+        "min_child_weight": 40,
+        "silent": -1,
+        "verbose": -1
+      },
+      "train_params": {
+        "eval_metric": "auc",
+        "verbose": 100,
+        "early_stopping_rounds": 200
+      },
+      "name": "LightGBM"
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "options": {
+      "drop_duplicate_column_on_merge": true
+    },
+    "config_file_name": "lgbm_3_previous_appliation"
+  },
+  "features_detail": {
+    "number": 16,
+    "names": [
+      "NAME_CONTRACT_TYPE_target_encode",
+      "WEEKDAY_APPR_PROCESS_START_target_encode",
+      "FLAG_LAST_APPL_PER_CONTRACT_target_encode",
+      "NAME_CASH_LOAN_PURPOSE_target_encode",
+      "NAME_CONTRACT_STATUS_target_encode",
+      "NAME_PAYMENT_TYPE_target_encode",
+      "CODE_REJECT_REASON_target_encode",
+      "NAME_TYPE_SUITE_target_encode",
+      "NAME_CLIENT_TYPE_target_encode",
+      "NAME_GOODS_CATEGORY_target_encode",
+      "NAME_PORTFOLIO_target_encode",
+      "NAME_PRODUCT_TYPE_target_encode",
+      "CHANNEL_TYPE_target_encode",
+      "NAME_SELLER_INDUSTRY_target_encode",
+      "NAME_YIELD_GROUP_target_encode",
+      "PRODUCT_COMBINATION_target_encode"
+    ]
+  }
+}
