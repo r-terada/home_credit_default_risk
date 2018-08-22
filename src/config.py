@@ -15,6 +15,7 @@ from features.agg_credit_card_balance import AggregateFeatureCreditCardBalanceOp
 from features.agg_installments_payments import AggregateFeatureInstallmentsPaymentsOpenSolution
 from features.agg_pos_cash import AggregateFeaturePosCashOpenSolution
 from features.agg_previous_application import AggregateFeaturePreviousApplicationOpenSolution
+from features.category_vector import ApplicationFeaturesLDAOccupationTypeOrganizationType5, ApplicationFeaturesLDAOrganizationTypeOccupationType5
 from features.stacking import LGBM1_1, LogReg0, LGBM3_1, LGBM3_1_0, All
 
 
@@ -42,6 +43,8 @@ KEY_FEATURE_MAP = {
     "PreviousApplicationFeaturesLeakyTargetEncoding": PreviousApplicationFeaturesLeakyTargetEncoding,
     "PosCashFeaturesLeakyTargetEncoding": PosCashFeaturesLeakyTargetEncoding,
     "CreditCardBalanceFeaturesLeakyTargetEncoding": CreditCardBalanceFeaturesLeakyTargetEncoding,
+    "ApplicationFeaturesLDAOccupationTypeOrganizationType5": ApplicationFeaturesLDAOccupationTypeOrganizationType5,
+    "ApplicationFeaturesLDAOrganizationTypeOccupationType5": ApplicationFeaturesLDAOrganizationTypeOccupationType5,
     "PredsLGBM1_1": LGBM1_1,
     "PredsLogReg0": LogReg0,
     "PredsLGBM3_1": LGBM3_1,

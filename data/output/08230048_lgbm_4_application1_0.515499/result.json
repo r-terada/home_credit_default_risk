@@ -1,0 +1,128 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.5787370627253628,
+      "best_iteration": 3,
+      "elapsed_time": 5.151780843734741,
+      "feature_importance_top10": {
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim0": 10,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim3": 7,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim2": 6,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim4": 4,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim1": 3
+      }
+    },
+    "Fold2": {
+      "val_score": 0.5754798954301705,
+      "best_iteration": 2,
+      "elapsed_time": 6.6583850383758545,
+      "feature_importance_top10": {
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim0": 6,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim3": 6,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim1": 5,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim2": 2,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim4": 1
+      }
+    },
+    "Fold3": {
+      "val_score": 0.5761141172493852,
+      "best_iteration": 167,
+      "elapsed_time": 9.693644762039185,
+      "feature_importance_top10": {
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim0": 701,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim1": 497,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim3": 325,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim2": 252,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim4": 199
+      }
+    },
+    "Fold4": {
+      "val_score": 0.575359684336155,
+      "best_iteration": 90,
+      "elapsed_time": 7.911455154418945,
+      "feature_importance_top10": {
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim0": 319,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim1": 265,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim3": 191,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim2": 152,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim4": 102
+      }
+    },
+    "Fold5": {
+      "val_score": 0.5734142624314271,
+      "best_iteration": 21,
+      "elapsed_time": 6.741706132888794,
+      "feature_importance_top10": {
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim0": 57,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim3": 46,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim2": 45,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim1": 36,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim4": 31
+      }
+    },
+    "Full": {
+      "score": 0.5154985685831968,
+      "val_score_mean": 0.5758210044345002,
+      "val_score_std": 0.001715277804513706,
+      "feature_importance_top10": {
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim0": 218.6,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim1": 161.2,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim3": 115.0,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim2": 91.4,
+        "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim4": 67.4
+      }
+    }
+  },
+  "config": {
+    "features": [
+      "ApplicationFeaturesLDAOccupationTypeOrganizationType5"
+    ],
+    "model": {
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {
+        "nthread": 4,
+        "n_estimators": 5000,
+        "learning_rate": 0.02,
+        "num_leaves": 32,
+        "colsample_bytree": 0.9497036,
+        "subsample": 0.8715623,
+        "max_depth": 8,
+        "reg_alpha": 0.04,
+        "reg_lambda": 0.073,
+        "min_split_gain": 0.0222415,
+        "min_child_weight": 40,
+        "silent": -1,
+        "verbose": -1
+      },
+      "train_params": {
+        "eval_metric": "auc",
+        "verbose": 100,
+        "early_stopping_rounds": 200
+      },
+      "name": "LightGBM"
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "options": {
+      "drop_duplicate_column_on_merge": true
+    },
+    "config_file_name": "lgbm_4_application1"
+  },
+  "features_detail": {
+    "number": 5,
+    "names": [
+      "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim0",
+      "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim1",
+      "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim2",
+      "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim3",
+      "OCCUPATION_TYPE_LDA_ORGANIZATION_TYPE_dim4"
+    ]
+  }
+}
