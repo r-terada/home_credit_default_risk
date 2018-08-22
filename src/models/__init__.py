@@ -90,7 +90,7 @@ class LightGBM(Model):
             "val_score_mean": np.mean([trials[f"Fold{n_fold + 1}"]["val_score"] for n_fold in range(folds.n_splits)]),
             "val_score_std": np.std([trials[f"Fold{n_fold + 1}"]["val_score"] for n_fold in range(folds.n_splits)]),
             "feature_importance_top10": {
-                feature: row["importance"] for feature, row in
+                feature: float(row["importance"]) for feature, row in
                 feature_importance_df.groupby("feature").agg({"importance": "mean"}).sort_values("importance", ascending=False).head(10).iterrows()
             }
         }
