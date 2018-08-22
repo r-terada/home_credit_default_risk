@@ -1,0 +1,100 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.5171577105392707,
+      "best_iteration": 2,
+      "elapsed_time": 3.5183990001678467,
+      "feature_importance_top10": {
+        "NAME_CONTRACT_STATUS_target_encode": 31
+      }
+    },
+    "Fold2": {
+      "val_score": 0.517285255593121,
+      "best_iteration": 4,
+      "elapsed_time": 3.0224192142486572,
+      "feature_importance_top10": {
+        "NAME_CONTRACT_STATUS_target_encode": 66
+      }
+    },
+    "Fold3": {
+      "val_score": 0.5220656753918211,
+      "best_iteration": 56,
+      "elapsed_time": 4.9817140102386475,
+      "feature_importance_top10": {
+        "NAME_CONTRACT_STATUS_target_encode": 887
+      }
+    },
+    "Fold4": {
+      "val_score": 0.5155773168605232,
+      "best_iteration": 27,
+      "elapsed_time": 5.090238809585571,
+      "feature_importance_top10": {
+        "NAME_CONTRACT_STATUS_target_encode": 404
+      }
+    },
+    "Fold5": {
+      "val_score": 0.5220823707833605,
+      "best_iteration": 1,
+      "elapsed_time": 3.5859181880950928,
+      "feature_importance_top10": {
+        "NAME_CONTRACT_STATUS_target_encode": 13
+      }
+    },
+    "Full": {
+      "score": 0.5037660244822079,
+      "val_score_mean": 0.5188336658336193,
+      "val_score_std": 0.00271330715883403,
+      "feature_importance_top10": {
+        "NAME_CONTRACT_STATUS_target_encode": 280.2
+      }
+    }
+  },
+  "config": {
+    "features": [
+      "CreditCardBalanceFeaturesLeakyTargetEncoding"
+    ],
+    "model": {
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {
+        "nthread": 4,
+        "n_estimators": 5000,
+        "learning_rate": 0.02,
+        "num_leaves": 32,
+        "colsample_bytree": 0.9497036,
+        "subsample": 0.8715623,
+        "max_depth": 8,
+        "reg_alpha": 0.04,
+        "reg_lambda": 0.073,
+        "min_split_gain": 0.0222415,
+        "min_child_weight": 40,
+        "silent": -1,
+        "verbose": -1
+      },
+      "train_params": {
+        "eval_metric": "auc",
+        "verbose": 100,
+        "early_stopping_rounds": 200
+      },
+      "name": "LightGBM"
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "options": {
+      "drop_duplicate_column_on_merge": true
+    },
+    "config_file_name": "lgbm_3_credit_card_balance"
+  },
+  "features_detail": {
+    "number": 1,
+    "names": [
+      "NAME_CONTRACT_STATUS_target_encode"
+    ]
+  }
+}

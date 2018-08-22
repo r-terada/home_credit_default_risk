@@ -7,6 +7,8 @@ from features.application import ApplicationFeatures, ApplicationFeaturesOpenSol
 from features.bureau import BureauFeatures, BureauFeaturesOpenSolution, BureauFeaturesLeakyTargetEncoding
 from features.previous_application import PreviousApplicationFeatures, PreviousApplicationFeaturesOpenSolution, PreviousApplicationFeaturesLeakyTargetEncoding
 from features.pos_cash import PosCashFeatures, PosCashFeaturesOpenSolution, PosCashFeaturesLeakyTargetEncoding
+from features.installments_payments import InstallmentsPaymentsFeatures, InstallmentsPaymentsFeaturesOpenSolution
+from features.credit_card_balance import CreditCardBalanceFeatures, CreditCardBalanceFeaturesOpenSolution, CreditCardBalanceFeaturesLeakyTargetEncoding
 from features.agg_application import AggregateFeatureApplicationOpenSolution
 from features.agg_bureau import AggregateFeatureBureauOpenSolution
 from features.agg_credit_card_balance import AggregateFeatureCreditCardBalanceOpenSolution
@@ -39,6 +41,7 @@ KEY_FEATURE_MAP = {
     "BureauFeaturesLeakyTargetEncoding": BureauFeaturesLeakyTargetEncoding,
     "PreviousApplicationFeaturesLeakyTargetEncoding": PreviousApplicationFeaturesLeakyTargetEncoding,
     "PosCashFeaturesLeakyTargetEncoding": PosCashFeaturesLeakyTargetEncoding,
+    "CreditCardBalanceFeaturesLeakyTargetEncoding": CreditCardBalanceFeaturesLeakyTargetEncoding,
     "PredsLGBM1_1": LGBM1_1,
     "PredsLogReg0": LogReg0,
     "PredsLGBM3_1": LGBM3_1,
