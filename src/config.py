@@ -3,7 +3,7 @@ import json
 from attrdict import AttrDict
 
 from models import LightGBM, XGBoost, LogReg, RandomForest
-from features.application import ApplicationFeatures, ApplicationFeaturesOpenSolution, ApplicationFeaturesLeakyTargetEncoding, ApplicationFeaturesSingleValueCounts
+from features.application import ApplicationFeatures, ApplicationFeaturesOpenSolution, ApplicationFeaturesLeakyTargetEncoding, ApplicationFeaturesTargetEncoding, ApplicationFeaturesSingleValueCounts
 from features.bureau import BureauFeatures, BureauFeaturesOpenSolution, BureauFeaturesLeakyTargetEncoding
 from features.previous_application import PreviousApplicationFeatures, PreviousApplicationFeaturesOpenSolution, PreviousApplicationFeaturesLeakyTargetEncoding
 from features.pos_cash import PosCashFeatures, PosCashFeaturesOpenSolution, PosCashFeaturesLeakyTargetEncoding
@@ -39,6 +39,7 @@ KEY_FEATURE_MAP = {
     "AggregateFeaturePosCashOpenSolution": AggregateFeaturePosCashOpenSolution,
     "AggregateFeaturePreviousApplicationOpenSolution": AggregateFeaturePreviousApplicationOpenSolution,
     "ApplicationFeaturesLeakyTargetEncoding": ApplicationFeaturesLeakyTargetEncoding,
+    "ApplicationFeaturesTargetEncoding": ApplicationFeaturesTargetEncoding,
     "BureauFeaturesLeakyTargetEncoding": BureauFeaturesLeakyTargetEncoding,
     "PreviousApplicationFeaturesLeakyTargetEncoding": PreviousApplicationFeaturesLeakyTargetEncoding,
     "PosCashFeaturesLeakyTargetEncoding": PosCashFeaturesLeakyTargetEncoding,

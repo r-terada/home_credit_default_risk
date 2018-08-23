@@ -1,0 +1,169 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.6368430155451242,
+      "best_iteration": 298,
+      "elapsed_time": 49.5587739944458,
+      "feature_importance_top10": {
+        "ORGANIZATION_TYPE_target_encode": 1306,
+        "NAME_FAMILY_STATUS_target_encode": 957,
+        "OCCUPATION_TYPE_target_encode": 883,
+        "CODE_GENDER_target_encode": 743,
+        "FLAG_OWN_CAR_target_encode": 682,
+        "WALLSMATERIAL_MODE_target_encode": 599,
+        "NAME_CONTRACT_TYPE_target_encode": 584,
+        "NAME_HOUSING_TYPE_target_encode": 580,
+        "NAME_INCOME_TYPE_target_encode": 549,
+        "NAME_EDUCATION_TYPE_target_encode": 525
+      }
+    },
+    "Fold2": {
+      "val_score": 0.6263063529358035,
+      "best_iteration": 301,
+      "elapsed_time": 53.40084385871887,
+      "feature_importance_top10": {
+        "ORGANIZATION_TYPE_target_encode": 1379,
+        "NAME_FAMILY_STATUS_target_encode": 917,
+        "OCCUPATION_TYPE_target_encode": 893,
+        "FLAG_OWN_CAR_target_encode": 764,
+        "CODE_GENDER_target_encode": 743,
+        "NAME_CONTRACT_TYPE_target_encode": 624,
+        "NAME_EDUCATION_TYPE_target_encode": 605,
+        "NAME_HOUSING_TYPE_target_encode": 601,
+        "WALLSMATERIAL_MODE_target_encode": 575,
+        "NAME_INCOME_TYPE_target_encode": 504
+      }
+    },
+    "Fold3": {
+      "val_score": 0.6343313216036675,
+      "best_iteration": 514,
+      "elapsed_time": 66.94034695625305,
+      "feature_importance_top10": {
+        "ORGANIZATION_TYPE_target_encode": 2418,
+        "OCCUPATION_TYPE_target_encode": 1725,
+        "NAME_FAMILY_STATUS_target_encode": 1426,
+        "WEEKDAY_APPR_PROCESS_START_target_encode": 1232,
+        "FLAG_OWN_CAR_target_encode": 980,
+        "WALLSMATERIAL_MODE_target_encode": 968,
+        "CODE_GENDER_target_encode": 921,
+        "NAME_INCOME_TYPE_target_encode": 913,
+        "NAME_EDUCATION_TYPE_target_encode": 887,
+        "NAME_HOUSING_TYPE_target_encode": 846
+      }
+    },
+    "Fold4": {
+      "val_score": 0.6391760773510511,
+      "best_iteration": 505,
+      "elapsed_time": 69.18904829025269,
+      "feature_importance_top10": {
+        "ORGANIZATION_TYPE_target_encode": 2363,
+        "OCCUPATION_TYPE_target_encode": 1618,
+        "NAME_FAMILY_STATUS_target_encode": 1445,
+        "WEEKDAY_APPR_PROCESS_START_target_encode": 1262,
+        "CODE_GENDER_target_encode": 987,
+        "FLAG_OWN_CAR_target_encode": 961,
+        "WALLSMATERIAL_MODE_target_encode": 929,
+        "NAME_EDUCATION_TYPE_target_encode": 925,
+        "NAME_HOUSING_TYPE_target_encode": 902,
+        "NAME_INCOME_TYPE_target_encode": 772
+      }
+    },
+    "Fold5": {
+      "val_score": 0.6394776132576051,
+      "best_iteration": 435,
+      "elapsed_time": 60.65372395515442,
+      "feature_importance_top10": {
+        "ORGANIZATION_TYPE_target_encode": 2044,
+        "OCCUPATION_TYPE_target_encode": 1368,
+        "NAME_FAMILY_STATUS_target_encode": 1318,
+        "WEEKDAY_APPR_PROCESS_START_target_encode": 974,
+        "CODE_GENDER_target_encode": 901,
+        "WALLSMATERIAL_MODE_target_encode": 880,
+        "FLAG_OWN_CAR_target_encode": 820,
+        "NAME_EDUCATION_TYPE_target_encode": 782,
+        "NAME_HOUSING_TYPE_target_encode": 757,
+        "NAME_CONTRACT_TYPE_target_encode": 724
+      }
+    },
+    "Full": {
+      "score": 0.6351301058549984,
+      "val_score_mean": 0.6352268761386503,
+      "val_score_std": 0.004830209415528532,
+      "feature_importance_top10": {
+        "ORGANIZATION_TYPE_target_encode": 1902.0,
+        "OCCUPATION_TYPE_target_encode": 1297.4,
+        "NAME_FAMILY_STATUS_target_encode": 1212.6,
+        "WEEKDAY_APPR_PROCESS_START_target_encode": 890.0,
+        "CODE_GENDER_target_encode": 859.0,
+        "FLAG_OWN_CAR_target_encode": 841.4,
+        "WALLSMATERIAL_MODE_target_encode": 790.2,
+        "NAME_EDUCATION_TYPE_target_encode": 744.8,
+        "NAME_HOUSING_TYPE_target_encode": 737.2,
+        "NAME_CONTRACT_TYPE_target_encode": 694.0
+      }
+    }
+  },
+  "config": {
+    "features": [
+      "ApplicationFeaturesTargetEncoding"
+    ],
+    "model": {
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {
+        "nthread": 4,
+        "n_estimators": 5000,
+        "learning_rate": 0.02,
+        "num_leaves": 32,
+        "colsample_bytree": 0.9497036,
+        "subsample": 0.8715623,
+        "max_depth": 8,
+        "reg_alpha": 0.04,
+        "reg_lambda": 0.073,
+        "min_split_gain": 0.0222415,
+        "min_child_weight": 40,
+        "silent": -1,
+        "verbose": -1
+      },
+      "train_params": {
+        "eval_metric": "auc",
+        "verbose": 100,
+        "early_stopping_rounds": 200
+      },
+      "name": "LightGBM"
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "options": {
+      "drop_duplicate_column_on_merge": true
+    },
+    "config_file_name": "lgbm_6_application"
+  },
+  "features_detail": {
+    "number": 16,
+    "names": [
+      "CODE_GENDER_target_encode",
+      "EMERGENCYSTATE_MODE_target_encode",
+      "FLAG_OWN_CAR_target_encode",
+      "FLAG_OWN_REALTY_target_encode",
+      "FONDKAPREMONT_MODE_target_encode",
+      "HOUSETYPE_MODE_target_encode",
+      "NAME_CONTRACT_TYPE_target_encode",
+      "NAME_EDUCATION_TYPE_target_encode",
+      "NAME_FAMILY_STATUS_target_encode",
+      "NAME_HOUSING_TYPE_target_encode",
+      "NAME_INCOME_TYPE_target_encode",
+      "NAME_TYPE_SUITE_target_encode",
+      "OCCUPATION_TYPE_target_encode",
+      "ORGANIZATION_TYPE_target_encode",
+      "WALLSMATERIAL_MODE_target_encode",
+      "WEEKDAY_APPR_PROCESS_START_target_encode"
+    ]
+  }
+}

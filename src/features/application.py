@@ -3,8 +3,11 @@ import gc
 import numpy as np
 import pandas as pd
 
+from tqdm import tqdm
 from typing import Tuple
 from category_encoders import TargetEncoder
+from sklearn.model_selection import StratifiedKFold
+
 from features import one_hot_encoder, Feature
 from features.raw_data import Application
 
@@ -105,12 +108,51 @@ class ApplicationFeaturesLeakyTargetEncoding(Feature):
     @classmethod
     def _create_feature(cls, conf) -> pd.DataFrame:
         df = Application.get_df(conf)
-        # fit with train data and transform with both date
+        # fit with train data and transform both data
         train_df = df[df['TARGET'].notnull()].copy()
         categorical_columns = [col for col in df.columns if df[col].dtype == 'object']
         df = TargetEncoder(cols=categorical_columns).fit(train_df, train_df['TARGET']).transform(df)
         return df[categorical_columns + ['SK_ID_CURR']].rename(
             columns={col: f"{col}_target_encode" for col in categorical_columns}
+        )
+
+
+class ApplicationFeaturesTargetEncoding(Feature):
+    @classmethod
+    def _create_feature(cls, conf) -> pd.DataFrame:
+        df = Application.get_df(conf)
+
+        # fit with train data and transform both data
+        categorical_columns = [col for col in df.columns if df[col].dtype == 'object']
+        train_df = df[df['TARGET'].notnull()].copy()
+        test_df = df[df['TARGET'].isnull()].copy()
+
+        feature = pd.DataFrame()
+        folds = StratifiedKFold(**conf.model.kfold_params)
+        for n_fold, (train_idx, valid_idx) in tqdm(enumerate(folds.split(train_df[categorical_columns], train_df['TARGET'])), total=conf.model.kfold_params.n_splits):
+            encoder = TargetEncoder(cols=categorical_columns).fit(
+                train_df.iloc[train_idx][categorical_columns + ['SK_ID_CURR']], train_df.iloc[train_idx]['TARGET']
+            )
+            valid_te = encoder.transform(train_df.iloc[valid_idx][categorical_columns + ['SK_ID_CURR']]).rename(
+               columns={col: f"{col}_target_encode" for col in categorical_columns}
+            )
+            test_te = encoder.transform(test_df[categorical_columns + ['SK_ID_CURR']]).rename(
+               columns={col: f"{col}_target_encode" for col in categorical_columns}
+            )
+            feature = feature.append(valid_te, sort=True).append(test_te, sort=True)
+
+        # take mean of oof target mean for test data
+        feature = feature.groupby('SK_ID_CURR').mean()
+
+        return feature
+
+    # override
+    @classmethod
+    def _file_path(cls, conf) -> str:
+        return os.path.join(
+            conf.dataset.cache_directory,
+            "features",
+            f"{cls.__name__}_{conf.model.kfold_params.n_splits}fold_seed{conf.model.kfold_params.random_state}.pkl"
         )
 
 
