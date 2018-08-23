@@ -1,0 +1,106 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.7994993608555013,
+      "elapsed_time": 17.94792604446411
+    },
+    "Fold2": {
+      "val_score": 0.7965322818567548,
+      "elapsed_time": 16.023026943206787
+    },
+    "Fold3": {
+      "val_score": 0.7945538289757436,
+      "elapsed_time": 16.36820411682129
+    },
+    "Fold4": {
+      "val_score": 0.7980437589543131,
+      "elapsed_time": 17.560630083084106
+    },
+    "Fold5": {
+      "val_score": 0.7997014351713386,
+      "elapsed_time": 17.95753026008606
+    },
+    "Full": {
+      "score": 0.7878891763936883,
+      "val_score_mean": 0.7976661331627304,
+      "val_score_std": 0.0019296546537996729
+    }
+  },
+  "config": {
+    "features": [
+      "PredsAll"
+    ],
+    "model": {
+      "name": "LogisticRegression",
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {},
+      "train_params": {}
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "options": {
+      "drop_duplicate_column_on_merge": true
+    },
+    "config_file_name": "stacking_all"
+  },
+  "features_detail": {
+    "number": 48,
+    "names": [
+      "08191504_lgbm_1-1_0.793821_PREDICTION",
+      "08192001_logreg_0_0.541404_PREDICTION",
+      "08192245_logreg_0_0.777166_PREDICTION",
+      "08192258_stacking_0_0.793754_PREDICTION",
+      "08192303_stacking_1_0.679197_PREDICTION",
+      "08201642_lgbm_1-1_0.793527_PREDICTION",
+      "08201834_lgbm_1-1_0.793648_PREDICTION",
+      "08201837_lgbm_dev_0.534762_PREDICTION",
+      "08201844_lgbm_2_bureau_0.659878_PREDICTION",
+      "08201858_lgbm_2-1_bureau_0.668215_PREDICTION",
+      "08201910_lgbm_2_previous_application_0.633224_PREDICTION",
+      "08201938_lgbm_2-1_previous_application_0.673020_PREDICTION",
+      "08201946_lgbm_2_credit_card_balance_0.566539_PREDICTION",
+      "08202006_lgbm_2-1_credit_card_balance_0.566244_PREDICTION",
+      "08202204_lgbm_2_application_0.619982_PREDICTION",
+      "08202241_lgbm_2-1_application_0.770313_PREDICTION",
+      "08202247_lgbm_2_pos_cash_0.533951_PREDICTION",
+      "08202253_lgbm_2-1_pos_cash_0.606247_PREDICTION",
+      "08202301_lgbm_2_installments_payments_0.639180_PREDICTION",
+      "08202320_lgbm_2-1_installments_payments_0.654335_PREDICTION",
+      "08210137_lgbm_2-1_0.794518_PREDICTION",
+      "08210202_lgbm_3_application_0.636923_PREDICTION",
+      "08210425_lgbm_3-1_0.794708_PREDICTION",
+      "08211432_lgbm_3-1-0_0.795889_PREDICTION",
+      "08211718_lgbm_3_bureau_0.568403_PREDICTION",
+      "08211731_lgbm_3-1_bureau_0.667963_PREDICTION",
+      "08212236_stacking_2_0.796213_PREDICTION",
+      "08212240_stacking_3_0.796099_PREDICTION",
+      "08220729_lgbm_3-1-0-1_0.796496_PREDICTION",
+      "08221202_stacking_all_0.792328_PREDICTION",
+      "08221208_lgbm_3-2-0_0.794643_PREDICTION",
+      "08221208_stacking_all_0.795618_PREDICTION",
+      "08221342_lgbm_3-2-2_0.791873_PREDICTION",
+      "08221514_lgbm_3_previous_appliation_0.633718_PREDICTION",
+      "08221531_lgbm_3-1_previous_appliation_0.673350_PREDICTION",
+      "08221541_lgbm_3_pos_cash_0.526894_PREDICTION",
+      "08221547_lgbm_3-1_pos_cash_0.606248_PREDICTION",
+      "08221558_lgbm_3_credit_card_balance_0.503766_PREDICTION",
+      "08221607_lgbm_3-1_credit_card_balance_0.563898_PREDICTION",
+      "08230034_lgbm_3-3_seed0_0.796089_PREDICTION",
+      "08230048_lgbm_4_application1_0.515499_PREDICTION",
+      "08230115_lgbm_4_application2_0.519865_PREDICTION",
+      "08230117_lgbm_4_application3_0.565909_PREDICTION",
+      "08230242_lgbm_5_application_1_0.634509_PREDICTION",
+      "08230323_lgbm_5-1_application_1_0.770639_PREDICTION",
+      "08230658_lgbm_3-3_seed1_0.795731_PREDICTION",
+      "08231147_lgbm_3-3_seed2_0.795897_PREDICTION",
+      "08231520_lgbm_6_application_0.635130_PREDICTION"
+    ]
+  }
+}
