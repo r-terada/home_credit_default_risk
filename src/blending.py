@@ -38,6 +38,7 @@ def main(out_file, method):
     ) for fname in [
         '08230034_lgbm_3-3_seed0_0.796089',
         '08230658_lgbm_3-3_seed1_0.795731',
+        '08231147_lgbm_3-3_seed2_0.795897',
         '08211432_lgbm_3-1-0_0.795889'
     ]]
     if method == 'blend':
