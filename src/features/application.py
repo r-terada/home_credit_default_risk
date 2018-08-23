@@ -112,3 +112,16 @@ class ApplicationFeaturesLeakyTargetEncoding(Feature):
         return df[categorical_columns + ['SK_ID_CURR']].rename(
             columns={col: f"{col}_target_encode" for col in categorical_columns}
         )
+
+
+class ApplicationFeaturesSingleValueCounts(Feature):
+    @classmethod
+    def _create_feature(cls, conf) -> pd.DataFrame:
+        df = Application.get_df(conf)
+        categorical_columns = [col for col in df.columns if df[col].dtype == 'object']
+        df = df[categorical_columns + ['SK_ID_CURR']]
+        for c in categorical_columns:
+            feature = df[[c, 'SK_ID_CURR']].groupby(c)[['SK_ID_CURR']].count().reset_index().rename(columns={'SK_ID_CURR': f'app_{c}_value_count'})
+            df = df.merge(feature, on=c, how='left')
+
+        return df.drop(categorical_columns, axis=1)

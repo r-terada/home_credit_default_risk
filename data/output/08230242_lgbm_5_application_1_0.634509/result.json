@@ -1,0 +1,169 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.6354299296319417,
+      "best_iteration": 417,
+      "elapsed_time": 26.995835065841675,
+      "feature_importance_top10": {
+        "app_ORGANIZATION_TYPE_value_count": 2362,
+        "app_OCCUPATION_TYPE_value_count": 1874,
+        "app_NAME_FAMILY_STATUS_value_count": 1092,
+        "app_WALLSMATERIAL_MODE_value_count": 941,
+        "app_NAME_EDUCATION_TYPE_value_count": 835,
+        "app_WEEKDAY_APPR_PROCESS_START_value_count": 800,
+        "app_NAME_HOUSING_TYPE_value_count": 733,
+        "app_FLAG_OWN_CAR_value_count": 710,
+        "app_NAME_CONTRACT_TYPE_value_count": 696,
+        "app_CODE_GENDER_value_count": 561
+      }
+    },
+    "Fold2": {
+      "val_score": 0.6279151078972408,
+      "best_iteration": 424,
+      "elapsed_time": 24.98417377471924,
+      "feature_importance_top10": {
+        "app_ORGANIZATION_TYPE_value_count": 2368,
+        "app_OCCUPATION_TYPE_value_count": 2061,
+        "app_NAME_FAMILY_STATUS_value_count": 1146,
+        "app_WALLSMATERIAL_MODE_value_count": 927,
+        "app_NAME_EDUCATION_TYPE_value_count": 877,
+        "app_WEEKDAY_APPR_PROCESS_START_value_count": 775,
+        "app_NAME_HOUSING_TYPE_value_count": 766,
+        "app_FLAG_OWN_CAR_value_count": 713,
+        "app_NAME_CONTRACT_TYPE_value_count": 713,
+        "app_CODE_GENDER_value_count": 580
+      }
+    },
+    "Fold3": {
+      "val_score": 0.6323855897663537,
+      "best_iteration": 398,
+      "elapsed_time": 24.46714496612549,
+      "feature_importance_top10": {
+        "app_ORGANIZATION_TYPE_value_count": 2158,
+        "app_OCCUPATION_TYPE_value_count": 1860,
+        "app_NAME_FAMILY_STATUS_value_count": 1155,
+        "app_WALLSMATERIAL_MODE_value_count": 928,
+        "app_NAME_EDUCATION_TYPE_value_count": 822,
+        "app_WEEKDAY_APPR_PROCESS_START_value_count": 742,
+        "app_FLAG_OWN_CAR_value_count": 713,
+        "app_NAME_CONTRACT_TYPE_value_count": 710,
+        "app_NAME_HOUSING_TYPE_value_count": 592,
+        "app_CODE_GENDER_value_count": 590
+      }
+    },
+    "Fold4": {
+      "val_score": 0.6393183043459976,
+      "best_iteration": 473,
+      "elapsed_time": 33.19104599952698,
+      "feature_importance_top10": {
+        "app_ORGANIZATION_TYPE_value_count": 2701,
+        "app_OCCUPATION_TYPE_value_count": 2206,
+        "app_NAME_FAMILY_STATUS_value_count": 1245,
+        "app_WEEKDAY_APPR_PROCESS_START_value_count": 1052,
+        "app_WALLSMATERIAL_MODE_value_count": 1040,
+        "app_NAME_EDUCATION_TYPE_value_count": 875,
+        "app_NAME_HOUSING_TYPE_value_count": 824,
+        "app_FLAG_OWN_CAR_value_count": 745,
+        "app_NAME_CONTRACT_TYPE_value_count": 734,
+        "app_CODE_GENDER_value_count": 624
+      }
+    },
+    "Fold5": {
+      "val_score": 0.6379775769473995,
+      "best_iteration": 486,
+      "elapsed_time": 33.69033694267273,
+      "feature_importance_top10": {
+        "app_ORGANIZATION_TYPE_value_count": 2930,
+        "app_OCCUPATION_TYPE_value_count": 2339,
+        "app_NAME_FAMILY_STATUS_value_count": 1301,
+        "app_WALLSMATERIAL_MODE_value_count": 1102,
+        "app_WEEKDAY_APPR_PROCESS_START_value_count": 1039,
+        "app_NAME_EDUCATION_TYPE_value_count": 965,
+        "app_NAME_HOUSING_TYPE_value_count": 769,
+        "app_FLAG_OWN_CAR_value_count": 712,
+        "app_NAME_CONTRACT_TYPE_value_count": 704,
+        "app_CODE_GENDER_value_count": 584
+      }
+    },
+    "Full": {
+      "score": 0.6345091774240859,
+      "val_score_mean": 0.6346053017177866,
+      "val_score_std": 0.004097571468525991,
+      "feature_importance_top10": {
+        "app_ORGANIZATION_TYPE_value_count": 2503.8,
+        "app_OCCUPATION_TYPE_value_count": 2068.0,
+        "app_NAME_FAMILY_STATUS_value_count": 1187.8,
+        "app_WALLSMATERIAL_MODE_value_count": 987.6,
+        "app_WEEKDAY_APPR_PROCESS_START_value_count": 881.6,
+        "app_NAME_EDUCATION_TYPE_value_count": 874.8,
+        "app_NAME_HOUSING_TYPE_value_count": 736.8,
+        "app_FLAG_OWN_CAR_value_count": 718.6,
+        "app_NAME_CONTRACT_TYPE_value_count": 711.4,
+        "app_CODE_GENDER_value_count": 587.8
+      }
+    }
+  },
+  "config": {
+    "features": [
+      "ApplicationFeaturesSingleValueCounts"
+    ],
+    "model": {
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {
+        "nthread": 4,
+        "n_estimators": 5000,
+        "learning_rate": 0.02,
+        "num_leaves": 32,
+        "colsample_bytree": 0.9497036,
+        "subsample": 0.8715623,
+        "max_depth": 8,
+        "reg_alpha": 0.04,
+        "reg_lambda": 0.073,
+        "min_split_gain": 0.0222415,
+        "min_child_weight": 40,
+        "silent": -1,
+        "verbose": -1
+      },
+      "train_params": {
+        "eval_metric": "auc",
+        "verbose": 100,
+        "early_stopping_rounds": 200
+      },
+      "name": "LightGBM"
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "options": {
+      "drop_duplicate_column_on_merge": true
+    },
+    "config_file_name": "lgbm_5_application_1"
+  },
+  "features_detail": {
+    "number": 16,
+    "names": [
+      "app_CODE_GENDER_value_count",
+      "app_EMERGENCYSTATE_MODE_value_count",
+      "app_FLAG_OWN_CAR_value_count",
+      "app_FLAG_OWN_REALTY_value_count",
+      "app_FONDKAPREMONT_MODE_value_count",
+      "app_HOUSETYPE_MODE_value_count",
+      "app_NAME_CONTRACT_TYPE_value_count",
+      "app_NAME_EDUCATION_TYPE_value_count",
+      "app_NAME_FAMILY_STATUS_value_count",
+      "app_NAME_HOUSING_TYPE_value_count",
+      "app_NAME_INCOME_TYPE_value_count",
+      "app_NAME_TYPE_SUITE_value_count",
+      "app_OCCUPATION_TYPE_value_count",
+      "app_ORGANIZATION_TYPE_value_count",
+      "app_WALLSMATERIAL_MODE_value_count",
+      "app_WEEKDAY_APPR_PROCESS_START_value_count"
+    ]
+  }
+}
