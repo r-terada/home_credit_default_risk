@@ -12,6 +12,7 @@ from config import read_config, KEY_FEATURE_MAP, KEY_MODEL_MAP
 from utils import timer
 from models import LightGBM
 from features.base import Base
+from features.stacking import StackingFeaturesWithPasses
 
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
@@ -32,6 +33,11 @@ def get_train_test(conf):
             df = df.merge(f, how='left', on='SK_ID_CURR')
             del f
             gc.collect()
+
+    if "stacking_features" in conf:
+        StackingFeaturesWithPasses.set_result_dirs(conf.stacking_features)
+        f = StackingFeaturesWithPasses.get_df(conf)
+        df = df.merge(f, how='left', on='SK_ID_CURR')
 
     if "drop_features_list_file" in conf.options:
         with open(conf.options.drop_features_list_file, "r") as fp:

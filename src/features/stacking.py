@@ -4,6 +4,7 @@ import pandas as pd
 from functools import reduce
 
 from features import Feature
+from features.base import Base
 
 
 class StackingFeature(Feature):
@@ -16,6 +17,26 @@ class StackingFeature(Feature):
         df = train_predictions.append(test_predictions, sort=True).reset_index()
         df = df.rename({"TARGET": f"{cls.__name__}_PREDICTION"}, axis="columns")
         return df
+
+
+class StackingFeaturesWithPasses(Feature):
+    _result_dir_names = []
+
+    @classmethod
+    def set_result_dirs(cls, result_dir_names) -> None:
+        cls._result_dir_names = result_dir_names
+
+    @classmethod
+    def get_df(cls, conf) -> pd.DataFrame:
+        feature = Base.get_df(conf)
+        for name in cls._result_dir_names:
+            dir_name = os.path.join(conf.dataset.output_directory, name)
+            train_predictions = pd.read_csv(os.path.join(dir_name, "oof_predictions.csv"))
+            test_predictions = pd.read_csv(os.path.join(dir_name, "submission.csv"))
+            df = train_predictions.append(test_predictions, sort=True).reset_index()
+            df = df.rename({"TARGET": f"{name}_PREDICTION"}, axis="columns")
+            feature = feature.merge(df, on='SK_ID_CURR', how='left')
+        return feature.drop(['TARGET'], axis=1)
 
 
 class LGBM1_1(StackingFeature):
