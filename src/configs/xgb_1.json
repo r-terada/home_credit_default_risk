@@ -1,0 +1,58 @@
+{
+    "features": [
+        "ApplicationFeatures",
+        "BureauFeatures",
+        "PreviousApplicationFeatures",
+        "PosCashFeatures",
+        "InstallmentsPaymentsFeatures",
+        "CreditCardBalanceFeatures",
+        "ApplicationFeaturesOpenSolution",
+        "BureauFeaturesOpenSolution",
+        "PreviousApplicationFeaturesOpenSolution",
+        "PosCashFeaturesOpenSolution",
+        "InstallmentsPaymentsFeaturesOpenSolution",
+        "CreditCardBalanceFeaturesOpenSolution",
+        "AggregateFeatureApplicationOpenSolution",
+        "AggregateFeatureBureauOpenSolution",
+        "AggregateFeatureCreditCardBalanceOpenSolution",
+        "AggregateFeatureInstallmentsPaymentsOpenSolution",
+        "AggregateFeaturePosCashOpenSolution",
+        "AggregateFeaturePreviousApplicationOpenSolution",
+        "ApplicationFeaturesLeakyTargetEncoding"
+    ],
+    "model": {
+        "name": "XGBoost",
+        "kfold_params": {
+            "n_splits": 5,
+            "shuffle": true,
+            "random_state": 47
+        },
+        "clf_params":{
+            "n_jobs": 4,
+            "n_estimators": 10000,
+            "learning_rate": 0.001,
+            "num_leaves": 40,
+            "colsample_bytree": 0.5,
+            "subsample": 0.5,
+            "max_depth": 16,
+            "reg_alpha": 0.001,
+            "reg_lambda": 0.001,
+            "min_child_weight": 4,
+            "silent": false
+        },
+        "train_params": {
+            "eval_metric": "auc",
+            "verbose": 10,
+            "early_stopping_rounds": 100
+        }
+    },
+    "dataset": {
+        "input_directory": "/Users/rintaro/.kaggle/competitions/home-credit-default-risk",
+        "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
+        "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+    },
+    "options": {
+        "drop_duplicate_column_on_merge": true
+    },
+    "note": "use lgbm hyperparameter from open solution"
+}
