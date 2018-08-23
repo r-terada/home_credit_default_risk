@@ -72,6 +72,8 @@ def read_config(config_file_path: str) -> dict:
 
     # set dafault values
     config.config_file_name = os.path.splitext(os.path.basename(config_file_path))[0]
+    base_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../")
+    config.dataset = {key: os.path.join(base_dir, d) for key, d in config.dataset.items()}
     if "name" not in config.model:
         config.model = {**config.model, "name": "LightGBM"}
     if "options" not in config:

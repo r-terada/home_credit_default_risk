@@ -52,13 +52,13 @@
         }
     },
     "dataset": {
-        "input_directory":"/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/input",
-        "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
-        "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+        "input_directory":"data/input",
+        "cache_directory": "data/working",
+        "output_directory": "data/output"
     },
     "options": {
         "drop_duplicate_column_on_merge": true,
-        "drop_features_list_file": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output/08211432_lgbm_3-1-0_0.795889/importance<=50.txt"
+        "drop_features_list_file": "data/output/08211432_lgbm_3-1-0_0.795889/importance<=50.txt"
     },
     "note": "remove features with low importance"
 }

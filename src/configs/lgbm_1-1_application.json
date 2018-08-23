@@ -31,8 +31,8 @@
         }
     },
     "dataset": {
-        "input_directory":"/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/input",
-        "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/working",
-        "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output"
+        "input_directory":"data/input",
+        "cache_directory": "data/working",
+        "output_directory": "data/output"
     }
 }
