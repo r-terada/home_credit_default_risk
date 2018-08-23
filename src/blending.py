@@ -21,8 +21,7 @@ def rank_average(result_dirs):
     ranks['Average'] = ranks.mean(axis=1)
     ranks['Scaled Rank'] = (ranks['Average'] - ranks['Average'].min()) / (ranks['Average'].max() - ranks['Average'].min())
     print(ranks.corr())
-    # weights = [1 / len(data.keys()) for _ in range(len(data.keys()))]
-    weights = [0.45, 0.45, 0.05, 0.05]
+    weights = [1 / len(result_dirs) for _ in range(len(result_dirs))]
     print(list(data.keys()))
     ranks['Score'] = ranks[list(data.keys())].mul(weights).sum(1) / ranks.shape[0]
     sub = pd.DataFrame({'SK_ID_CURR': list(data.values())[0].SK_ID_CURR.unique()})
@@ -34,12 +33,13 @@ def rank_average(result_dirs):
 @click.option('--out_file', type=str, default='./blend.csv')
 @click.option('--method', type=str, default='blend')
 def main(out_file, method):
-    result_dirs = [
-        '/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output/08230034_lgbm_3-3_seed0_0.796089',
-        '/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output/08211432_lgbm_3-1-0_0.795889',
-        '/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output/08192245_logreg_0_0.777166',
-        '/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output/08181653_xgb_0_0.793305'
-    ]
+    result_dirs = [os.path.join(
+        '/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/data/output/', fname
+    ) for fname in [
+        '08230034_lgbm_3-3_seed0_0.796089',
+        '08230658_lgbm_3-3_seed1_0.795731',
+        '08211432_lgbm_3-1-0_0.795889'
+    ]]
     if method == 'blend':
         sub = simple_blend(result_dirs)
     elif method == 'rank_average':
