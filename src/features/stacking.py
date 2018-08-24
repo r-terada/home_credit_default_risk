@@ -28,15 +28,17 @@ class StackingFeaturesWithPasses(Feature):
 
     @classmethod
     def get_df(cls, conf) -> pd.DataFrame:
-        feature = Base.get_df(conf)
+        dfs = []
         for name in cls._result_dir_names:
             dir_name = os.path.join(conf.dataset.output_directory, name)
             train_predictions = pd.read_csv(os.path.join(dir_name, "oof_predictions.csv"))
             test_predictions = pd.read_csv(os.path.join(dir_name, "submission.csv"))
             df = train_predictions.append(test_predictions, sort=True).reset_index()
             df = df.rename({"TARGET": f"{name}_PREDICTION"}, axis="columns")
-            feature = feature.merge(df, on='SK_ID_CURR', how='left')
-        return feature.drop(['TARGET'], axis=1)
+            dfs.append(df)
+        ret = reduce(lambda lhs, rhs: lhs.merge(rhs, on=["SK_ID_CURR", "index"], how="left"), dfs)
+        print(ret.head())
+        return ret
 
 
 class LGBM1_1(StackingFeature):
