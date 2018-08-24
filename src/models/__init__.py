@@ -245,15 +245,22 @@ class SKLearnClassifier(Model):
         folds = StratifiedKFold(**conf.model.kfold_params)
         for n_fold, (train_idx, valid_idx) in enumerate(folds.split(x_train, y_train)):
             start_time = time.time()
-            sc = StandardScaler()
-            train_x, train_y = sc.fit_transform(x_train.iloc[train_idx].copy()), y_train.iloc[train_idx].copy()
-            valid_x, valid_y = sc.transform(x_train.iloc[valid_idx].copy()), y_train.iloc[valid_idx].copy()
+            if "normalize_feature" in conf and conf.normalize_feature:
+                sc = StandardScaler()
+                train_x, train_y = sc.fit_transform(x_train.iloc[train_idx].copy()), y_train.iloc[train_idx].copy()
+                valid_x, valid_y = sc.transform(x_train.iloc[valid_idx].copy()), y_train.iloc[valid_idx].copy()
+            else:
+                train_x, train_y = x_train.iloc[train_idx].copy(), y_train.iloc[train_idx].copy()
+                valid_x, valid_y = x_train.iloc[valid_idx].copy(), y_train.iloc[valid_idx].copy()
 
             clf = self._get_clf_class()(**conf.model.clf_params)
             clf.fit(train_x, train_y, **conf.model.train_params)
 
             oof_preds[valid_idx] = clf.predict_proba(valid_x)[:, 1]
-            sub_preds += clf.predict_proba(sc.transform(x_test))[:, 1] / folds.n_splits
+            if "normalize_feature" in conf and conf.normalize_feature:
+                sub_preds += clf.predict_proba(sc.transform(x_test))[:, 1] / folds.n_splits
+            else:
+                sub_preds += clf.predict_proba(x_test)[:, 1] / folds.n_splits
 
             score = roc_auc_score(valid_y, oof_preds[valid_idx])
             print(f'Fold {(n_fold + 1):2d} AUC : {score:.6f}')
