@@ -11,6 +11,7 @@ from sklearn.metrics import roc_auc_score, roc_curve
 from sklearn.model_selection import StratifiedKFold
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import StandardScaler
 from lightgbm import LGBMClassifier
 from xgboost import XGBClassifier
@@ -316,3 +317,9 @@ class RandomForest(SKLearnClassifier):
 
     def _get_clf_class(self):
         return RandomForestClassifier
+
+
+class KNN(SKLearnClassifier):
+
+    def _get_clf_class(self):
+        return KNeighborsClassifier

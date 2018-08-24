@@ -1,0 +1,42 @@
+{
+    "features": [
+        "ApplicationFeatures",
+        "BureauFeatures",
+        "PreviousApplicationFeatures",
+        "PosCashFeatures",
+        "InstallmentsPaymentsFeatures",
+        "CreditCardBalanceFeatures",
+        "ApplicationFeaturesOpenSolution",
+        "BureauFeaturesOpenSolution",
+        "PreviousApplicationFeaturesOpenSolution",
+        "PosCashFeaturesOpenSolution",
+        "InstallmentsPaymentsFeaturesOpenSolution",
+        "CreditCardBalanceFeaturesOpenSolution",
+        "AggregateFeatureApplicationOpenSolution",
+        "AggregateFeatureBureauOpenSolution",
+        "AggregateFeatureCreditCardBalanceOpenSolution",
+        "AggregateFeatureInstallmentsPaymentsOpenSolution",
+        "AggregateFeaturePosCashOpenSolution",
+        "AggregateFeaturePreviousApplicationOpenSolution",
+        "ApplicationFeaturesLeakyTargetEncoding"
+    ],
+    "normalize_feature": true,
+    "model": {
+        "name": "KNN",
+        "kfold_params": {
+            "n_splits": 5,
+            "shuffle": true,
+            "random_state": 47
+        },
+        "clf_params":{},
+        "train_params": {}
+    },
+    "dataset": {
+        "input_directory":"data/input",
+        "cache_directory": "data/working",
+        "output_directory": "data/output"
+    },
+    "options": {
+        "drop_duplicate_column_on_merge": true
+    }
+}
