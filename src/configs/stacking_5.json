@@ -1,0 +1,29 @@
+{
+    "features": [],
+    "stacking_features": [
+        "08210425_lgbm_3-1_0.794708",
+        "08211432_lgbm_3-1-0_0.795889",
+        "08230034_lgbm_3-3_seed0_0.796089",
+        "08230658_lgbm_3-3_seed1_0.795731",
+        "08231147_lgbm_3-3_seed2_0.795897",
+        "08220729_lgbm_3-1-0-1_0.796496",
+        "08191504_lgbm_1-1_0.793821"
+    ],
+    "normalize_feature": false,
+    "model": {
+        "name": "LogisticRegression",
+        "kfold_params": {
+            "n_splits": 5,
+            "shuffle": true,
+            "random_state": 47
+        },
+        "clf_params": {},
+        "train_params": {}
+    },
+    "dataset": {
+        "input_directory":"data/input",
+        "cache_directory": "data/working",
+        "output_directory": "data/output"
+    },
+    "options": {}
+}
