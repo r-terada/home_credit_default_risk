@@ -28,7 +28,7 @@
             "random_state": 47
         },
         "clf_params":{
-            "n_jobs": 4,
+            "n_jobs": -1,
             "n_estimators": 10000,
             "learning_rate": 0.001,
             "num_leaves": 40,
@@ -38,7 +38,7 @@
             "reg_alpha": 0.001,
             "reg_lambda": 0.001,
             "min_child_weight": 4,
-            "silent": false
+            "silent": true
         },
         "train_params": {
             "eval_metric": "auc",
