@@ -22,7 +22,7 @@ def rank_average(result_files):
     ranks['Average'] = ranks.mean(axis=1)
     ranks['Scaled Rank'] = (ranks['Average'] - ranks['Average'].min()) / (ranks['Average'].max() - ranks['Average'].min())
     print(ranks.corr())
-    weights = [0.0, 0.2, 0.6, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0]
+    weights = [0.05, 0.2, 0.3, 0.05, 0.05, 0.2, 0.05, 0.05, 0.05]
     print(list(data.keys()))
     ranks['Score'] = ranks[list(data.keys())].mul(weights).sum(1) / ranks.shape[0]
     sub = pd.DataFrame({'SK_ID_CURR': list(data.values())[0].SK_ID_CURR.unique()})
