@@ -1,0 +1,96 @@
+Results for threshold  99
+split: use 296 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+SPLIT : 0.781892 +/- 0.001840
+gain: use 753 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+GAIN  : 0.785458 +/- 0.002132
+
+Results for threshold  95
+split: use 408 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+SPLIT : 0.783336 +/- 0.001595
+gain: use 903 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+GAIN  : 0.785872 +/- 0.001308
+
+Results for threshold  90
+split: use 474 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+SPLIT : 0.785131 +/- 0.001933
+gain: use 968 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+GAIN  : 0.786070 +/- 0.001383
+
+Results for threshold  80
+split: use 562 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+SPLIT : 0.785600 +/- 0.002367
+gain: use 1044 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+GAIN  : 0.785169 +/- 0.001815
+
+Results for threshold  70
+split: use 620 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+SPLIT : 0.784982 +/- 0.001585
+gain: use 1084 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+GAIN  : 0.785489 +/- 0.001367
+
+Results for threshold  60
+split: use 678 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+SPLIT : 0.785936 +/- 0.001891
+gain: use 1123 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+GAIN  : 0.785835 +/- 0.001703
+
+Results for threshold  50
+split: use 731 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+SPLIT : 0.785364 +/- 0.001762
+gain: use 1151 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+GAIN  : 0.785747 +/- 0.002234
+
+Results for threshold  40
+split: use 792 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+SPLIT : 0.784874 +/- 0.001656
+gain: use 1171 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+GAIN  : 0.785621 +/- 0.001871
+
+Results for threshold  30
+split: use 859 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+SPLIT : 0.785467 +/- 0.001309
+gain: use 1192 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+GAIN  : 0.785773 +/- 0.001730
+
+Results for threshold  20
+split: use 934 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+SPLIT : 0.785432 +/- 0.001620
+gain: use 1207 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+GAIN  : 0.786085 +/- 0.001455
+
+Results for threshold  10
+split: use 1014 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+SPLIT : 0.785492 +/- 0.001831
+gain: use 1228 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+GAIN  : 0.785000 +/- 0.001240
+
+Results for threshold   0
+split: use 1714 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+SPLIT : 0.786435 +/- 0.001807
+gain: use 1714 features
+[LightGBM] [Warning] Find whitespaces in feature_names, replace with underlines
+GAIN  : 0.786435 +/- 0.001807
+== done. 12902 [s]
