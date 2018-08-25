@@ -105,6 +105,32 @@ class ApplicationFeaturesOpenSolution(Feature):
         return features
 
 
+class ApplicationFeaturesAntonova(Feature):
+    @classmethod
+    def _create_feature(cls, conf) -> pd.DataFrame:
+        df = Application.get_df(conf)
+        features = pd.DataFrame({'SK_ID_CURR': df['SK_ID_CURR'].unique()})
+
+        features['app EXT_SOURCE_1 * EXT_SOURCE_2'] = df['EXT_SOURCE_1'] * df['EXT_SOURCE_2']
+        features['app EXT_SOURCE_1 * EXT_SOURCE_3'] = df['EXT_SOURCE_1'] * df['EXT_SOURCE_3']
+        features['app EXT_SOURCE_2 * EXT_SOURCE_3'] = df['EXT_SOURCE_2'] * df['EXT_SOURCE_3']
+        features['app EXT_SOURCE_1 * DAYS_EMPLOYED'] = df['EXT_SOURCE_1'] * df['DAYS_EMPLOYED']
+        features['app EXT_SOURCE_2 * DAYS_EMPLOYED'] = df['EXT_SOURCE_2'] * df['DAYS_EMPLOYED']
+        features['app EXT_SOURCE_3 * DAYS_EMPLOYED'] = df['EXT_SOURCE_3'] * df['DAYS_EMPLOYED']
+        features['app EXT_SOURCE_1 / DAYS_BIRTH'] = df['EXT_SOURCE_1'] / df['DAYS_BIRTH']
+        features['app EXT_SOURCE_2 / DAYS_BIRTH'] = df['EXT_SOURCE_2'] / df['DAYS_BIRTH']
+        features['app EXT_SOURCE_3 / DAYS_BIRTH'] = df['EXT_SOURCE_3'] / df['DAYS_BIRTH']
+        features['app AMT_CREDIT - AMT_GOODS_PRICE'] = df['AMT_CREDIT'] - df['AMT_GOODS_PRICE']
+        features['app AMT_INCOME_TOTAL / 12 - AMT_ANNUITY'] = df['AMT_INCOME_TOTAL'] / 12. - df['AMT_ANNUITY']
+        features['app AMT_INCOME_TOTAL / AMT_ANNUITY'] = df['AMT_INCOME_TOTAL'] / df['AMT_ANNUITY']
+        features['app AMT_INCOME_TOTAL - AMT_GOODS_PRICE'] = df['AMT_INCOME_TOTAL'] - df['AMT_GOODS_PRICE']
+        features['app most popular AMT_GOODS_PRICE'] = df['AMT_GOODS_PRICE'].isin([225000, 450000, 675000, 900000]).map({True: 1, False: 0})
+        features['app popular AMT_GOODS_PRICE'] = df['AMT_GOODS_PRICE'].isin([1125000, 1350000, 1575000, 1800000, 2250000]).map({True: 1, False: 0})
+        features['app DAYS_EMPLOYED - DAYS_BIRTH'] = df['DAYS_EMPLOYED'] - df['DAYS_BIRTH']
+
+        return features
+
+
 class ApplicationFeaturesLeakyTargetEncoding(Feature):
     @classmethod
     def _create_feature(cls, conf) -> pd.DataFrame:
@@ -135,10 +161,10 @@ class ApplicationFeaturesTargetEncoding(Feature):
                 train_df.iloc[train_idx][categorical_columns + ['SK_ID_CURR']], train_df.iloc[train_idx]['TARGET']
             )
             valid_te = encoder.transform(train_df.iloc[valid_idx][categorical_columns + ['SK_ID_CURR']]).rename(
-               columns={col: f"{col}_target_encode" for col in categorical_columns}
+                columns={col: f"{col}_target_encode" for col in categorical_columns}
             )
             test_te = encoder.transform(test_df[categorical_columns + ['SK_ID_CURR']]).rename(
-               columns={col: f"{col}_target_encode" for col in categorical_columns}
+                columns={col: f"{col}_target_encode" for col in categorical_columns}
             )
             feature = feature.append(valid_te, sort=True).append(test_te, sort=True)
 

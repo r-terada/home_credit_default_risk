@@ -3,8 +3,7 @@ import json
 from attrdict import AttrDict
 
 from models import LightGBM, XGBoost, LogReg, RandomForest, KNN
-from features.application import ApplicationFeatures, ApplicationFeaturesOpenSolution, ApplicationFeaturesLeakyTargetEncoding, ApplicationFeaturesTargetEncoding, ApplicationFeaturesSingleValueCounts, ApplicationFeaturesPairValueCounts
-from features.bureau import BureauFeatures, BureauFeaturesOpenSolution, BureauFeaturesLeakyTargetEncoding
+from features.application import ApplicationFeatures, ApplicationFeaturesOpenSolution, ApplicationFeaturesLeakyTargetEncoding, ApplicationFeaturesTargetEncoding, ApplicationFeaturesSingleValueCounts, ApplicationFeaturesPairValueCounts, ApplicationFeaturesAntonova
 from features.previous_application import PreviousApplicationFeatures, PreviousApplicationFeaturesOpenSolution, PreviousApplicationFeaturesLeakyTargetEncoding
 from features.pos_cash import PosCashFeatures, PosCashFeaturesOpenSolution, PosCashFeaturesLeakyTargetEncoding
 from features.installments_payments import InstallmentsPaymentsFeatures, InstallmentsPaymentsFeaturesOpenSolution
@@ -48,6 +47,7 @@ KEY_FEATURE_MAP = {
     "ApplicationFeaturesLDAOrganizationTypeOccupationType5": ApplicationFeaturesLDAOrganizationTypeOccupationType5,
     "ApplicationFeaturesSingleValueCounts": ApplicationFeaturesSingleValueCounts,
     "ApplicationFeaturesPairValueCounts": ApplicationFeaturesPairValueCounts,
+    "ApplicationFeaturesAntonova": ApplicationFeaturesAntonova,
     "PredsLGBM1_1": LGBM1_1,
     "PredsLogReg0": LogReg0,
     "PredsLGBM3_1": LGBM3_1,
