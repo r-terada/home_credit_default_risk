@@ -10,6 +10,7 @@ from pprint import pprint
 
 from config import read_config, KEY_FEATURE_MAP, KEY_MODEL_MAP
 from utils import timer, reduce_mem_usage
+from utils.feature_cleaner import clean_data
 from models import LightGBM
 from features.base import Base
 from features.stacking import StackingFeaturesWithPasses
@@ -45,6 +46,10 @@ def get_train_test(conf):
             feature_to_drop = eval(line)
         print(f"drop columns in {conf.options.drop_features_list_file}")
         df = df.drop(feature_to_drop, axis=1)
+
+    if "clean_data" in conf.options and conf.options.clean_data:
+        with timer("clean_data"):
+            df = clean_data(df)
 
     if "reduce_mem_usage" in conf.options and conf.options.reduce_mem_usage:
         with timer("reduce_mem_usaga"):
