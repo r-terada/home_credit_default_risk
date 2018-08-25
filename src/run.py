@@ -9,7 +9,7 @@ import pandas as pd
 from pprint import pprint
 
 from config import read_config, KEY_FEATURE_MAP, KEY_MODEL_MAP
-from utils import timer
+from utils import timer, reduce_mem_usage
 from models import LightGBM
 from features.base import Base
 from features.stacking import StackingFeaturesWithPasses
@@ -44,6 +44,9 @@ def get_train_test(conf):
             line = fp.read()
             feature_to_drop = eval(line)
         df = df.drop(feature_to_drop, axis=1)
+
+    if "reduce_mem_usage" in conf.options and conf.options.reduce_mem_usage:
+        df = reduce_mem_usage(df)
 
     train_df = df[df['TARGET'].notnull()].copy()
     test_df = df[df['TARGET'].isnull()].copy()
