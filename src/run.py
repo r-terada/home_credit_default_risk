@@ -43,10 +43,12 @@ def get_train_test(conf):
         with open(conf.options.drop_features_list_file, "r") as fp:
             line = fp.read()
             feature_to_drop = eval(line)
+        print(f"drop columns in {config.options.drop_features_list_file}")
         df = df.drop(feature_to_drop, axis=1)
 
     if "reduce_mem_usage" in conf.options and conf.options.reduce_mem_usage:
-        df = reduce_mem_usage(df)
+        with timer("reduce_mem_usaga"):
+            df = reduce_mem_usage(df)
 
     train_df = df[df['TARGET'].notnull()].copy()
     test_df = df[df['TARGET'].isnull()].copy()
