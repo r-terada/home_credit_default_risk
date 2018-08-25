@@ -31,6 +31,9 @@ def get_train_test(conf):
                 if cols_to_drop:
                     print(f"drop columns: {cols_to_drop}")
                     f = f.drop(cols_to_drop, axis=1)
+            if "reduce_mem_usage" in conf.options and conf.options.reduce_mem_usage:
+                with timer("reduce_mem_usaga"):
+                    f = reduce_mem_usage(f)
             df = df.merge(f, how='left', on='SK_ID_CURR')
             del f
             gc.collect()
@@ -50,10 +53,6 @@ def get_train_test(conf):
     if "clean_data" in conf.options and conf.options.clean_data:
         with timer("clean_data"):
             df = clean_data(df)
-
-    if "reduce_mem_usage" in conf.options and conf.options.reduce_mem_usage:
-        with timer("reduce_mem_usaga"):
-            df = reduce_mem_usage(df)
 
     train_df = df[df['TARGET'].notnull()].copy()
     test_df = df[df['TARGET'].isnull()].copy()
