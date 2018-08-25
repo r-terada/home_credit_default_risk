@@ -1,0 +1,73 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.7993458685666125,
+      "elapsed_time": 0.41718411445617676
+    },
+    "Fold2": {
+      "val_score": 0.7968040713599474,
+      "elapsed_time": 0.41634202003479004
+    },
+    "Fold3": {
+      "val_score": 0.7943020283431212,
+      "elapsed_time": 0.4158139228820801
+    },
+    "Fold4": {
+      "val_score": 0.7983226234703289,
+      "elapsed_time": 0.3846437931060791
+    },
+    "Fold5": {
+      "val_score": 0.7994207288720248,
+      "elapsed_time": 0.41238903999328613
+    },
+    "Full": {
+      "score": 0.797641842016463,
+      "val_score_mean": 0.7976390641224069,
+      "val_score_std": 0.001917695741170366
+    }
+  },
+  "config": {
+    "features": [],
+    "stacking_features": [
+      "08210425_lgbm_3-1_0.794708",
+      "08211432_lgbm_3-1-0_0.795889",
+      "08230034_lgbm_3-3_seed0_0.796089",
+      "08230658_lgbm_3-3_seed1_0.795731",
+      "08231147_lgbm_3-3_seed2_0.795897",
+      "08220729_lgbm_3-1-0-1_0.796496",
+      "08191504_lgbm_1-1_0.793821",
+      "08251427_lgbm_7_1_0.795685"
+    ],
+    "normalize_feature": false,
+    "model": {
+      "name": "LogisticRegression",
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {},
+      "train_params": {}
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/src/../data/input",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/src/../data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/src/../data/output"
+    },
+    "options": {},
+    "config_file_name": "stacking_6"
+  },
+  "features_detail": {
+    "number": 8,
+    "names": [
+      "08210425_lgbm_3-1_0.794708_PREDICTION",
+      "08211432_lgbm_3-1-0_0.795889_PREDICTION",
+      "08230034_lgbm_3-3_seed0_0.796089_PREDICTION",
+      "08230658_lgbm_3-3_seed1_0.795731_PREDICTION",
+      "08231147_lgbm_3-3_seed2_0.795897_PREDICTION",
+      "08220729_lgbm_3-1-0-1_0.796496_PREDICTION",
+      "08191504_lgbm_1-1_0.793821_PREDICTION",
+      "08251427_lgbm_7_1_0.795685_PREDICTION"
+    ]
+  }
+}
