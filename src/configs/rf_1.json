@@ -19,7 +19,11 @@
         "AggregateFeaturePosCashOpenSolution",
         "AggregateFeaturePreviousApplicationOpenSolution",
         "ApplicationFeaturesLeakyTargetEncoding",
-        "ApplicationFeaturesAntonova"
+        "ApplicationFeaturesAntonova",
+        "BureauFeaturesAntonovaCleaned",
+        "PreviousApplicationFeaturesAntonovaCleaned",
+        "InstallmentsPaymentsFeaturesAntonovaCleaned",
+        "CreditCardBalanceFeaturesAntonova"
     ],
     "normalize_feature": false,
     "model": {

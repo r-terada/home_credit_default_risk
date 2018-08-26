@@ -23,7 +23,7 @@
         "BureauFeaturesAntonovaCleaned",
         "PreviousApplicationFeaturesAntonovaCleaned",
         "InstallmentsPaymentsFeaturesAntonovaCleaned",
-        "CreditCardBalanceFeaturesAntonovaCleaned"
+        "CreditCardBalanceFeaturesAntonova"
     ],
     "model": {
         "name": "XGBoost",
