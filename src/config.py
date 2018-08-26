@@ -8,7 +8,7 @@ from features.bureau import BureauFeatures, BureauFeaturesOpenSolution, BureauFe
 from features.previous_application import PreviousApplicationFeatures, PreviousApplicationFeaturesOpenSolution, PreviousApplicationFeaturesLeakyTargetEncoding, PreviousApplicationFeaturesAntonova, PreviousApplicationFeaturesAntonovaCleaned
 from features.pos_cash import PosCashFeatures, PosCashFeaturesOpenSolution, PosCashFeaturesLeakyTargetEncoding, PosCashFeaturesAntonova, PosCashFeaturesAntonovaCleaned
 from features.installments_payments import InstallmentsPaymentsFeatures, InstallmentsPaymentsFeaturesOpenSolution, InstallmentsPaymentsFeaturesAntonova, InstallmentsPaymentsFeaturesAntonovaCleaned
-from features.credit_card_balance import CreditCardBalanceFeatures, CreditCardBalanceFeaturesOpenSolution, CreditCardBalanceFeaturesLeakyTargetEncoding
+from features.credit_card_balance import CreditCardBalanceFeatures, CreditCardBalanceFeaturesOpenSolution, CreditCardBalanceFeaturesLeakyTargetEncoding, CreditCardBalanceFeaturesAntonova, CreditCardBalanceFeaturesAntonovaCleaned
 from features.agg_application import AggregateFeatureApplicationOpenSolution
 from features.agg_bureau import AggregateFeatureBureauOpenSolution
 from features.agg_credit_card_balance import AggregateFeatureCreditCardBalanceOpenSolution
@@ -57,6 +57,8 @@ KEY_FEATURE_MAP = {
     "PosCashFeaturesAntonovaCleaned": PosCashFeaturesAntonovaCleaned,
     "InstallmentsPaymentsFeaturesAntonova": InstallmentsPaymentsFeaturesAntonova,
     "InstallmentsPaymentsFeaturesAntonovaCleaned": InstallmentsPaymentsFeaturesAntonovaCleaned,
+    "CreditCardBalanceFeaturesAntonova": CreditCardBalanceFeaturesAntonova,
+    "CreditCardBalanceFeaturesAntonovaCleaned": CreditCardBalanceFeaturesAntonovaCleaned,
     "PredsLGBM1_1": LGBM1_1,
     "PredsLogReg0": LogReg0,
     "PredsLGBM3_1": LGBM3_1,

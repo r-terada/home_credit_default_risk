@@ -6,6 +6,7 @@ from category_encoders import TargetEncoder
 from features import one_hot_encoder, Feature
 from features.base import Base
 from features.raw_data import CreditCardBalance
+from features.feature_cleaner import clean_data
 
 
 class CreditCardBalanceFeatures(Feature):
@@ -104,6 +105,60 @@ class CreditCardBalanceFeaturesOpenSolution(Feature):
         features = features.merge(g, on=['SK_ID_CURR'], how='left')
 
         return features
+
+
+class CreditCardBalanceFeaturesAntonova(Feature):
+
+    @classmethod
+    def _create_feature(cls, conf) -> pd.DataFrame:
+        df_card = CreditCardBalance.get_df(conf)
+
+        # Replace some outliers
+        df_card.loc[df_card['AMT_PAYMENT_CURRENT'] > 4000000, 'AMT_PAYMENT_CURRENT'] = np.nan
+        df_card.loc[df_card['AMT_CREDIT_LIMIT_ACTUAL'] > 1000000, 'AMT_CREDIT_LIMIT_ACTUAL'] = np.nan
+
+        # Some new features
+        df_card['card missing'] = df_card.isnull().sum(axis = 1).values
+        df_card['card SK_DPD - MONTHS_BALANCE'] = df_card['SK_DPD'] - df_card['MONTHS_BALANCE']
+        df_card['card SK_DPD_DEF - MONTHS_BALANCE'] = df_card['SK_DPD_DEF'] - df_card['MONTHS_BALANCE']
+        df_card['card SK_DPD - SK_DPD_DEF'] = df_card['SK_DPD'] - df_card['SK_DPD_DEF']
+
+        df_card['card AMT_TOTAL_RECEIVABLE - AMT_RECIVABLE'] = df_card['AMT_TOTAL_RECEIVABLE'] - df_card['AMT_RECIVABLE']
+        df_card['card AMT_TOTAL_RECEIVABLE - AMT_RECEIVABLE_PRINCIPAL'] = df_card['AMT_TOTAL_RECEIVABLE'] - df_card['AMT_RECEIVABLE_PRINCIPAL']
+        df_card['card AMT_RECIVABLE - AMT_RECEIVABLE_PRINCIPAL'] = df_card['AMT_RECIVABLE'] - df_card['AMT_RECEIVABLE_PRINCIPAL']
+
+        df_card['card AMT_BALANCE - AMT_RECIVABLE'] = df_card['AMT_BALANCE'] - df_card['AMT_RECIVABLE']
+        df_card['card AMT_BALANCE - AMT_RECEIVABLE_PRINCIPAL'] = df_card['AMT_BALANCE'] - df_card['AMT_RECEIVABLE_PRINCIPAL']
+        df_card['card AMT_BALANCE - AMT_TOTAL_RECEIVABLE'] = df_card['AMT_BALANCE'] - df_card['AMT_TOTAL_RECEIVABLE']
+
+        df_card['card AMT_DRAWINGS_CURRENT - AMT_DRAWINGS_ATM_CURRENT'] = df_card['AMT_DRAWINGS_CURRENT'] - df_card['AMT_DRAWINGS_ATM_CURRENT']
+        df_card['card AMT_DRAWINGS_CURRENT - AMT_DRAWINGS_OTHER_CURRENT'] = df_card['AMT_DRAWINGS_CURRENT'] - df_card['AMT_DRAWINGS_OTHER_CURRENT']
+        df_card['card AMT_DRAWINGS_CURRENT - AMT_DRAWINGS_POS_CURRENT'] = df_card['AMT_DRAWINGS_CURRENT'] - df_card['AMT_DRAWINGS_POS_CURRENT']
+
+        # Categorical features with One-Hot encode
+        df_card, categorical = one_hot_encoder(df_card)
+
+        # Aggregations for application set
+        aggregations = {}
+        for col in df_card.columns:
+            aggregations[col] = ['mean'] if col in categorical else ['min', 'max', 'size', 'mean', 'var', 'sum']
+        df_card_agg = df_card.groupby('SK_ID_CURR').agg(aggregations)
+        df_card_agg.columns = pd.Index(['CARD_' + e[0] + "_" + e[1].upper() for e in df_card_agg.columns.tolist()])
+
+        # Count credit card lines
+        df_card_agg['CARD_COUNT'] = df_card.groupby('SK_ID_CURR').size()
+        del df_card
+        gc.collect()
+
+        return df_card_agg
+
+
+class CreditCardBalanceFeaturesAntonovaCleaned(CreditCardBalanceFeaturesAntonova):
+    @classmethod
+    def _create_feature(cls, conf) -> pd.DataFrame:
+        df = Base.get_df(conf)
+        df = df.merge(CreditCardBalanceFeaturesAntonova.get_df(conf), on="SK_ID_CURR", how="left")
+        return clean_data(df)
 
 
 class CreditCardBalanceFeaturesLeakyTargetEncoding(Feature):
