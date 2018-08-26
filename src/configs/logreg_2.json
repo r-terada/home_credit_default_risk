@@ -1,0 +1,57 @@
+{
+    "features": [
+        "ApplicationFeatures",
+        "BureauFeatures",
+        "PreviousApplicationFeatures",
+        "PosCashFeatures",
+        "InstallmentsPaymentsFeatures",
+        "CreditCardBalanceFeatures",
+        "ApplicationFeaturesOpenSolution",
+        "BureauFeaturesOpenSolution",
+        "PreviousApplicationFeaturesOpenSolution",
+        "PosCashFeaturesOpenSolution",
+        "InstallmentsPaymentsFeaturesOpenSolution",
+        "CreditCardBalanceFeaturesOpenSolution",
+        "AggregateFeatureApplicationOpenSolution",
+        "AggregateFeatureBureauOpenSolution",
+        "AggregateFeatureCreditCardBalanceOpenSolution",
+        "AggregateFeatureInstallmentsPaymentsOpenSolution",
+        "AggregateFeaturePosCashOpenSolution",
+        "AggregateFeaturePreviousApplicationOpenSolution",
+        "ApplicationFeaturesLeakyTargetEncoding",
+        "ApplicationFeaturesAntonova",
+        "BureauFeaturesAntonovaCleaned",
+        "PreviousApplicationFeaturesAntonovaCleaned",
+        "InstallmentsPaymentsFeaturesAntonovaCleaned",
+        "CreditCardBalanceFeaturesAntonova"
+    ],
+    "normalize_feature": true,
+    "model": {
+        "name": "LogisticRegression",
+        "kfold_params": {
+            "n_splits": 5,
+            "shuffle": true,
+            "random_state": 47
+        },
+        "clf_params": {
+            "penalty": "l1",
+            "tol": 0.00001,
+            "C": 1,
+            "fit_intercept": 1,
+            "class_weight": 1,
+            "solver": "liblinear",
+            "max_iter": 10000
+        },
+        "train_params": {}
+    },
+    "dataset": {
+        "input_directory":"data/input",
+        "cache_directory": "data/working",
+        "output_directory": "data/output"
+    },
+    "options": {
+        "drop_duplicate_column_on_merge": true,
+        "drop_features_list_file": "misc/gain_corr_under_threshold_90.txt",
+        "reduce_mem_usage": true
+    }
+}
