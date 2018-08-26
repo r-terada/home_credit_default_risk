@@ -69,6 +69,8 @@ class InstallmentsPaymentsFeaturesOpenSolution(Feature):
         g = parallel_apply(groupby, func, index_name='SK_ID_CURR', num_workers=4).reset_index()
         features = features.merge(g, on='SK_ID_CURR', how='left')
 
+        # dtype of "pos_cash_remaining_installments" is object, don't know why...
+        features["pos_cash_remaining_installments"] = features["pos_cash_remaining_installments"].astype(np.float64)
         return features
 
     @staticmethod
