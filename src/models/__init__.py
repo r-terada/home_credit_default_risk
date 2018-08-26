@@ -25,7 +25,7 @@ class Model:
                                 feats: List[str],
                                 target: str,
                                 conf: AttrDict
-                                ) -> None:
+                                ) -> float:
         raise NotImplementedError
 
 
@@ -38,7 +38,7 @@ class LightGBM(Model):
                                 feats: List[str],
                                 target: str,
                                 conf: AttrDict
-                                ) -> None:
+                                ) -> float:
         # prepare
         x_train = train[feats]
         y_train = train[target]
@@ -124,6 +124,8 @@ class LightGBM(Model):
         test['TARGET'] = sub_preds
         test[['SK_ID_CURR', 'TARGET']].to_csv(os.path.join(output_directory, 'submission.csv'), index=False)
 
+        return score
+
 
 class XGBoost(Model):
 
@@ -134,7 +136,7 @@ class XGBoost(Model):
                                 feats: List[str],
                                 target: str,
                                 conf: AttrDict
-                                ) -> None:
+                                ) -> float:
         # prepare
         x_train = train[feats]
         y_train = train[target]
@@ -219,6 +221,8 @@ class XGBoost(Model):
 
         test['TARGET'] = sub_preds
         test[['SK_ID_CURR', 'TARGET']].to_csv(os.path.join(output_directory, 'submission.csv'), index=False)
+
+        return score
 
 
 class SKLearnClassifier(Model):
@@ -305,6 +309,8 @@ class SKLearnClassifier(Model):
 
         test['TARGET'] = sub_preds
         test[['SK_ID_CURR', 'TARGET']].to_csv(os.path.join(output_directory, 'submission.csv'), index=False)
+
+        return score
 
 
 class LogReg(SKLearnClassifier):

@@ -1,0 +1,26 @@
+{
+    "features": [
+        "PosCashFeatures"
+    ],
+    "model": {
+        "kfold_params": {
+            "n_splits": 5,
+            "shuffle": true,
+            "random_state": 47
+        },
+        "clf_params":{},
+        "train_params": {
+            "eval_metric": "auc",
+            "verbose": 100,
+            "early_stopping_rounds": 100
+        }
+    },
+    "dataset": {
+        "input_directory":"data/input",
+        "cache_directory": "data/working",
+        "output_directory": "data/hyperopt_output"
+    },
+    "options": {
+        "drop_duplicate_column_on_merge": true
+    }
+}
