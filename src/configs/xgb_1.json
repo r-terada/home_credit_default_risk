@@ -18,7 +18,12 @@
         "AggregateFeatureInstallmentsPaymentsOpenSolution",
         "AggregateFeaturePosCashOpenSolution",
         "AggregateFeaturePreviousApplicationOpenSolution",
-        "ApplicationFeaturesLeakyTargetEncoding"
+        "ApplicationFeaturesLeakyTargetEncoding",
+        "ApplicationFeaturesAntonova",
+        "BureauFeaturesAntonovaCleaned",
+        "PreviousApplicationFeaturesAntonovaCleaned",
+        "InstallmentsPaymentsFeaturesAntonovaCleaned",
+        "CreditCardBalanceFeaturesAntonovaCleaned"
     ],
     "model": {
         "name": "XGBoost",
