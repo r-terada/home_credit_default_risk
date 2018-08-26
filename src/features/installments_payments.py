@@ -1,10 +1,13 @@
 import os
 import gc
+import numpy as np
 import pandas as pd
 
 from functools import partial
 from features import Feature, one_hot_encoder, parallel_apply, add_features_in_group, add_trend_feature, get_feature_names_by_period, safe_div
+from features.base import Base
 from features.raw_data import InstallmentsPayments
+from features.feature_cleaner import clean_data
 
 
 class InstallmentsPaymentsFeatures(Feature):
@@ -172,3 +175,45 @@ class InstallmentsPaymentsFeaturesOpenSolution(Feature):
                                          ['count', 'mean'],
                                          'last_loan_')
         return features
+
+
+class InstallmentsPaymentsFeaturesAntonova(Feature):
+    @classmethod
+    def _create_feature(cls, conf) -> pd.DataFrame:
+        df_ins = InstallmentsPayments.get_df(conf)
+
+        # Replace some outliers
+        df_ins.loc[df_ins['NUM_INSTALMENT_VERSION'] > 70, 'NUM_INSTALMENT_VERSION'] = np.nan
+        df_ins.loc[df_ins['DAYS_ENTRY_PAYMENT'] < -4000, 'DAYS_ENTRY_PAYMENT'] = np.nan
+
+        # Some new features
+        df_ins['ins DAYS_ENTRY_PAYMENT - DAYS_INSTALMENT'] = df_ins['DAYS_ENTRY_PAYMENT'] - df_ins['DAYS_INSTALMENT']
+        df_ins['ins NUM_INSTALMENT_NUMBER_100'] = (df_ins['NUM_INSTALMENT_NUMBER'] == 100).astype(int)
+        df_ins['ins DAYS_INSTALMENT more NUM_INSTALMENT_NUMBER'] = (df_ins['DAYS_INSTALMENT'] > df_ins['NUM_INSTALMENT_NUMBER'] * 50 / 3 - 11500 / 3).astype(int)
+        df_ins['ins AMT_INSTALMENT - AMT_PAYMENT'] = df_ins['AMT_INSTALMENT'] - df_ins['AMT_PAYMENT']
+        df_ins['ins AMT_PAYMENT / AMT_INSTALMENT'] = df_ins['AMT_PAYMENT'] / df_ins['AMT_INSTALMENT']
+
+        # Categorical features with One-Hot encode
+        df_ins, categorical = one_hot_encoder(df_ins)
+
+        # Aggregations for application set
+        aggregations = {}
+        for col in df_ins.columns:
+            aggregations[col] = ['mean'] if col in categorical else ['min', 'max', 'size', 'mean', 'var', 'sum']
+        df_ins_agg = df_ins.groupby('SK_ID_CURR').agg(aggregations)
+        df_ins_agg.columns = pd.Index(['INS_' + e[0] + "_" + e[1].upper() for e in df_ins_agg.columns.tolist()])
+
+        # Count installments lines
+        df_ins_agg['INSTAL_COUNT'] = df_ins.groupby('SK_ID_CURR').size()
+        del df_ins
+        gc.collect()
+
+        return df_ins_agg
+
+
+class InstallmentsPaymentsFeaturesAntonovaCleaned(InstallmentsPaymentsFeaturesAntonova):
+    @classmethod
+    def _create_feature(cls, conf) -> pd.DataFrame:
+        df = Base.get_df(conf)
+        df = df.merge(InstallmentsPaymentsFeaturesAntonova.get_df(conf), on="SK_ID_CURR", how="left")
+        return clean_data(df)
