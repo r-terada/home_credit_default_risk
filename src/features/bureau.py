@@ -6,6 +6,7 @@ from category_encoders import TargetEncoder
 
 from features import one_hot_encoder, Feature, LargeFeature
 from features.base import Base
+from features.feature_cleaner import clean_data
 from features.raw_data import Bureau, BureauBalance
 
 
@@ -241,6 +242,15 @@ class BureauFeaturesAntonova(LargeFeature):
         gc.collect()
 
         return df_bureau_agg
+
+
+class BureauFeaturesAntonovaCleaned(BureauFeaturesAntonova):
+    @classmethod
+    def _create_feature(cls, conf) ->pd.DataFrame:
+        base = Base.get_df(conf)
+        df = BureauFeaturesAntonova.get_df(conf)
+        # clean data needs target info
+        return clean_data(base.merge(df, on='SK_ID_CURR', how='left'))
 
 
 class BureauFeaturesLeakyTargetEncoding(Feature):
