@@ -10,9 +10,9 @@ from pprint import pprint
 
 from config import read_config, KEY_FEATURE_MAP, KEY_MODEL_MAP
 from utils import timer, reduce_mem_usage
-from utils.feature_cleaner import clean_data
 from models import LightGBM
 from features.base import Base
+from features.feature_cleaner import clean_data
 from features.stacking import StackingFeaturesWithPasses
 
 import warnings
