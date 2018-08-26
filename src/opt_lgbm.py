@@ -83,7 +83,8 @@ def main(config_file, num_opt_eval):
         "max_depth": hp.quniform("max_depth", 4, 12, 1),
         "num_leaves": hp.quniform("num_leaves", 16, 128, 1),
         "min_child_samples": hp.quniform("min_child_samples", 1, 100, 1),
-        "colsample_bytree": hp.quniform("colsample_bytree", 0.01, 0.8, 0.01),
+        "colsample_bytree": hp.quniform("colsample_bytree", 0.01, 1.0, 0.01),
+        "subsample": hp.quniform("subsample", 0.01, 1.0, 0.01),
         "min_gain_to_split": hp.quniform("min_gain_to_split", 0.0, 5.0, 0.1),
         "reg_alpha": hp.quniform("reg_alpha", 0, 10, 0.01),
         "reg_lambda": hp.quniform("reg_lambda", 0, 10, 0.01)
@@ -104,8 +105,6 @@ def main(config_file, num_opt_eval):
                 "reg_lambda": float(params["reg_lambda"]),
                 "n_estimators": 10000,
                 "nthread": -1,
-                "subsample": 1.0,
-                "subsample_freq": 1,
                 "scale_pos_weight": 1,
                 "is_unbalance": False,
                 "silent": -1,
