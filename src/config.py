@@ -5,7 +5,7 @@ from attrdict import AttrDict
 from models import LightGBM, XGBoost, LogReg, RandomForest, KNN
 from features.application import ApplicationFeatures, ApplicationFeaturesOpenSolution, ApplicationFeaturesLeakyTargetEncoding, ApplicationFeaturesTargetEncoding, ApplicationFeaturesSingleValueCounts, ApplicationFeaturesPairValueCounts, ApplicationFeaturesAntonova
 from features.bureau import BureauFeatures, BureauFeaturesOpenSolution, BureauFeaturesLeakyTargetEncoding, BureauFeaturesAntonova, BureauFeaturesAntonovaCleaned
-from features.previous_application import PreviousApplicationFeatures, PreviousApplicationFeaturesOpenSolution, PreviousApplicationFeaturesLeakyTargetEncoding
+from features.previous_application import PreviousApplicationFeatures, PreviousApplicationFeaturesOpenSolution, PreviousApplicationFeaturesLeakyTargetEncoding, PreviousApplicationFeaturesAntonova, PreviousApplicationFeaturesAntonovaCleaned
 from features.pos_cash import PosCashFeatures, PosCashFeaturesOpenSolution, PosCashFeaturesLeakyTargetEncoding
 from features.installments_payments import InstallmentsPaymentsFeatures, InstallmentsPaymentsFeaturesOpenSolution
 from features.credit_card_balance import CreditCardBalanceFeatures, CreditCardBalanceFeaturesOpenSolution, CreditCardBalanceFeaturesLeakyTargetEncoding
@@ -51,6 +51,8 @@ KEY_FEATURE_MAP = {
     "ApplicationFeaturesAntonova": ApplicationFeaturesAntonova,
     "BureauFeaturesAntonova": BureauFeaturesAntonova,
     "BureauFeaturesAntonovaCleaned": BureauFeaturesAntonovaCleaned,
+    "PreviousApplicationFeaturesAntonova": PreviousApplicationFeaturesAntonova,
+    "PreviousApplicationFeaturesAntonovaCleaned": PreviousApplicationFeaturesAntonovaCleaned,
     "PredsLGBM1_1": LGBM1_1,
     "PredsLogReg0": LogReg0,
     "PredsLGBM3_1": LGBM3_1,
