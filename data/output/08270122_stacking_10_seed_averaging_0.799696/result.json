@@ -1,0 +1,67 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.8016646006640918,
+      "elapsed_time": 0.36971092224121094
+    },
+    "Fold2": {
+      "val_score": 0.7987346485625425,
+      "elapsed_time": 0.34803104400634766
+    },
+    "Fold3": {
+      "val_score": 0.7963833610304412,
+      "elapsed_time": 0.36176490783691406
+    },
+    "Fold4": {
+      "val_score": 0.8005748323233538,
+      "elapsed_time": 0.3404428958892822
+    },
+    "Fold5": {
+      "val_score": 0.8012667087284374,
+      "elapsed_time": 0.3565371036529541
+    },
+    "Full": {
+      "score": 0.7996958473433945,
+      "val_score_mean": 0.7997248302617733,
+      "val_score_std": 0.0019497937504154438
+    }
+  },
+  "config": {
+    "features": [],
+    "stacking_features": [
+      "08270118_stacking_10_0.799698",
+      "08270118_stacking_10_0.799736",
+      "08270119_stacking_10_0.799687",
+      "08270119_stacking_10_0.799697",
+      "08270119_stacking_10_0.799742"
+    ],
+    "normalize_feature": false,
+    "model": {
+      "name": "LogisticRegression",
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {},
+      "train_params": {}
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/src/../data/input",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/src/../data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/src/../data/output"
+    },
+    "options": {},
+    "config_file_name": "stacking_10_seed_averaging"
+  },
+  "features_detail": {
+    "number": 5,
+    "names": [
+      "08270118_stacking_10_0.799698_PREDICTION",
+      "08270118_stacking_10_0.799736_PREDICTION",
+      "08270119_stacking_10_0.799687_PREDICTION",
+      "08270119_stacking_10_0.799697_PREDICTION",
+      "08270119_stacking_10_0.799742_PREDICTION"
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+    "features": [],
+    "stacking_features": [
+        "08270118_stacking_10_0.799698",
+        "08270118_stacking_10_0.799736",
+        "08270119_stacking_10_0.799687",
+        "08270119_stacking_10_0.799697",
+        "08270119_stacking_10_0.799742"
+    ],
+    "normalize_feature": false,
+    "model": {
+        "name": "LogisticRegression",
+        "kfold_params": {
+            "n_splits": 5,
+            "shuffle": true,
+            "random_state": 47
+        },
+        "clf_params": {},
+        "train_params": {}
+    },
+    "dataset": {
+        "input_directory":"data/input",
+        "cache_directory": "data/working",
+        "output_directory": "data/output"
+    },
+    "options": {}
+}
