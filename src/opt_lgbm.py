@@ -109,14 +109,15 @@ def main(config_file, num_opt_eval):
                 "scale_pos_weight": 1,
                 "is_unbalance": False,
                 "silent": -1,
-                "verbose": -1
+                "verbose": -1,
+                "random_state": 0
             }
         }
         pprint(conf.model.clf_params)
 
         model = LightGBM()
         score = model.train_and_predict_kfold(
-            train_df.head(30000),
+            train_df,
             test_df,
             feats,
             'TARGET',

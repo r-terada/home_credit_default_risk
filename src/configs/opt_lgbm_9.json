@@ -1,6 +1,29 @@
 {
     "features": [
-        "PosCashFeatures"
+        "ApplicationFeatures",
+        "BureauFeatures",
+        "PreviousApplicationFeatures",
+        "PosCashFeatures",
+        "InstallmentsPaymentsFeatures",
+        "CreditCardBalanceFeatures",
+        "ApplicationFeaturesOpenSolution",
+        "BureauFeaturesOpenSolution",
+        "PreviousApplicationFeaturesOpenSolution",
+        "PosCashFeaturesOpenSolution",
+        "InstallmentsPaymentsFeaturesOpenSolution",
+        "CreditCardBalanceFeaturesOpenSolution",
+        "AggregateFeatureApplicationOpenSolution",
+        "AggregateFeatureBureauOpenSolution",
+        "AggregateFeatureCreditCardBalanceOpenSolution",
+        "AggregateFeatureInstallmentsPaymentsOpenSolution",
+        "AggregateFeaturePosCashOpenSolution",
+        "AggregateFeaturePreviousApplicationOpenSolution",
+        "ApplicationFeaturesLeakyTargetEncoding",
+        "ApplicationFeaturesAntonova",
+        "BureauFeaturesAntonovaCleaned",
+        "PreviousApplicationFeaturesAntonovaCleaned",
+        "InstallmentsPaymentsFeaturesAntonovaCleaned",
+        "CreditCardBalanceFeaturesAntonova"
     ],
     "model": {
         "kfold_params": {
