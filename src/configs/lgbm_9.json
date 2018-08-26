@@ -1,0 +1,69 @@
+{
+    "features": [
+        "ApplicationFeatures",
+        "BureauFeatures",
+        "PreviousApplicationFeatures",
+        "PosCashFeatures",
+        "InstallmentsPaymentsFeatures",
+        "CreditCardBalanceFeatures",
+        "ApplicationFeaturesOpenSolution",
+        "BureauFeaturesOpenSolution",
+        "PreviousApplicationFeaturesOpenSolution",
+        "PosCashFeaturesOpenSolution",
+        "InstallmentsPaymentsFeaturesOpenSolution",
+        "CreditCardBalanceFeaturesOpenSolution",
+        "AggregateFeatureApplicationOpenSolution",
+        "AggregateFeatureBureauOpenSolution",
+        "AggregateFeatureCreditCardBalanceOpenSolution",
+        "AggregateFeatureInstallmentsPaymentsOpenSolution",
+        "AggregateFeaturePosCashOpenSolution",
+        "AggregateFeaturePreviousApplicationOpenSolution",
+        "ApplicationFeaturesLeakyTargetEncoding",
+        "ApplicationFeaturesAntonova",
+        "BureauFeaturesAntonovaCleaned",
+        "PreviousApplicationFeaturesAntonovaCleaned",
+        "InstallmentsPaymentsFeaturesAntonovaCleaned",
+        "CreditCardBalanceFeaturesAntonovaCleaned"
+    ],
+    "model": {
+        "kfold_params": {
+            "n_splits": 5,
+            "shuffle": true,
+            "random_state": 47
+        },
+        "clf_params":{
+            "nthread": 4,
+            "n_estimators": 5000,
+            "learning_rate": 0.02,
+            "max_bin": 300,
+            "max_depth": -1,
+            "num_leaves": 30,
+            "min_child_samples": 70,
+            "subsample": 1.0,
+            "subsample_freq": 1,
+            "colsample_bytree": 0.05,
+            "min_gain_to_split": 0.5,
+            "reg_alpha": 0.0,
+            "reg_lambda": 100,
+            "scale_pos_weight": 1,
+            "is_unbalance": false,
+            "silent": -1,
+            "verbose": -1
+        },
+        "train_params": {
+            "eval_metric": "auc",
+            "verbose": 100,
+            "early_stopping_rounds": 100
+        }
+    },
+    "dataset": {
+        "input_directory":"data/input",
+        "cache_directory": "data/working",
+        "output_directory": "data/output"
+    },
+    "options": {
+        "drop_duplicate_column_on_merge": true,
+        "drop_features_list_file": "misc/gain_corr_under_threshold_90.txt",
+        "reduce_mem_usage": true
+    }
+}
