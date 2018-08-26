@@ -7,6 +7,7 @@ from category_encoders import TargetEncoder
 from features import Feature, one_hot_encoder, parallel_apply, add_features_in_group, add_trend_feature
 from features.base import Base
 from features.raw_data import PosCash
+from features.feature_cleaner import clean_data
 
 
 class PosCashFeatures(Feature):
@@ -152,6 +153,44 @@ class PosCashFeaturesOpenSolution(Feature):
                                          'last_loan_')
 
         return features
+
+
+class PosCashFeaturesAntonova(Feature):
+    @classmethod
+    def _create_feature(cls, conf) -> pd.DataFrame:
+        df_pos = PosCash.get_df(conf)
+
+        # Replace some outliers
+        df_pos.loc[df_pos['CNT_INSTALMENT_FUTURE'] > 60, 'CNT_INSTALMENT_FUTURE'] = np.nan
+
+        # Some new features
+        df_pos['pos CNT_INSTALMENT more CNT_INSTALMENT_FUTURE'] = \
+            (df_pos['CNT_INSTALMENT'] > df_pos['CNT_INSTALMENT_FUTURE']).astype(int)
+
+        # Categorical features with One-Hot encode
+        df_pos, categorical = one_hot_encoder(df_pos)
+
+        # Aggregations for application set
+        aggregations = {}
+        for col in df_pos.columns:
+            aggregations[col] = ['mean'] if col in categorical else ['min', 'max', 'size', 'mean', 'var', 'sum']
+        df_pos_agg = df_pos.groupby('SK_ID_CURR').agg(aggregations)
+        df_pos_agg.columns = pd.Index(['POS_' + e[0] + "_" + e[1].upper() for e in df_pos_agg.columns.tolist()])
+
+        # Count POS lines
+        df_pos_agg['POS_COUNT'] = df_pos.groupby('SK_ID_CURR').size()
+        del df_pos
+        gc.collect()
+
+        return df_pos_agg
+
+
+class PosCashFeaturesAntonovaCleaned(PosCashFeaturesAntonova):
+    @classmethod
+    def _create_feature(cls, conf) -> pd.DataFrame:
+        df = Base.get_df(conf)
+        df = df.merge(PosCashFeaturesAntonova.get_df(conf), on="SK_ID_CURR", how="left")
+        return clean_data(df)
 
 
 class PosCashFeaturesLeakyTargetEncoding(Feature):

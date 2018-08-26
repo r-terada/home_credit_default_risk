@@ -1,0 +1,217 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.5,
+      "best_iteration": 1,
+      "elapsed_time": 4.981817722320557,
+      "feature_importance_top10": {
+        "POS_SK_ID_PREV_MIN": 0,
+        "POS_pos CNT_INSTALMENT more CNT_INSTALMENT_FUTURE_SIZE": 0,
+        "POS_SK_DPD_SIZE": 0,
+        "POS_SK_DPD_MEAN": 0,
+        "POS_SK_DPD_VAR": 0,
+        "POS_SK_DPD_SUM": 0,
+        "POS_SK_DPD_DEF_MIN": 0,
+        "POS_SK_DPD_DEF_MAX": 0,
+        "POS_SK_DPD_DEF_SIZE": 0,
+        "POS_SK_DPD_DEF_MEAN": 0
+      }
+    },
+    "Fold2": {
+      "val_score": 0.5,
+      "best_iteration": 1,
+      "elapsed_time": 3.556303024291992,
+      "feature_importance_top10": {
+        "POS_SK_ID_PREV_MIN": 0,
+        "POS_pos CNT_INSTALMENT more CNT_INSTALMENT_FUTURE_SIZE": 0,
+        "POS_SK_DPD_SIZE": 0,
+        "POS_SK_DPD_MEAN": 0,
+        "POS_SK_DPD_VAR": 0,
+        "POS_SK_DPD_SUM": 0,
+        "POS_SK_DPD_DEF_MIN": 0,
+        "POS_SK_DPD_DEF_MAX": 0,
+        "POS_SK_DPD_DEF_SIZE": 0,
+        "POS_SK_DPD_DEF_MEAN": 0
+      }
+    },
+    "Fold3": {
+      "val_score": 0.5,
+      "best_iteration": 1,
+      "elapsed_time": 3.377495050430298,
+      "feature_importance_top10": {
+        "POS_SK_ID_PREV_MIN": 0,
+        "POS_pos CNT_INSTALMENT more CNT_INSTALMENT_FUTURE_SIZE": 0,
+        "POS_SK_DPD_SIZE": 0,
+        "POS_SK_DPD_MEAN": 0,
+        "POS_SK_DPD_VAR": 0,
+        "POS_SK_DPD_SUM": 0,
+        "POS_SK_DPD_DEF_MIN": 0,
+        "POS_SK_DPD_DEF_MAX": 0,
+        "POS_SK_DPD_DEF_SIZE": 0,
+        "POS_SK_DPD_DEF_MEAN": 0
+      }
+    },
+    "Fold4": {
+      "val_score": 0.5,
+      "best_iteration": 1,
+      "elapsed_time": 3.3060011863708496,
+      "feature_importance_top10": {
+        "POS_SK_ID_PREV_MIN": 0,
+        "POS_pos CNT_INSTALMENT more CNT_INSTALMENT_FUTURE_SIZE": 0,
+        "POS_SK_DPD_SIZE": 0,
+        "POS_SK_DPD_MEAN": 0,
+        "POS_SK_DPD_VAR": 0,
+        "POS_SK_DPD_SUM": 0,
+        "POS_SK_DPD_DEF_MIN": 0,
+        "POS_SK_DPD_DEF_MAX": 0,
+        "POS_SK_DPD_DEF_SIZE": 0,
+        "POS_SK_DPD_DEF_MEAN": 0
+      }
+    },
+    "Fold5": {
+      "val_score": 0.5,
+      "best_iteration": 1,
+      "elapsed_time": 3.3262829780578613,
+      "feature_importance_top10": {
+        "POS_SK_ID_PREV_MIN": 0,
+        "POS_pos CNT_INSTALMENT more CNT_INSTALMENT_FUTURE_SIZE": 0,
+        "POS_SK_DPD_SIZE": 0,
+        "POS_SK_DPD_MEAN": 0,
+        "POS_SK_DPD_VAR": 0,
+        "POS_SK_DPD_SUM": 0,
+        "POS_SK_DPD_DEF_MIN": 0,
+        "POS_SK_DPD_DEF_MAX": 0,
+        "POS_SK_DPD_DEF_SIZE": 0,
+        "POS_SK_DPD_DEF_MEAN": 0
+      }
+    },
+    "Full": {
+      "score": 0.5,
+      "val_score_mean": 0.5,
+      "val_score_std": 0.0,
+      "feature_importance_top10": {
+        "POS_CNT_INSTALMENT_FUTURE_MAX": 0.0,
+        "POS_SK_ID_CURR_SIZE": 0.0,
+        "POS_SK_DPD_DEF_SIZE": 0.0,
+        "POS_SK_DPD_DEF_SUM": 0.0,
+        "POS_SK_DPD_DEF_VAR": 0.0,
+        "POS_SK_DPD_MAX": 0.0,
+        "POS_SK_DPD_MEAN": 0.0,
+        "POS_SK_DPD_MIN": 0.0,
+        "POS_SK_DPD_SIZE": 0.0,
+        "POS_SK_DPD_SUM": 0.0
+      }
+    }
+  },
+  "config": {
+    "features": [
+      "PosCashFeaturesAntonova"
+    ],
+    "model": {
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {
+        "nthread": 4,
+        "n_estimators": 5000,
+        "learning_rate": 0.02,
+        "max_bin": 300,
+        "max_depth": -1,
+        "num_leaves": 30,
+        "min_child_samples": 70,
+        "subsample": 1.0,
+        "subsample_freq": 1,
+        "colsample_bytree": 0.05,
+        "min_gain_to_split": 0.5,
+        "reg_alpha": 0.0,
+        "reg_lambda": 100,
+        "scale_pos_weight": 1,
+        "is_unbalance": false,
+        "silent": -1,
+        "verbose": -1
+      },
+      "train_params": {
+        "eval_metric": "auc",
+        "verbose": 100,
+        "early_stopping_rounds": 100
+      },
+      "name": "LightGBM"
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/src/../data/input",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/src/../data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/src/../data/output"
+    },
+    "options": {
+      "drop_duplicate_column_on_merge": true,
+      "reduce_mem_usage": true
+    },
+    "config_file_name": "lgbm_9_pos_cash"
+  },
+  "features_detail": {
+    "number": 59,
+    "names": [
+      "POS_SK_ID_PREV_MIN",
+      "POS_SK_ID_PREV_MAX",
+      "POS_SK_ID_PREV_SIZE",
+      "POS_SK_ID_PREV_MEAN",
+      "POS_SK_ID_PREV_VAR",
+      "POS_SK_ID_PREV_SUM",
+      "POS_SK_ID_CURR_MIN",
+      "POS_SK_ID_CURR_MAX",
+      "POS_SK_ID_CURR_SIZE",
+      "POS_SK_ID_CURR_MEAN",
+      "POS_SK_ID_CURR_VAR",
+      "POS_SK_ID_CURR_SUM",
+      "POS_MONTHS_BALANCE_MIN",
+      "POS_MONTHS_BALANCE_MAX",
+      "POS_MONTHS_BALANCE_SIZE",
+      "POS_MONTHS_BALANCE_MEAN",
+      "POS_MONTHS_BALANCE_VAR",
+      "POS_MONTHS_BALANCE_SUM",
+      "POS_CNT_INSTALMENT_MIN",
+      "POS_CNT_INSTALMENT_MAX",
+      "POS_CNT_INSTALMENT_SIZE",
+      "POS_CNT_INSTALMENT_MEAN",
+      "POS_CNT_INSTALMENT_VAR",
+      "POS_CNT_INSTALMENT_SUM",
+      "POS_CNT_INSTALMENT_FUTURE_MIN",
+      "POS_CNT_INSTALMENT_FUTURE_MAX",
+      "POS_CNT_INSTALMENT_FUTURE_SIZE",
+      "POS_CNT_INSTALMENT_FUTURE_MEAN",
+      "POS_CNT_INSTALMENT_FUTURE_VAR",
+      "POS_CNT_INSTALMENT_FUTURE_SUM",
+      "POS_SK_DPD_MIN",
+      "POS_SK_DPD_MAX",
+      "POS_SK_DPD_SIZE",
+      "POS_SK_DPD_MEAN",
+      "POS_SK_DPD_VAR",
+      "POS_SK_DPD_SUM",
+      "POS_SK_DPD_DEF_MIN",
+      "POS_SK_DPD_DEF_MAX",
+      "POS_SK_DPD_DEF_SIZE",
+      "POS_SK_DPD_DEF_MEAN",
+      "POS_SK_DPD_DEF_VAR",
+      "POS_SK_DPD_DEF_SUM",
+      "POS_pos CNT_INSTALMENT more CNT_INSTALMENT_FUTURE_MIN",
+      "POS_pos CNT_INSTALMENT more CNT_INSTALMENT_FUTURE_MAX",
+      "POS_pos CNT_INSTALMENT more CNT_INSTALMENT_FUTURE_SIZE",
+      "POS_pos CNT_INSTALMENT more CNT_INSTALMENT_FUTURE_MEAN",
+      "POS_pos CNT_INSTALMENT more CNT_INSTALMENT_FUTURE_VAR",
+      "POS_pos CNT_INSTALMENT more CNT_INSTALMENT_FUTURE_SUM",
+      "POS_NAME_CONTRACT_STATUS_Active_MEAN",
+      "POS_NAME_CONTRACT_STATUS_Amortized debt_MEAN",
+      "POS_NAME_CONTRACT_STATUS_Approved_MEAN",
+      "POS_NAME_CONTRACT_STATUS_Canceled_MEAN",
+      "POS_NAME_CONTRACT_STATUS_Completed_MEAN",
+      "POS_NAME_CONTRACT_STATUS_Demand_MEAN",
+      "POS_NAME_CONTRACT_STATUS_Returned to the store_MEAN",
+      "POS_NAME_CONTRACT_STATUS_Signed_MEAN",
+      "POS_NAME_CONTRACT_STATUS_XNA_MEAN",
+      "POS_NAME_CONTRACT_STATUS_nan_MEAN",
+      "POS_COUNT"
+    ]
+  }
+}

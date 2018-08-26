@@ -6,7 +6,7 @@ from models import LightGBM, XGBoost, LogReg, RandomForest, KNN
 from features.application import ApplicationFeatures, ApplicationFeaturesOpenSolution, ApplicationFeaturesLeakyTargetEncoding, ApplicationFeaturesTargetEncoding, ApplicationFeaturesSingleValueCounts, ApplicationFeaturesPairValueCounts, ApplicationFeaturesAntonova
 from features.bureau import BureauFeatures, BureauFeaturesOpenSolution, BureauFeaturesLeakyTargetEncoding, BureauFeaturesAntonova, BureauFeaturesAntonovaCleaned
 from features.previous_application import PreviousApplicationFeatures, PreviousApplicationFeaturesOpenSolution, PreviousApplicationFeaturesLeakyTargetEncoding, PreviousApplicationFeaturesAntonova, PreviousApplicationFeaturesAntonovaCleaned
-from features.pos_cash import PosCashFeatures, PosCashFeaturesOpenSolution, PosCashFeaturesLeakyTargetEncoding
+from features.pos_cash import PosCashFeatures, PosCashFeaturesOpenSolution, PosCashFeaturesLeakyTargetEncoding, PosCashFeaturesAntonova, PosCashFeaturesAntonovaCleaned
 from features.installments_payments import InstallmentsPaymentsFeatures, InstallmentsPaymentsFeaturesOpenSolution
 from features.credit_card_balance import CreditCardBalanceFeatures, CreditCardBalanceFeaturesOpenSolution, CreditCardBalanceFeaturesLeakyTargetEncoding
 from features.agg_application import AggregateFeatureApplicationOpenSolution
@@ -53,6 +53,8 @@ KEY_FEATURE_MAP = {
     "BureauFeaturesAntonovaCleaned": BureauFeaturesAntonovaCleaned,
     "PreviousApplicationFeaturesAntonova": PreviousApplicationFeaturesAntonova,
     "PreviousApplicationFeaturesAntonovaCleaned": PreviousApplicationFeaturesAntonovaCleaned,
+    "PosCashFeaturesAntonova": PosCashFeaturesAntonova,
+    "PosCashFeaturesAntonovaCleaned": PosCashFeaturesAntonovaCleaned,
     "PredsLGBM1_1": LGBM1_1,
     "PredsLogReg0": LogReg0,
     "PredsLGBM3_1": LGBM3_1,
