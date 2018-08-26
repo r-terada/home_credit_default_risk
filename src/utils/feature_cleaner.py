@@ -6,6 +6,8 @@ import gc
 import warnings
 import pandas as pd
 from scipy.stats import ranksums
+from sklearn.metrics import roc_auc_score
+from lightgbm import LGBMClassifier
 
 
 def corr_feature_with_target(feature, target):
@@ -70,22 +72,22 @@ def clean_data(data):
     del corr, corr_test
     gc.collect()
 
-    # # Removing features not interesting for classifier
-    # clf = LGBMClassifier(random_state=0)
-    # train_index = data[data['TARGET'].notnull()].index
-    # train_columns = data.drop('TARGET', axis=1).columns
+    # Removing features not interesting for classifier
+    clf = LGBMClassifier(random_state=0)
+    train_index = data[data['TARGET'].notnull()].index
+    train_columns = data.drop('TARGET', axis=1).columns
 
-    # score = 1
-    # new_columns = []
-    # while score > .7:
-    #     train_columns = train_columns.drop(new_columns)
-    #     clf.fit(data.loc[train_index, train_columns], data.loc[train_index, 'TARGET'])
-    #     f_imp = pd.Series(clf.feature_importances_, index=train_columns)
-    #     score = roc_auc_score(data.loc[train_index, 'TARGET'],
-    #                           clf.predict_proba(data.loc[train_index, train_columns])[:, 1])
-    #     new_columns = f_imp[f_imp > 0].index
+    score = 1
+    new_columns = []
+    while score > .7:
+        train_columns = train_columns.drop(new_columns)
+        clf.fit(data.loc[train_index, train_columns], data.loc[train_index, 'TARGET'])
+        f_imp = pd.Series(clf.feature_importances_, index=train_columns)
+        score = roc_auc_score(data.loc[train_index, 'TARGET'],
+                              clf.predict_proba(data.loc[train_index, train_columns])[:, 1])
+        new_columns = f_imp[f_imp > 0].index
 
-    # data.drop(train_columns, axis=1, inplace=True)
-    # print('After removing features not interesting for classifier there are {0:d} features'.format(data.shape[1]))
+    data.drop(train_columns, axis=1, inplace=True)
+    print('After removing features not interesting for classifier there are {0:d} features'.format(data.shape[1]))
 
     return data
