@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from category_encoders import TargetEncoder
 
-from features import one_hot_encoder, Feature
+from features import one_hot_encoder, Feature, LargeFeature
 from features.base import Base
 from features.raw_data import Bureau, BureauBalance
 
@@ -129,6 +129,118 @@ class BureauFeaturesOpenSolution(Feature):
             features['bureau_total_customer_overdue'] / features['bureau_total_customer_debt']
 
         return features
+
+
+class BureauFeaturesAntonova(LargeFeature):
+    @classmethod
+    def _create_feature(cls, conf) -> pd.DataFrame:
+        df_bureau_b = BureauBalance.get_df(conf)
+
+        # Some new features in bureau_balance set
+        tmp = df_bureau_b[['SK_ID_BUREAU', 'STATUS']].groupby('SK_ID_BUREAU')
+        tmp_last = tmp.last()
+        tmp_last.columns = ['First_status']
+        df_bureau_b = df_bureau_b.join(tmp_last, how='left', on='SK_ID_BUREAU')
+        tmp_first = tmp.first()
+        tmp_first.columns = ['Last_status']
+        df_bureau_b = df_bureau_b.join(tmp_first, how='left', on='SK_ID_BUREAU')
+        del tmp, tmp_first, tmp_last
+        gc.collect()
+
+        tmp = df_bureau_b[['SK_ID_BUREAU', 'MONTHS_BALANCE']].groupby('SK_ID_BUREAU').last()
+        tmp = tmp.apply(abs)
+        tmp.columns = ['Month']
+        df_bureau_b = df_bureau_b.join(tmp, how='left', on='SK_ID_BUREAU')
+        del tmp
+        gc.collect()
+
+        tmp = df_bureau_b.loc[df_bureau_b['STATUS'] == 'C', ['SK_ID_BUREAU', 'MONTHS_BALANCE']] \
+            .groupby('SK_ID_BUREAU').last()
+        tmp = tmp.apply(abs)
+        tmp.columns = ['When_closed']
+        df_bureau_b = df_bureau_b.join(tmp, how='left', on='SK_ID_BUREAU')
+        del tmp
+        gc.collect()
+
+        df_bureau_b['Month_closed_to_end'] = df_bureau_b['Month'] - df_bureau_b['When_closed']
+
+        for c in range(6):
+            tmp = df_bureau_b.loc[df_bureau_b['STATUS'] == str(c), ['SK_ID_BUREAU', 'MONTHS_BALANCE']] \
+                             .groupby('SK_ID_BUREAU').count()
+            tmp.columns = ['DPD_' + str(c) + '_cnt']
+            df_bureau_b = df_bureau_b.join(tmp, how='left', on='SK_ID_BUREAU')
+            df_bureau_b['DPD_' + str(c) + ' / Month'] = df_bureau_b['DPD_' + str(c) + '_cnt'] / df_bureau_b['Month']
+            del tmp
+            gc.collect()
+        df_bureau_b['Non_zero_DPD_cnt'] = df_bureau_b[['DPD_1_cnt', 'DPD_2_cnt', 'DPD_3_cnt', 'DPD_4_cnt', 'DPD_5_cnt']].sum(axis=1)
+
+        df_bureau_b, bureau_b_cat = one_hot_encoder(df_bureau_b)
+
+        # Bureau balance: Perform aggregations
+        aggregations = {}
+        for col in df_bureau_b.columns:
+            aggregations[col] = ['mean'] if col in bureau_b_cat else ['min', 'max', 'size']
+        df_bureau_b_agg = df_bureau_b.groupby('SK_ID_BUREAU').agg(aggregations)
+        df_bureau_b_agg.columns = pd.Index([e[0] + "_" + e[1].upper() for e in df_bureau_b_agg.columns.tolist()])
+        del df_bureau_b
+        gc.collect()
+
+        df_bureau = Bureau.get_df(conf)
+
+        # Replace\remove some outliers in bureau set
+        df_bureau.loc[df_bureau['AMT_ANNUITY'] > .8e8, 'AMT_ANNUITY'] = np.nan
+        df_bureau.loc[df_bureau['AMT_CREDIT_SUM'] > 3e8, 'AMT_CREDIT_SUM'] = np.nan
+        df_bureau.loc[df_bureau['AMT_CREDIT_SUM_DEBT'] > 1e8, 'AMT_CREDIT_SUM_DEBT'] = np.nan
+        df_bureau.loc[df_bureau['AMT_CREDIT_MAX_OVERDUE'] > .8e8, 'AMT_CREDIT_MAX_OVERDUE'] = np.nan
+        df_bureau.loc[df_bureau['DAYS_ENDDATE_FACT'] < -10000, 'DAYS_ENDDATE_FACT'] = np.nan
+        df_bureau.loc[(df_bureau['DAYS_CREDIT_UPDATE'] > 0) | (df_bureau['DAYS_CREDIT_UPDATE'] < -40000), 'DAYS_CREDIT_UPDATE'] = np.nan
+        df_bureau.loc[df_bureau['DAYS_CREDIT_ENDDATE'] < -10000, 'DAYS_CREDIT_ENDDATE'] = np.nan
+
+        df_bureau.drop(df_bureau[df_bureau['DAYS_ENDDATE_FACT'] < df_bureau['DAYS_CREDIT']].index, inplace=True)
+
+        # Some new features in bureau set
+        df_bureau['bureau AMT_CREDIT_SUM - AMT_CREDIT_SUM_DEBT'] = df_bureau['AMT_CREDIT_SUM'] - df_bureau['AMT_CREDIT_SUM_DEBT']
+        df_bureau['bureau AMT_CREDIT_SUM - AMT_CREDIT_SUM_LIMIT'] = df_bureau['AMT_CREDIT_SUM'] - df_bureau['AMT_CREDIT_SUM_LIMIT']
+        df_bureau['bureau AMT_CREDIT_SUM - AMT_CREDIT_SUM_OVERDUE'] = df_bureau['AMT_CREDIT_SUM'] - df_bureau['AMT_CREDIT_SUM_OVERDUE']
+
+        df_bureau['bureau DAYS_CREDIT - CREDIT_DAY_OVERDUE'] = df_bureau['DAYS_CREDIT'] - df_bureau['CREDIT_DAY_OVERDUE']
+        df_bureau['bureau DAYS_CREDIT - DAYS_CREDIT_ENDDATE'] = df_bureau['DAYS_CREDIT'] - df_bureau['DAYS_CREDIT_ENDDATE']
+        df_bureau['bureau DAYS_CREDIT - DAYS_ENDDATE_FACT'] = df_bureau['DAYS_CREDIT'] - df_bureau['DAYS_ENDDATE_FACT']
+        df_bureau['bureau DAYS_CREDIT_ENDDATE - DAYS_ENDDATE_FACT'] = df_bureau['DAYS_CREDIT_ENDDATE'] - df_bureau['DAYS_ENDDATE_FACT']
+        df_bureau['bureau DAYS_CREDIT_UPDATE - DAYS_CREDIT_ENDDATE'] = df_bureau['DAYS_CREDIT_UPDATE'] - df_bureau['DAYS_CREDIT_ENDDATE']
+
+        # Categorical features with One-Hot encode
+        df_bureau, bureau_cat = one_hot_encoder(df_bureau)
+
+        # Bureau balance: merge with bureau.csv
+        df_bureau = df_bureau.join(df_bureau_b_agg, how='left', on='SK_ID_BUREAU')
+        df_bureau.drop('SK_ID_BUREAU', axis=1, inplace=True)
+        del df_bureau_b_agg
+        gc.collect()
+
+        # Bureau and bureau_balance aggregations for application set
+        categorical = bureau_cat + bureau_b_cat
+        aggregations = {}
+        for col in df_bureau.columns:
+            aggregations[col] = ['mean'] if col in categorical else ['min', 'max', 'size', 'mean', 'var', 'sum']
+        df_bureau_agg = df_bureau.groupby('SK_ID_CURR').agg(aggregations)
+        df_bureau_agg.columns = pd.Index(['BURO_' + e[0] + "_" + e[1].upper() for e in df_bureau_agg.columns.tolist()])
+
+        # Bureau: Active credits
+        active_agg = df_bureau[df_bureau['CREDIT_ACTIVE_Active'] == 1].groupby('SK_ID_CURR').agg(aggregations)
+        active_agg.columns = pd.Index(['ACTIVE_' + e[0] + "_" + e[1].upper() for e in active_agg.columns.tolist()])
+        df_bureau_agg = df_bureau_agg.join(active_agg, how='left')
+        del active_agg
+        gc.collect()
+
+        # Bureau: Closed credits
+        closed_agg = df_bureau[df_bureau['CREDIT_ACTIVE_Closed'] == 1].groupby('SK_ID_CURR').agg(aggregations)
+        closed_agg.columns = pd.Index(['CLOSED_' + e[0] + "_" + e[1].upper() for e in closed_agg.columns.tolist()])
+        df_bureau_agg = df_bureau_agg.join(closed_agg, how='left')
+        del closed_agg, df_bureau
+        gc.collect()
+
+        return df_bureau_agg
 
 
 class BureauFeaturesLeakyTargetEncoding(Feature):
