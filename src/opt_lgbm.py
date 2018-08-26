@@ -100,6 +100,7 @@ def main(config_file, num_opt_eval):
                 "num_leaves": int(params["num_leaves"]),
                 "min_child_samples": int(params["min_child_samples"]),
                 "colsample_bytree": float(params["colsample_bytree"]),
+                "subsample": float(params["subsample"]),
                 "min_gain_to_split": float(params["min_gain_to_split"]),
                 "reg_alpha": float(params["reg_alpha"]),
                 "reg_lambda": float(params["reg_lambda"]),
