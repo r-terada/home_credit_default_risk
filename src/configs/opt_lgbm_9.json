@@ -44,6 +44,8 @@
         "output_directory": "data/hyperopt_output"
     },
     "options": {
-        "drop_duplicate_column_on_merge": true
+        "drop_duplicate_column_on_merge": true,
+        "drop_features_list_file": "misc/gain_corr_under_threshold_90.txt",
+        "reduce_mem_usage": true
     }
 }
