@@ -88,20 +88,20 @@ def main(config_file, num_opt_eval):
         pbar.update()
         warnings.simplefilter('ignore')
 
-        s = sum(params.values())
-        for p in params:
+        s = sum([v for k, v in params.items() if k in feats])
+        for p in feats:
             params[p] = params[p] / s
 
         test_pred_proba = pd.Series(np.zeros(train_df.shape[0]), index=train_df.index)
 
         for f in feats:
-            test_pred_proba += train_df[f] * params[f]
+            test_pred_proba += (train_df[f] ** params["power"]) * params[f]
 
         score = roc_auc_score(train_df['TARGET'], test_pred_proba)
-        pbar.write(f"{score:.6f}")
+        pbar.write(f"power {params['power']}: {score:.6f}")
         return {'loss': -1.0 * score, 'status': STATUS_OK}
 
-    parameter_space = {}
+    parameter_space = {"power": hp.quniform("power", 1, 8, 1)}
     for c in feats:
         parameter_space[c] = hp.quniform(c, 0, 1, 0.001)
 
@@ -111,8 +111,8 @@ def main(config_file, num_opt_eval):
                 max_evals=num_opt_eval, trials=trials, verbose=1)
     pbar.close()
 
-    s = sum(best.values())
-    for p in best:
+    s = sum([v for k, v in best.items() if k in feats])
+    for p in feats:
         best[p] = best[p] / s
 
     print("====== best weights to blend ======")
@@ -145,7 +145,7 @@ def main(config_file, num_opt_eval):
 
     sub_preds = np.zeros(test_df.shape[0])
     for f in feats:
-        sub_preds += test_df[f] * best[f]
+        sub_preds += (test_df[f] ** best["power"]) * best[f]
     test_df['TARGET'] = sub_preds
     test_df[['SK_ID_CURR', 'TARGET']].to_csv(os.path.join(output_directory, 'submission.csv'), index=False)
 
