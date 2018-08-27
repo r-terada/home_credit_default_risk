@@ -28,7 +28,7 @@ def get_candidates(conf):
            os.path.exists(os.path.join(dir_name, "submission.csv")) and \
            float(dir_name.split("_")[-1]) > conf.threshold and \
            "stacking" not in dir_name:
-            dir_names.append(dir_name)
+            dir_names.append(os.path.basename(dir_name))
 
     return dir_names
 
