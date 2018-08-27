@@ -1,0 +1,81 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.7963223230482778,
+      "elapsed_time": 1.2153000831604004
+    },
+    "Fold2": {
+      "val_score": 0.7985138198138513,
+      "elapsed_time": 0.8637146949768066
+    },
+    "Fold3": {
+      "val_score": 0.7977961548801532,
+      "elapsed_time": 0.8696548938751221
+    },
+    "Fold4": {
+      "val_score": 0.7998634372902446,
+      "elapsed_time": 0.828559160232544
+    },
+    "Fold5": {
+      "val_score": 0.8000223863950566,
+      "elapsed_time": 0.9073460102081299
+    },
+    "Full": {
+      "score": 0.7984770305747556,
+      "val_score_mean": 0.7985036242855167,
+      "val_score_std": 0.0013721823311138117
+    }
+  },
+  "config": {
+    "features": [],
+    "stacking_features": [
+      "08210425_lgbm_3-1_0.794708",
+      "08211432_lgbm_3-1-0_0.795889",
+      "08230034_lgbm_3-3_seed0_0.796089",
+      "08230658_lgbm_3-3_seed1_0.795731",
+      "08231147_lgbm_3-3_seed2_0.795897",
+      "08220729_lgbm_3-1-0-1_0.796496",
+      "08191504_lgbm_1-1_0.793821",
+      "08251427_lgbm_7_1_0.795685",
+      "08252336_lgbm_9-2_application_0.796154",
+      "08261318_lgbm_9_0.798488",
+      "08270113_lgbm_9_0.798050",
+      "08270955_xgb_1_0.792733"
+    ],
+    "normalize_feature": false,
+    "model": {
+      "name": "LogisticRegression",
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {},
+      "train_params": {}
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/src/../data/input",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/src/../data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/src/../data/output"
+    },
+    "options": {},
+    "config_file_name": "stacking_11"
+  },
+  "features_detail": {
+    "number": 12,
+    "names": [
+      "08210425_lgbm_3-1_0.794708_PREDICTION",
+      "08211432_lgbm_3-1-0_0.795889_PREDICTION",
+      "08230034_lgbm_3-3_seed0_0.796089_PREDICTION",
+      "08230658_lgbm_3-3_seed1_0.795731_PREDICTION",
+      "08231147_lgbm_3-3_seed2_0.795897_PREDICTION",
+      "08220729_lgbm_3-1-0-1_0.796496_PREDICTION",
+      "08191504_lgbm_1-1_0.793821_PREDICTION",
+      "08251427_lgbm_7_1_0.795685_PREDICTION",
+      "08252336_lgbm_9-2_application_0.796154_PREDICTION",
+      "08261318_lgbm_9_0.798488_PREDICTION",
+      "08270113_lgbm_9_0.798050_PREDICTION",
+      "08270955_xgb_1_0.792733_PREDICTION"
+    ]
+  }
+}
