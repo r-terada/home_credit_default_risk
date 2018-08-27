@@ -1,0 +1,69 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.8024936877289208,
+      "elapsed_time": 0.4819819927215576
+    },
+    "Fold2": {
+      "val_score": 0.799472875920217,
+      "elapsed_time": 0.44628286361694336
+    },
+    "Fold3": {
+      "val_score": 0.7973103907695949,
+      "elapsed_time": 0.43849802017211914
+    },
+    "Fold4": {
+      "val_score": 0.8010028349747381,
+      "elapsed_time": 0.4693138599395752
+    },
+    "Fold5": {
+      "val_score": 0.8014829063005573,
+      "elapsed_time": 0.4817390441894531
+    },
+    "Full": {
+      "score": 0.800343385850761,
+      "val_score_mean": 0.8003525391388056,
+      "val_score_std": 0.001806300415655124
+    }
+  },
+  "config": {
+    "features": [],
+    "stacking_features": [
+      "08271254_opt_lgbm_9_0.799003",
+      "08270113_lgbm_9_0.798050",
+      "08230034_lgbm_3-3_seed0_0.796089",
+      "08270610_opt_lgbm_9_0.798747",
+      "08191504_lgbm_1-1_0.793821",
+      "08201642_lgbm_1-1_0.793527"
+    ],
+    "normalize_feature": false,
+    "model": {
+      "name": "LogisticRegression",
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {},
+      "train_params": {}
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/src/../data/input",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/src/../data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/src/../data/output"
+    },
+    "options": {},
+    "config_file_name": "stacking_14"
+  },
+  "features_detail": {
+    "number": 6,
+    "names": [
+      "08271254_opt_lgbm_9_0.799003_PREDICTION",
+      "08270113_lgbm_9_0.798050_PREDICTION",
+      "08230034_lgbm_3-3_seed0_0.796089_PREDICTION",
+      "08270610_opt_lgbm_9_0.798747_PREDICTION",
+      "08191504_lgbm_1-1_0.793821_PREDICTION",
+      "08201642_lgbm_1-1_0.793527_PREDICTION"
+    ]
+  }
+}
