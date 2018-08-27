@@ -37,7 +37,6 @@ class StackingFeaturesWithPasses(Feature):
             df = df.rename({"TARGET": f"{name}_PREDICTION"}, axis="columns")
             dfs.append(df)
         ret = reduce(lambda lhs, rhs: lhs.merge(rhs, on=["SK_ID_CURR", "index"], how="left"), dfs)
-        print(ret.head())
         return ret
 
 

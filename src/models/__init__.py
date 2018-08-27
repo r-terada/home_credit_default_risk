@@ -236,7 +236,8 @@ class SKLearnClassifier(Model):
                                 test: pd.DataFrame,
                                 feats: List[str],
                                 target: str,
-                                conf: AttrDict
+                                conf: AttrDict,
+                                save_result: bool=True
                                 ) -> None:
         # prepare
         x_train = train[feats].replace([np.inf, -np.inf], np.nan).fillna(0)
@@ -281,34 +282,35 @@ class SKLearnClassifier(Model):
         score = roc_auc_score(y_train, oof_preds)
         print(f'Full AUC score {score:.6f}')
 
-        trials["Full"] = {
-            "score": score,
-            "val_score_mean": np.mean([trials[f"Fold{n_fold + 1}"]["val_score"] for n_fold in range(folds.n_splits)]),
-            "val_score_std": np.std([trials[f"Fold{n_fold + 1}"]["val_score"] for n_fold in range(folds.n_splits)])
-       }
+        if save_result:
+            trials["Full"] = {
+                "score": score,
+                "val_score_mean": np.mean([trials[f"Fold{n_fold + 1}"]["val_score"] for n_fold in range(folds.n_splits)]),
+                "val_score_std": np.std([trials[f"Fold{n_fold + 1}"]["val_score"] for n_fold in range(folds.n_splits)])
+           }
 
-        # write results
-        output_directory = os.path.join(
-            conf.dataset.output_directory,
-            f"{datetime.now().strftime('%m%d%H%M')}_{conf.config_file_name}_{score:.6f}"
-        )
-        print(f"write results to {output_directory}")
-        if not os.path.exists(output_directory):
-            os.makedirs(output_directory)
+            # write results
+            output_directory = os.path.join(
+                conf.dataset.output_directory,
+                f"{datetime.now().strftime('%m%d%H%M')}_{conf.config_file_name}_{score:.6f}"
+            )
+            print(f"write results to {output_directory}")
+            if not os.path.exists(output_directory):
+                os.makedirs(output_directory)
 
-        with open(os.path.join(output_directory, "result.json"), "w") as fp:
-            results = {"trials": trials, "config": conf, "features_detail": {"number": len(feats), "names": feats}}
-            json.dump(results, fp, indent=2)
+            with open(os.path.join(output_directory, "result.json"), "w") as fp:
+                results = {"trials": trials, "config": conf, "features_detail": {"number": len(feats), "names": feats}}
+                json.dump(results, fp, indent=2)
 
-        oof_preds_df = pd.DataFrame()
-        oof_preds_df['SK_ID_CURR'] = train['SK_ID_CURR']
-        oof_preds_df['TARGET'] = oof_preds
-        oof_preds_df.to_csv(os.path.join(output_directory, f'oof_predictions.csv'), index=False)
-        del oof_preds_df
-        gc.collect()
+            oof_preds_df = pd.DataFrame()
+            oof_preds_df['SK_ID_CURR'] = train['SK_ID_CURR']
+            oof_preds_df['TARGET'] = oof_preds
+            oof_preds_df.to_csv(os.path.join(output_directory, f'oof_predictions.csv'), index=False)
+            del oof_preds_df
+            gc.collect()
 
-        test['TARGET'] = sub_preds
-        test[['SK_ID_CURR', 'TARGET']].to_csv(os.path.join(output_directory, 'submission.csv'), index=False)
+            test['TARGET'] = sub_preds
+            test[['SK_ID_CURR', 'TARGET']].to_csv(os.path.join(output_directory, 'submission.csv'), index=False)
 
         return score
 
