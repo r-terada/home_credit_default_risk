@@ -26,7 +26,7 @@ def get_train_test(conf):
     for feature in feature_classes:
         with timer(f"process {feature.__name__}"):
             f = feature.get_df(conf)
-            if conf.options.drop_duplicate_column_on_merge:
+            if "drop_duplicate_column_on_merge" in conf.options and conf.options.drop_duplicate_column_on_merge:
                 cols_to_drop = [c for c in f.columns if (c in df.columns) and (c != 'SK_ID_CURR')]
                 if cols_to_drop:
                     print(f"drop columns: {cols_to_drop}")

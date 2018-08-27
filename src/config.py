@@ -89,6 +89,6 @@ def read_config(config_file_path: str) -> dict:
     if "name" not in config.model:
         config.model = {**config.model, "name": "LightGBM"}
     if "options" not in config:
-        config.options = {"drop_duplicate_column_on_merge": False}
+        config.options = {}
 
     return config
