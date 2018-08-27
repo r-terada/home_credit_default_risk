@@ -38,7 +38,6 @@
             "tol": 0.00001,
             "C": 1,
             "fit_intercept": 1,
-            "class_weight": 1,
             "solver": "liblinear",
             "max_iter": 10000
         },
