@@ -1,0 +1,20 @@
+{
+    "features": [],
+    "stacking_features": [
+        "08271254_opt_lgbm_9_0.799003",
+        "08270113_lgbm_9_0.798050",
+        "08230034_lgbm_3-3_seed0_0.796089",
+        "08270610_opt_lgbm_9_0.798747",
+        "08191504_lgbm_1-1_0.793821",
+        "08201642_lgbm_1-1_0.793527",
+        "08270955_xgb_1_0.792733",
+        "08271902_rf_1_0.752954"
+    ],
+    "model": {},
+    "dataset": {
+        "input_directory":"data/input",
+        "cache_directory": "data/working",
+        "output_directory": "data/output"
+    },
+    "options": {}
+}
