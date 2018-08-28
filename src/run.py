@@ -74,6 +74,7 @@ def main(config_file, debug):
         'TARGET', 'SK_ID_CURR', 'SK_ID_BUREAU', 'SK_ID_PREV', 'index'
     ])]
     print(f"use {len(feats)} features.")
+    print(train_df.shape)
 
     model = KEY_MODEL_MAP[conf.model.name]()
     with timer(f"train with {model.__class__.__name__}"):
