@@ -61,9 +61,16 @@ def main(config_file):
 
     best_features = []
     best_score_whole = 0.0
+    next_candidates = None
     while True:
         best_feature_loop = ""
         best_score_loop = 0.0
+
+        if next_candidates:
+            candidates = next_candidates[:]
+
+        next_candidates = []
+        print(f"search best stacker from {len(candidates)} outputs")
         for feature in candidates:
             conf.stacking_features = best_features + [feature]
             train_df, test_df = get_train_test(conf)
@@ -84,10 +91,13 @@ def main(config_file):
                 best_score_loop = score
                 best_feature_loop = feature
 
+            if score >= best_score_whole:
+                next_candidates.append(feature)
+
         if best_score_loop > best_score_whole:
             best_score_whole = best_score_loop
             best_features.append(best_feature_loop)
-            candidates.remove(best_feature_loop)
+            next_candidates.remove(best_feature_loop)
             print(f"=== current best score: {best_score_whole} ===")
             print(f"features: {best_features}")
         else:
