@@ -1,0 +1,42 @@
+{
+    "features": [],
+    "stacking_features": [
+        "08270113_lgbm_9_0.798050",
+        "08230034_lgbm_3-3_seed0_0.796089",
+        "08191504_lgbm_1-1_0.793821",
+        "hyperopt_output/08271400_opt_lgbm_9_0.799083",
+        "hyperopt_output/08271031_opt_lgbm_9_0.798385",
+        "hyperopt_output/08270610_opt_lgbm_9_0.798747",
+        "hyperopt_output/08270135_opt_lgbm_9_0.797120",
+        "hyperopt_output/08261911_opt_lgbm_9_0.796959",
+        "hyperopt_output/08271925_opt_lgbm_9_0.796756",
+        "hyperopt_output/08261943_opt_lgbm_9_0.794607",
+        "hyperopt_output/08270803_opt_lgbm_9_0.795817",
+        "hyperopt_output/08271043_opt_lgbm_9_0.797312",
+        "hyperopt_output/08270928_opt_lgbm_9_0.796694",
+        "hyperopt_output/08270908_opt_lgbm_9_0.795943",
+        "hyperopt_output/08271230_opt_lgbm_9_0.798052",
+        "hyperopt_output/08271407_opt_lgbm_9_0.796722",
+        "hyperopt_output/08280138_opt_lgbm_9_0.795249",
+        "hyperopt_output/08270733_opt_lgbm_9_0.798056",
+        "hyperopt_output/08270508_opt_lgbm_9_0.797960"
+    ],
+    "normalize_feature": false,
+    "threshold": 0.7,
+    "model": {
+        "name": "LogisticRegression",
+        "kfold_params": {
+            "n_splits": 5,
+            "shuffle": true,
+            "random_state": 47
+        },
+        "clf_params": {},
+        "train_params": {}
+    },
+    "dataset": {
+        "input_directory":"data/input",
+        "cache_directory": "data/working",
+        "output_directory": "data/output"
+    },
+    "options": {}
+}

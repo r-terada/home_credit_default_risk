@@ -37,10 +37,19 @@ def get_candidates(conf):
 
 
 def get_train_test(conf):
+    return split_train_test(get_df(conf, conf.stacking_features))
+
+
+def get_df(conf, stacking_features):
     df = Base.get_df(conf)  # pd.DataFrame
-    StackingFeaturesWithPasses.set_result_dirs(conf.stacking_features)
-    f = StackingFeaturesWithPasses.get_df(conf)
-    df = df.merge(f, how='left', on='SK_ID_CURR')
+    if stacking_features:
+        StackingFeaturesWithPasses.set_result_dirs(stacking_features)
+        f = StackingFeaturesWithPasses.get_df(conf)
+        df = df.merge(f, how='left', on='SK_ID_CURR')
+    return df
+
+
+def split_train_test(df):
     train_df = df[df['TARGET'].notnull()].copy()
     test_df = df[df['TARGET'].isnull()].copy()
     del df
@@ -53,6 +62,16 @@ def get_train_test(conf):
 def main(config_file):
     conf = read_config(config_file)
     candidates = get_candidates(conf)
+
+    if conf.stacking_features:
+        best_features = list(conf.stacking_features[:])
+        for f in best_features:
+            for c in candidates[:]:
+                if f in c:
+                    candidates.remove(c)
+    else:
+        best_features = []
+
     print("candidates")
     print('\n'.join(candidates))
     print(f"search best stackers from {len(candidates)} outputs")
@@ -60,20 +79,21 @@ def main(config_file):
     print(f"conf:")
     pprint(conf)
 
-    best_features = []
     best_score_whole = 0.0
     while True:
         best_feature_loop = ""
         best_score_loop = 0.0
 
+        print(f"add feature to {best_features}")
+        base_df = get_df(conf, best_features)
         for feature in candidates:
             with timer("stack"):
-                conf.stacking_features = best_features + [feature]
-                train_df, test_df = get_train_test(conf)
+                cur_df = base_df.merge(get_df(conf, [feature]).drop(["TARGET", "index"], axis=1), on='SK_ID_CURR', how='left')
+                train_df, test_df = split_train_test(cur_df)
                 feats = [f for f in train_df.columns if f not in ([
                     'TARGET', 'SK_ID_CURR', 'SK_ID_BUREAU', 'SK_ID_PREV', 'index'
                 ])]
-                print([os.path.basename(f) for f in conf.stacking_features])
+                print(f"add {feature}")
                 model = KEY_MODEL_MAP[conf.model.name]()
                 score = model.train_and_predict_kfold(
                     train_df,
