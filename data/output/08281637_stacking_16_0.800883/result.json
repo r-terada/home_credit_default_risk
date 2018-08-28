@@ -1,0 +1,95 @@
+{
+  "trials": {
+    "Fold1": {
+      "val_score": 0.8040091386459612,
+      "elapsed_time": 1.0322186946868896
+    },
+    "Fold2": {
+      "val_score": 0.7988769681810205,
+      "elapsed_time": 1.0378799438476562
+    },
+    "Fold3": {
+      "val_score": 0.7973795057362556,
+      "elapsed_time": 1.0048980712890625
+    },
+    "Fold4": {
+      "val_score": 0.8014373034611043,
+      "elapsed_time": 1.0495412349700928
+    },
+    "Fold5": {
+      "val_score": 0.80270404068909,
+      "elapsed_time": 1.1488089561462402
+    },
+    "Full": {
+      "score": 0.8008831963047846,
+      "val_score_mean": 0.8008813913426863,
+      "val_score_std": 0.002436998445959381
+    }
+  },
+  "config": {
+    "features": [],
+    "stacking_features": [
+      "08270113_lgbm_9_0.798050",
+      "08230034_lgbm_3-3_seed0_0.796089",
+      "08191504_lgbm_1-1_0.793821",
+      "hyperopt_output/08271400_opt_lgbm_9_0.799083",
+      "hyperopt_output/08271031_opt_lgbm_9_0.798385",
+      "hyperopt_output/08270610_opt_lgbm_9_0.798747",
+      "hyperopt_output/08270135_opt_lgbm_9_0.797120",
+      "hyperopt_output/08261911_opt_lgbm_9_0.796959",
+      "hyperopt_output/08271925_opt_lgbm_9_0.796756",
+      "hyperopt_output/08261943_opt_lgbm_9_0.794607",
+      "hyperopt_output/08270803_opt_lgbm_9_0.795817",
+      "hyperopt_output/08271043_opt_lgbm_9_0.797312",
+      "hyperopt_output/08270928_opt_lgbm_9_0.796694",
+      "hyperopt_output/08270908_opt_lgbm_9_0.795943",
+      "hyperopt_output/08271230_opt_lgbm_9_0.798052",
+      "hyperopt_output/08271407_opt_lgbm_9_0.796722",
+      "hyperopt_output/08280138_opt_lgbm_9_0.795249",
+      "hyperopt_output/08270733_opt_lgbm_9_0.798056",
+      "hyperopt_output/08270508_opt_lgbm_9_0.797960"
+    ],
+    "normalize_feature": false,
+    "model": {
+      "name": "LogisticRegression",
+      "kfold_params": {
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 47
+      },
+      "clf_params": {},
+      "train_params": {}
+    },
+    "dataset": {
+      "input_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/src/../data/input",
+      "cache_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/src/../data/working",
+      "output_directory": "/Users/rintaro/.ghq/github.com/r-terada/home_credit_default_risk/src/../data/output"
+    },
+    "options": {},
+    "config_file_name": "stacking_16"
+  },
+  "features_detail": {
+    "number": 19,
+    "names": [
+      "08270113_lgbm_9_0.798050_PREDICTION",
+      "08230034_lgbm_3-3_seed0_0.796089_PREDICTION",
+      "08191504_lgbm_1-1_0.793821_PREDICTION",
+      "hyperopt_output/08271400_opt_lgbm_9_0.799083_PREDICTION",
+      "hyperopt_output/08271031_opt_lgbm_9_0.798385_PREDICTION",
+      "hyperopt_output/08270610_opt_lgbm_9_0.798747_PREDICTION",
+      "hyperopt_output/08270135_opt_lgbm_9_0.797120_PREDICTION",
+      "hyperopt_output/08261911_opt_lgbm_9_0.796959_PREDICTION",
+      "hyperopt_output/08271925_opt_lgbm_9_0.796756_PREDICTION",
+      "hyperopt_output/08261943_opt_lgbm_9_0.794607_PREDICTION",
+      "hyperopt_output/08270803_opt_lgbm_9_0.795817_PREDICTION",
+      "hyperopt_output/08271043_opt_lgbm_9_0.797312_PREDICTION",
+      "hyperopt_output/08270928_opt_lgbm_9_0.796694_PREDICTION",
+      "hyperopt_output/08270908_opt_lgbm_9_0.795943_PREDICTION",
+      "hyperopt_output/08271230_opt_lgbm_9_0.798052_PREDICTION",
+      "hyperopt_output/08271407_opt_lgbm_9_0.796722_PREDICTION",
+      "hyperopt_output/08280138_opt_lgbm_9_0.795249_PREDICTION",
+      "hyperopt_output/08270733_opt_lgbm_9_0.798056_PREDICTION",
+      "hyperopt_output/08270508_opt_lgbm_9_0.797960_PREDICTION"
+    ]
+  }
+}
