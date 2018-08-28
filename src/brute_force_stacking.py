@@ -33,7 +33,7 @@ def get_candidates(conf):
            "stacking" not in path:
             dir_names.append(path)
 
-    return dir_names
+    return list(set(dir_names))
 
 
 def get_train_test(conf):
@@ -91,7 +91,7 @@ def main(config_file):
                 best_score_loop = score
                 best_feature_loop = feature
 
-            if score >= best_score_whole:
+            if score > best_score_whole:
                 next_candidates.append(feature)
 
         if best_score_loop > best_score_whole:
