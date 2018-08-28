@@ -230,6 +230,41 @@ class SKLearnClassifier(Model):
     def _get_clf_class(self):
         return None
 
+    def train_and_predict(self,
+                          train: pd.DataFrame,
+                          test: pd.DataFrame,
+                          feats: List[str],
+                          target: str,
+                          conf: AttrDict,
+                          ) -> None:
+        x_train = train[feats].replace([np.inf, -np.inf], np.nan).fillna(0)
+        y_train = train[target]
+        x_test = test[feats].replace([np.inf, -np.inf], np.nan).fillna(0)
+        if "normalize_feature" in conf and conf.normalize_feature:
+            sc = StandardScaler()
+            train_x, train_y = sc.fit_transform(x_train, y_train)
+            test_x = sc.transform(x_test)
+        else:
+            train_x, train_y = x_train, y_train
+            test_x = x_test
+
+        clf = self._get_clf_class()(**conf.model.clf_params)
+        clf.fit(train_x, train_y, **conf.model.train_params)
+
+        sub_preds = clf.predict_proba(test_x)[:, 1]
+
+        # write results
+        output_directory = os.path.join(
+            conf.dataset.output_directory,
+            f"{datetime.now().strftime('%m%d%H%M')}_{conf.config_file_name}_train_full_data"
+        )
+        print(f"write results to {output_directory}")
+        if not os.path.exists(output_directory):
+            os.makedirs(output_directory)
+
+        test['TARGET'] = sub_preds
+        test[['SK_ID_CURR', 'TARGET']].to_csv(os.path.join(output_directory, 'submission.csv'), index=False)
+
     # override
     def train_and_predict_kfold(self,
                                 train: pd.DataFrame,
@@ -238,7 +273,7 @@ class SKLearnClassifier(Model):
                                 target: str,
                                 conf: AttrDict,
                                 save_result: bool=True
-                                ) -> None:
+                                ) -> float:
         # prepare
         x_train = train[feats].replace([np.inf, -np.inf], np.nan).fillna(0)
         y_train = train[target]

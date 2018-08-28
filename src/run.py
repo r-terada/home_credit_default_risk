@@ -63,8 +63,8 @@ def get_train_test(conf):
 
 @click.command()
 @click.option('--config_file', type=str, default='./configs/lgbm_0.json')
-@click.option('--debug', is_flag=True, default=False)
-def main(config_file, debug):
+@click.option('--full_train', is_flag=True, default=False)
+def main(config_file, full_train):
     conf = read_config(config_file)
     print("config:")
     pprint(conf)
@@ -78,13 +78,23 @@ def main(config_file, debug):
 
     model = KEY_MODEL_MAP[conf.model.name]()
     with timer(f"train with {model.__class__.__name__}"):
-        model.train_and_predict_kfold(
-            train_df,
-            test_df,
-            feats,
-            'TARGET',
-            conf
-        )
+        if not full_train:
+            model.train_and_predict_kfold(
+                train_df,
+                test_df,
+                feats,
+                'TARGET',
+                conf
+            )
+
+        else:
+            model.train_and_predict(
+                train_df,
+                test_df,
+                feats,
+                'TARGET',
+                conf
+            )
 
 
 if __name__ == '__main__':

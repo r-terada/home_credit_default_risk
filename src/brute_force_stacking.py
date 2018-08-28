@@ -7,6 +7,7 @@ import random
 import sklearn
 import numpy as np
 import pandas as pd
+from tqdm import tqdm
 from pprint import pprint
 from datetime import datetime
 
@@ -86,26 +87,26 @@ def main(config_file):
 
         print(f"add feature to {best_features}")
         base_df = get_df(conf, best_features)
-        for feature in candidates:
-            with timer("stack"):
-                cur_df = base_df.merge(get_df(conf, [feature]).drop(["TARGET", "index"], axis=1), on='SK_ID_CURR', how='left')
-                train_df, test_df = split_train_test(cur_df)
-                feats = [f for f in train_df.columns if f not in ([
-                    'TARGET', 'SK_ID_CURR', 'SK_ID_BUREAU', 'SK_ID_PREV', 'index'
-                ])]
-                print(f"add {feature}")
-                model = KEY_MODEL_MAP[conf.model.name]()
-                score = model.train_and_predict_kfold(
-                    train_df,
-                    test_df,
-                    feats,
-                    'TARGET',
-                    conf,
-                    save_result=False
-                )
-                if score > best_score_loop:
-                    best_score_loop = score
-                    best_feature_loop = feature
+        for feature in tqdm(candidates):
+            print(f"current best {best_score_loop} : {best_feature_loop}")
+            cur_df = base_df.merge(get_df(conf, [feature]).drop(["TARGET", "index"], axis=1), on='SK_ID_CURR', how='left')
+            train_df, test_df = split_train_test(cur_df)
+            feats = [f for f in train_df.columns if f not in ([
+                'TARGET', 'SK_ID_CURR', 'SK_ID_BUREAU', 'SK_ID_PREV', 'index'
+            ])]
+            print(f"add {feature}")
+            model = KEY_MODEL_MAP[conf.model.name]()
+            score = model.train_and_predict_kfold(
+                train_df,
+                test_df,
+                feats,
+                'TARGET',
+                conf,
+                save_result=False
+            )
+            if score > best_score_loop:
+                best_score_loop = score
+                best_feature_loop = feature
 
         if best_score_loop > best_score_whole:
             best_score_whole = best_score_loop
