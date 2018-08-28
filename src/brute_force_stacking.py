@@ -66,26 +66,26 @@ def main(config_file):
         best_feature_loop = ""
         best_score_loop = 0.0
 
-        print(f"search best stacker from {len(candidates)} outputs")
         for feature in candidates:
-            conf.stacking_features = best_features + [feature]
-            train_df, test_df = get_train_test(conf)
-            feats = [f for f in train_df.columns if f not in ([
-                'TARGET', 'SK_ID_CURR', 'SK_ID_BUREAU', 'SK_ID_PREV', 'index'
-            ])]
-            print([os.path.basename(f) for f in conf.stacking_features])
-            model = KEY_MODEL_MAP[conf.model.name]()
-            score = model.train_and_predict_kfold(
-                train_df,
-                test_df,
-                feats,
-                'TARGET',
-                conf,
-                save_result=False
-            )
-            if score > best_score_loop:
-                best_score_loop = score
-                best_feature_loop = feature
+            with timer("stack"):
+                conf.stacking_features = best_features + [feature]
+                train_df, test_df = get_train_test(conf)
+                feats = [f for f in train_df.columns if f not in ([
+                    'TARGET', 'SK_ID_CURR', 'SK_ID_BUREAU', 'SK_ID_PREV', 'index'
+                ])]
+                print([os.path.basename(f) for f in conf.stacking_features])
+                model = KEY_MODEL_MAP[conf.model.name]()
+                score = model.train_and_predict_kfold(
+                    train_df,
+                    test_df,
+                    feats,
+                    'TARGET',
+                    conf,
+                    save_result=False
+                )
+                if score > best_score_loop:
+                    best_score_loop = score
+                    best_feature_loop = feature
 
         if best_score_loop > best_score_whole:
             best_score_whole = best_score_loop
