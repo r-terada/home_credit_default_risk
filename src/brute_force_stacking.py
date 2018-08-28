@@ -23,12 +23,15 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 def get_candidates(conf):
     dir_names = []
-    for dir_name in glob.glob(f"{conf.dataset.output_directory}/*"):
-        if os.path.exists(os.path.join(dir_name, "oof_predictions.csv")) and \
-           os.path.exists(os.path.join(dir_name, "submission.csv")) and \
-           float(dir_name.split("_")[-1]) > conf.threshold and \
-           "stacking" not in dir_name:
-            dir_names.append(os.path.basename(dir_name))
+    for path in glob.glob(f"{conf.dataset.output_directory}/**", recursive=True):
+        if not os.path.isdir(path):
+            continue
+
+        if os.path.exists(os.path.join(path, "oof_predictions.csv")) and \
+           os.path.exists(os.path.join(path, "submission.csv")) and \
+           float(path.split("_")[-1]) > conf.threshold and \
+           "stacking" not in path:
+            dir_names.append(path)
 
     return dir_names
 
