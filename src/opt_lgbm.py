@@ -78,16 +78,15 @@ def main(config_file, num_opt_eval):
     print(f"use {len(feats)} features.")
 
     parameter_space = {
-        "learning_rate": hp.quniform("learning_rate", 0.01, 0.05, 0.001),
+        "learning_rate": hp.quniform("learning_rate", 0.01, 0.02, 0.001),
         "max_bin": hp.quniform("max_bin", 5, 500, 5),
-        "max_depth": hp.quniform("max_depth", 4, 12, 1),
         "num_leaves": hp.quniform("num_leaves", 16, 128, 1),
-        "min_child_samples": hp.quniform("min_child_samples", 1, 100, 1),
-        "colsample_bytree": hp.quniform("colsample_bytree", 0.01, 1.0, 0.01),
-        "subsample": hp.quniform("subsample", 0.01, 1.0, 0.01),
+        "min_child_samples": hp.quniform("min_child_samples", 1, 300, 1),
+        "colsample_bytree": hp.quniform("colsample_bytree", 0.01, 0.2, 0.01),
+        "subsample": hp.quniform("subsample", 0.01, 0.8, 0.01),
         "min_gain_to_split": hp.quniform("min_gain_to_split", 0.0, 5.0, 0.1),
-        "reg_alpha": hp.quniform("reg_alpha", 0, 10, 0.01),
-        "reg_lambda": hp.quniform("reg_lambda", 0, 10, 0.01)
+        "reg_alpha": hp.quniform("reg_alpha", 0, 100, 0.1),
+        "reg_lambda": hp.quniform("reg_lambda", 0, 100, 0.1)
     }
 
     def objective(params):
@@ -105,6 +104,7 @@ def main(config_file, num_opt_eval):
                 "reg_alpha": float(params["reg_alpha"]),
                 "reg_lambda": float(params["reg_lambda"]),
                 "n_estimators": 10000,
+                "max_depth": -1,
                 "nthread": -1,
                 "scale_pos_weight": 1,
                 "is_unbalance": False,
