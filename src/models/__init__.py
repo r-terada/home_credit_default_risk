@@ -272,7 +272,8 @@ class SKLearnClassifier(Model):
                                 feats: List[str],
                                 target: str,
                                 conf: AttrDict,
-                                save_result: bool=True
+                                save_result: bool=True,
+                                verbose: bool=True
                                 ) -> float:
         # prepare
         x_train = train[feats].replace([np.inf, -np.inf], np.nan).fillna(0)
@@ -304,7 +305,8 @@ class SKLearnClassifier(Model):
                 sub_preds += clf.predict_proba(x_test)[:, 1] / folds.n_splits
 
             score = roc_auc_score(valid_y, oof_preds[valid_idx])
-            print(f'Fold {(n_fold + 1):2d} AUC : {score:.6f}')
+            if verbose:
+                print(f'Fold {(n_fold + 1):2d} AUC : {score:.6f}')
 
             trials[f"Fold{n_fold + 1}"] = {
                 "val_score": score,
@@ -315,7 +317,8 @@ class SKLearnClassifier(Model):
             gc.collect()
 
         score = roc_auc_score(y_train, oof_preds)
-        print(f'Full AUC score {score:.6f}')
+        if verbose:
+            print(f'Full AUC score {score:.6f}')
 
         if save_result:
             trials["Full"] = {
@@ -329,7 +332,8 @@ class SKLearnClassifier(Model):
                 conf.dataset.output_directory,
                 f"{datetime.now().strftime('%m%d%H%M')}_{conf.config_file_name}_{score:.6f}"
             )
-            print(f"write results to {output_directory}")
+            if verbose:
+                print(f"write results to {output_directory}")
             if not os.path.exists(output_directory):
                 os.makedirs(output_directory)
 
