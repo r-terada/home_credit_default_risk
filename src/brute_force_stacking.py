@@ -103,9 +103,28 @@ def main(config_file):
     print('\n'.join(candidates))
     print(f"search best stackers from {len(candidates)} outputs")
 
-    best_score_whole = 0.0
+    if best_features:
+        df = get_df(conf, best_features)
+        train_df, test_df = split_train_test(cur_df)
+        feats = [f for f in train_df.columns if f not in ([
+            'TARGET', 'SK_ID_CURR', 'SK_ID_BUREAU', 'SK_ID_PREV', 'index'
+        ])]
+        model = KEY_MODEL_MAP[conf.model.name]()
+        best_score_whole = model.train_and_predict_kfold(
+            train_df,
+            test_df,
+            feats,
+            'TARGET',
+            conf,
+            save_result=False,
+            verbose=False
+        )
+    else:
+        best_score_whole = 0.0
     while True:
-        print(f"add feature to {best_features}")
+        print()
+        print(f"=== current best score: {best_score_whole} ===")
+        print(f"features: {best_features}")
         base_df = get_df(conf, best_features)
         with timer("search best feature to add"):
             with mp.Pool(mp.cpu_count()) as executor:
@@ -118,9 +137,6 @@ def main(config_file):
                 best_score_whole = best_score_loop
                 best_features.append(best_feature_loop)
                 candidates.remove(best_feature_loop)
-                print()
-                print(f"=== current best score: {best_score_whole} ===")
-                print(f"features: {best_features}")
             else:
                 print(f"no improvement. break.")
                 break
