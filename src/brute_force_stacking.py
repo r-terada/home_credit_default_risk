@@ -1,14 +1,17 @@
 import os
 import gc
 import sys
+import time
 import glob
 import click
 import random
 import sklearn
 import numpy as np
 import pandas as pd
+import multiprocessing as mp
 from tqdm import tqdm
 from pprint import pprint
+from itertools import repeat
 from datetime import datetime
 
 from config import read_config, KEY_FEATURE_MAP, KEY_MODEL_MAP
@@ -58,6 +61,27 @@ def split_train_test(df):
     return train_df, test_df
 
 
+def calc_score(base_df, conf, feature):
+    start_time = time.time()
+    cur_df = base_df.merge(get_df(conf, [feature]).drop(["TARGET", "index"], axis=1), on='SK_ID_CURR', how='left')
+    train_df, test_df = split_train_test(cur_df)
+    feats = [f for f in train_df.columns if f not in ([
+        'TARGET', 'SK_ID_CURR', 'SK_ID_BUREAU', 'SK_ID_PREV', 'index'
+    ])]
+    model = KEY_MODEL_MAP[conf.model.name]()
+    score = model.train_and_predict_kfold(
+        train_df,
+        test_df,
+        feats,
+        'TARGET',
+        conf,
+        save_result=False,
+        verbose=False
+    )
+    print(f"{os.path.basename(feature)}: {score:8f}  {time.time() - start_time} [sec] ")
+    return score
+
+
 @click.command()
 @click.option('--config_file', type=str, default='./configs/stacking_brute_force.json')
 def main(config_file):
@@ -73,50 +97,33 @@ def main(config_file):
     else:
         best_features = []
 
+    print(f"conf:")
+    pprint(conf)
+
     print("candidates")
     print('\n'.join(candidates))
     print(f"search best stackers from {len(candidates)} outputs")
 
-    print(f"conf:")
-    pprint(conf)
-
     best_score_whole = 0.0
     while True:
-        best_feature_loop = ""
-        best_score_loop = 0.0
-
         print(f"add feature to {best_features}")
         base_df = get_df(conf, best_features)
-        for feature in tqdm(candidates):
-            print(f"current best {best_score_loop} : {best_feature_loop}")
-            cur_df = base_df.merge(get_df(conf, [feature]).drop(["TARGET", "index"], axis=1), on='SK_ID_CURR', how='left')
-            train_df, test_df = split_train_test(cur_df)
-            feats = [f for f in train_df.columns if f not in ([
-                'TARGET', 'SK_ID_CURR', 'SK_ID_BUREAU', 'SK_ID_PREV', 'index'
-            ])]
-            print(f"add {feature}")
-            model = KEY_MODEL_MAP[conf.model.name]()
-            score = model.train_and_predict_kfold(
-                train_df,
-                test_df,
-                feats,
-                'TARGET',
-                conf,
-                save_result=False
-            )
-            if score > best_score_loop:
-                best_score_loop = score
-                best_feature_loop = feature
+        with timer("search best feature to add"):
+            with mp.Pool(mp.cpu_count()) as executor:
+                results = executor.starmap(calc_score, zip(repeat(base_df), repeat(conf), candidates))
 
-        if best_score_loop > best_score_whole:
-            best_score_whole = best_score_loop
-            best_features.append(best_feature_loop)
-            candidates.remove(best_feature_loop)
-            print(f"=== current best score: {best_score_whole} ===")
-            print(f"features: {best_features}")
-        else:
-            print(f"no improvement. break.")
-            break
+            best_score_loop = max(results)
+            best_feature_loop = candidates.index(best_score_loop)
+
+            if best_score_loop > best_score_whole:
+                best_score_whole = best_score_loop
+                best_features.append(best_feature_loop)
+                candidates.remove(best_feature_loop)
+                print(f"=== current best score: {best_score_whole} ===")
+                print(f"features: {best_features}")
+            else:
+                print(f"no improvement. break.")
+                break
 
     print(f"best score {best_score_whole}")
     print(f"{best_features}")
