@@ -13,6 +13,7 @@ from tqdm import tqdm
 from pprint import pprint
 from itertools import repeat
 from datetime import datetime
+from functools import partial
 
 from config import read_config, KEY_FEATURE_MAP, KEY_MODEL_MAP
 from utils import timer, reduce_mem_usage
@@ -62,7 +63,6 @@ def split_train_test(df):
 
 
 def calc_score(base_df, conf, feature):
-    start_time = time.time()
     cur_df = base_df.merge(get_df(conf, [feature]).drop(["TARGET", "index"], axis=1), on='SK_ID_CURR', how='left')
     train_df, test_df = split_train_test(cur_df)
     feats = [f for f in train_df.columns if f not in ([
@@ -78,7 +78,6 @@ def calc_score(base_df, conf, feature):
         save_result=False,
         verbose=False
     )
-    print(f"{os.path.basename(feature)}: {score:8f}  {time.time() - start_time} [sec] ")
     return score
 
 
@@ -110,7 +109,7 @@ def main(config_file):
         base_df = get_df(conf, best_features)
         with timer("search best feature to add"):
             with mp.Pool(mp.cpu_count()) as executor:
-                results = executor.starmap(calc_score, zip(repeat(base_df), repeat(conf), candidates))
+                results = list(tqdm(executor.imap(partial(calc_score, base_df, conf), candidates), total=len(candidates)))
 
             best_score_loop = max(results)
             best_feature_loop = candidates.index(best_score_loop)
@@ -119,6 +118,7 @@ def main(config_file):
                 best_score_whole = best_score_loop
                 best_features.append(best_feature_loop)
                 candidates.remove(best_feature_loop)
+                print()
                 print(f"=== current best score: {best_score_whole} ===")
                 print(f"features: {best_features}")
             else:
