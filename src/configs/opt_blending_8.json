@@ -1,0 +1,15 @@
+{
+    "features": [],
+    "stacking_features": [
+        "08270955_xgb_1_0.792733",
+        "08280344_xgb_2_0.797642",
+        "08291909_stacking_20_0.801631"
+    ],
+    "model": {},
+    "dataset": {
+        "input_directory":"data/input",
+        "cache_directory": "data/working",
+        "output_directory": "data/output"
+    },
+    "options": {}
+}

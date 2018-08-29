@@ -1,0 +1,10 @@
+{
+  "weights": {
+    "08270955_xgb_1_0.792733_PREDICTION": 0.019,
+    "08280344_xgb_2_0.797642_PREDICTION": 0.008,
+    "08291909_stacking_20_0.801631_PREDICTION": 0.973,
+    "power": 8.0
+  },
+  "score": 0.8017840581344835,
+  "eval_num": 500
+}
