@@ -95,7 +95,6 @@ def main(config_file, num_opt_eval):
             "clf_params": {
                 "learning_rate": float(params["learning_rate"]),
                 "max_bin": int(params["max_bin"]),
-                "max_depth": int(params["max_depth"]),
                 "num_leaves": int(params["num_leaves"]),
                 "min_child_samples": int(params["min_child_samples"]),
                 "colsample_bytree": float(params["colsample_bytree"]),
@@ -103,6 +102,7 @@ def main(config_file, num_opt_eval):
                 "min_gain_to_split": float(params["min_gain_to_split"]),
                 "reg_alpha": float(params["reg_alpha"]),
                 "reg_lambda": float(params["reg_lambda"]),
+                "boosting_type": "dart",
                 "n_estimators": 10000,
                 "max_depth": -1,
                 "nthread": -1,
