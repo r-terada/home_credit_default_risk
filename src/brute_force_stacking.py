@@ -104,7 +104,7 @@ def main(config_file):
     print(f"search best stackers from {len(candidates)} outputs")
 
     if best_features:
-        df = get_df(conf, best_features)
+        cur_df = get_df(conf, best_features)
         train_df, test_df = split_train_test(cur_df)
         feats = [f for f in train_df.columns if f not in ([
             'TARGET', 'SK_ID_CURR', 'SK_ID_BUREAU', 'SK_ID_PREV', 'index'
