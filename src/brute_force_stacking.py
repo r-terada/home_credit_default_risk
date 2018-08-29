@@ -112,7 +112,7 @@ def main(config_file):
                 results = list(tqdm(executor.imap(partial(calc_score, base_df, conf), candidates), total=len(candidates)))
 
             best_score_loop = max(results)
-            best_feature_loop = candidates.index(best_score_loop)
+            best_feature_loop = candidates[results.index(best_score_loop)]
 
             if best_score_loop > best_score_whole:
                 best_score_whole = best_score_loop
