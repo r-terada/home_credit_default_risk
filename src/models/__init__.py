@@ -242,7 +242,7 @@ class SKLearnClassifier(Model):
         x_test = test[feats].replace([np.inf, -np.inf], np.nan).fillna(0)
         if "normalize_feature" in conf and conf.normalize_feature:
             sc = StandardScaler()
-            train_x, train_y = sc.fit_transform(x_train, y_train)
+            train_x, train_y = sc.fit_transform(x_train, y_train), y_train
             test_x = sc.transform(x_test)
         else:
             train_x, train_y = x_train, y_train
