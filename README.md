@@ -12,6 +12,7 @@ $ unzip *
 
 2. run
 ```
+$ pip install -r requirements.txt
 $ cd src
 $ python run.py --config_file configs/lgbm_0.json
 ```
